@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 11</title>
+</head>
+<body>
+  <script>
+
+  //Funcion que suma la parte entera y decimal separados.
+  //ej 43.43=7.7
+    function sumaEoD(){
+      var numero = prompt("Introduzca un numero");
+      var longitud = numero.length;
+      var resultado=Number(numero[0]);
+      for (var i = 1; i < longitud; i++) {
+        if (Number(numero[i])){
+          resultado+=Number(numero[i]);
+        } else if (numero[i]==","||".") {
+          document.write(resultado+".")
+          resultado=0;
+        }
+      }
+      document.write(resultado+"<br>");
+    }
+
+    //Funcion que suma solo la parte entera
+    //ej 43.43=7
+      function suma(){
+        var numero = prompt("Introduzca un numero");
+        var longitud = numero.length;
+        var resultado=Number(numero[0]);
+        for (var i = 1; i < longitud; i++) {
+          if (Number(numero[i])){
+            resultado+=Number(numero[i]);
+          } else if (numero[i]==","||".") {
+            break;
+          }
+        }
+        document.write(resultado+"<br>");
+      }
+
+      //Funcion que suma la parte entera y decimal juntos.
+      //ej 43.43=14
+        function sumaEyD(){
+          var numero = prompt("Introduzca un numero");
+          var longitud = numero.length;
+          var resultado=Number(numero[0]);
+          for (var i = 1; i < longitud; i++) {
+            if (Number(numero[i])){
+              resultado+=Number(numero[i]);
+            } else if (numero[i]==","||".") {
+
+            }
+          }
+          document.write(resultado+"<br>");
+        }
+
+    sumaEoD();
+    suma();
+    sumaEyD();
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+    function calculadora(){
+      console.log("Opciones:\n"+ "1. Sumar \n"+ "2. Restar \n"+
+      "3. Multiplicar\n"+ "4. Dividir\n"+ "5. Modulo\n"+ "6. Potencia\n"+
+      "7. Raiz\n"+ "8. Cambio de base\n"+"9. Salir\n");
+      do {
+        var opcion = Number(prompt("Introduzca una opcion"));
+        if (opcion<8){
+          do{
+            var n1 = (prompt("Introduzca el primer digito"));
+          } while (isNaN(n1) && !n1);
+            n1 = Number(n1);
+          do{
+            var n2 = (prompt("Introduzca el segundodigito"));
+          } while (isNaN(n2) && !n2);
+            n2 = Number(n2);
+        }
+        else if (opcion==8){
+          var n1 = (prompt("Introduzca el primer digito"));
+          do{
+            var n2 = (prompt("Introduzca la base"));
+          } while (isNaN(n2) && !n2);
+            n2 = Number(n2);
+        }
+        switch (opcion) {
+          case 1:
+          console.log("Has elegido la operacion Suma\n");
+          console.log(n1 + "+" +n2 +"="+(n1+n2));
+          break;
+          case 2:
+          console.log("Has elegido la operacion Resta\n");
+          console.log(n1 + "-" +n2 +"="+(n1-n2));
+          break;
+          case 3:
+          console.log("Has elegido la operacion Multiplicar\n");
+          console.log(n1 + "x" +n2 +"="+(n1*n2));
+          break;
+          case 4:
+          console.log("Has elegido la operacion Division\n");
+          console.log(n1 + ":" +n2 +"="+(n1/n2));
+          break;
+          case 5:
+          console.log("Has elegido la operacion Modulo\n");
+          console.log(n1 + "%" +n2 +"="+(n1%n2));
+          break;
+          case 6:
+          console.log("Has elegido la operacion Potencia\n");
+          console.log(n1 + "^" +n2 +"="+(Math.pow(n1,n2)));
+          break;
+          case 7:
+          console.log("Has elegido la operacion Raiz. (Primer digito numero, segundo base) \n");
+          console.log(n2 + "√ " +n1 +"="+(Math.pow(n1,1/n2)));
+          break;
+          case 8:
+          console.log("Has elegido la operacion cambiar base\n");
+          console.log(n1+" en base "+n2+" = "+(parseInt(n1,n2))+" \n");
+          break;
+          case 9:
+          console.log("Has elegido la operacion Salir\n");
+          if (confirm("Desea salir?")){
+            opcion=false;
+          }
+          break;
+          default:
+          alert("Opcion incorrecta");
+
+        }
+      } while (opcion)
+
+      //}
+    }
+
+    calculadora();
+
+  </script>
+
+  </body>
+</html>

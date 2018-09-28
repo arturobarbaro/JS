@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Actividad 13</title>
+  </head>
+  <body>
+    <script>
+      function frase(){
+        var frase="";
+        for (var i = 0; i < 5; i++) {
+            frase += prompt("Inserte una frase");
+        }
+        var letras;
+        var l=frase.length;
+        //for (var i = 0; i < l; i++) {
+          document.write(frase.replace(" ",","));
+
+        //}
+      }
+
+      frase();
+    </script>
+  </body>
+</html>

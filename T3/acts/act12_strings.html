@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function frase(){
+        var frase=prompt("Inserte una frase");
+        var longitud = frase.length;
+        var arrayFrase=frase.split(" ");
+        var longitudA=arrayFrase.length;
+        /*for (var i=0; i < arrayFrase.length; i++) {
+          document.write(arrayFrase[i] + " ");
+        }*/
+        document.write(`La primera palabra es: ${arrayFrase[0]} <br>`);
+        document.write(`La ultima palabra es: ${arrayFrase[longitudA-1]} <br>`);
+        document.write(`El numero de palabras es: ${longitudA} <br>`);
+      }
+
+      frase();
+    </script>
+  </body>
+</html>

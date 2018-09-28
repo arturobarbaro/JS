@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 7</title>
+</head>
+<body>
+  <script>
+
+    function digitos(){
+      var numero = prompt("Introduzca un numero","Menor de 1000");
+      if (numero<1000){
+        var longitud = numero.length;
+        for (i=0; i<longitud; i++){
+          var digito = numero[i];
+          document.write(digito+"<br>");
+        }
+      }else {
+        document.write("El numero debe ser inferior a 1000");
+      }
+    }
+
+    digitos();
+
+//10,11
+  </script>
+</body>
+</html>

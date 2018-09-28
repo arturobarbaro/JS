@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 10</title>
+</head>
+<body>
+  <script>
+
+    function frase(){
+      var frase = prompt("Introduzca una frase a deletrear (se ignoraran los numeros)", "Ejemplo: Buenas tardes");
+      var longitud = frase.length;
+      for (var i = 0; i < longitud; i++) {
+        if (!Number(frase[i])){
+          document.write(frase[i]+ "<br>");
+        }
+      }
+    }
+
+    frase();
+
+  </script>
+</body>
+</html>

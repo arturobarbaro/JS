@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      // ej 1
+      var hoy = new Date();
+      var finAnio = new Date(2019,0,0);
+      finAnio.setFullYear(finAnio.getFullYear());
+      document.write(`ACTIVIDAD 1: <br> El tiempo restante hasta fin de año
+        en ms: ${finAnio-hoy} <br> <br>`);
+      // ej 2
+      var nac= new Date(1998,12,26);
+      document.write(`ACTIVIDAD 2: <br> Mi tiempo de vida
+        en ms: ${(hoy-nac)} <br>`);
+        document.write(`Mi edad: ${Math.trunc((hoy-nac)/1000/60/60/24/365)} años <br>`);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      //7
+      document.write(`Actividad 7.<br>`);
+      for (var i = 0; i < 10; i++) {
+        document.write(Math.round(Math.random()*20)+"<br>");
+      }
+
+      //8
+      document.write(`Actividad 8.<br>`)
+      do {
+        var radio = Number(prompt("Inserte el valor del radio (cm)"));
+      } while (isNaN(radio));
+      var area = Number(Math.PI * Math.pow(radio,2));
+
+      document.write(`El area es ${area.toFixed(2)}<br>`);
+
+      //9
+      document.write(`Actividad 9.<br>`)
+      document.write(Math.PI.toFixed(4));
+
+    </script>
+  </body>
+</html>

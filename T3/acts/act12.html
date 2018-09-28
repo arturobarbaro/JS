@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 12</title>
+</head>
+<body>
+
+  <script>
+  function calculadora(){
+    console.log("Opciones:\n"+ "1. Sumar \n"+ "2. Restar \n"+
+    "3. Multiplicar\n"+ "4. Dividir\n"+ "5. Modulo\n"+ "6. Salir\n");
+    do {
+      var opcion = Number(prompt("Introduzca una opcion"));
+      if (opcion<6){
+        do{
+          var n1 = (prompt("Introduzca el primer digito"));
+        } while (isNaN(n1) && !n1);
+          n1 = Number(n1);
+        do{
+          var n2 = (prompt("Introduzca el primer digito"));
+        } while (isNaN(n2) && !n2);
+          n2 = Number(n2);
+
+      }
+      switch (opcion) {
+        case 1:
+        console.log("Has elegido la operacion Suma\n");
+        console.log(n1 + "+" +n2 +"="+(n1+n2));
+        break;
+        case 2:
+        console.log("Has elegido la operacion Resta\n");
+        console.log(n1 + "-" +n2 +"="+(n1-n2));
+        break;
+        case 3:
+        console.log("Has elegido la operacion Multiplicar\n");
+        console.log(n1 + "x" +n2 +"="+(n1*n2));
+        break;
+        case 4:
+        console.log("Has elegido la operacion Division\n");
+        console.log(n1 + ":" +n2 +"="+(n1/n2));
+        break;
+        case 5:
+        console.log("Has elegido la operacion Modulo\n");
+        console.log(n1 + "%" +n2 +"="+(n1%n2));
+        break;
+        case 6:
+        console.log("Has elegido la operacion Salir\n");
+        if (confirm("Desea salir?")){
+          opcion=null;
+          //isNaN sustituir
+        }
+        break;
+        default:
+        alert("Opcion incorrecta");
+
+      }
+    } while (opcion!=null)
+
+    //}
+  }
+
+  calculadora();
+
+</script>
+</body>
+</html>

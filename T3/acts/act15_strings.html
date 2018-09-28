@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function cadena(){
+        var cadena=prompt("Inserte una cadena");
+        var longitud = cadena.length;
+        if (cadena.toUpperCase==cadena){
+          document.write(`La cadena contiene solo mayusculas`);
+        } else if (cadena.toLowerCase==cadena){
+          document.write(`La cadena contiene solo minusculas`);
+        } else {
+          document.write(`La cadena contiene mayusculas y minusculas`);
+        }
+      }
+
+      cadena();
+    </script>
+  </body>
+</html>

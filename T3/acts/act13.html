@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ejercicio 13</title>
+</head>
+<body>
+  <script>
+
+    valores=[true, "hola", 2, 1, false, "hasta luego"];
+    longitud = valores.length;
+
+<<<<<<< HEAD
+    //Mejorar usando arrays
+
+=======
+>>>>>>> 66679cfc0e20fb293052981187b769a39b81f265
+    function comprobarString(){
+        var cadena="";
+        for (var i = 0; i < longitud; i++) {
+          if (typeof valores[i]=="string" && valores[i].length > cadena.length){
+            cadena = valores[i];
+          }
+        }
+        document.write("La cadena de mayor longitud es: "+cadena+"<br>");
+      }
+
+      function comprobarBoolean(){
+        var aux=false;
+          for (var i = 0; i < longitud; i++) {
+            if (typeof valores[i]=="boolean"){
+              if (!Boolean(aux)){
+                  aux = valores[i];
+              } else{
+              document.write(aux+" OR "+valores[i]+" = "+(aux||valores[i])+"<br>");
+              document.write(aux+" AND "+valores[i]+" = "+(aux&&valores[i])+"<br>");
+              }
+            }
+          }
+        }
+
+        function comprobarNumber(){
+          var aux;
+            for (var i = 0; i < longitud; i++) {
+              if (typeof valores[i]=="number"){
+                if (isNaN(aux)){
+                    aux = valores[i];
+                } else{
+                document.write(aux+"+"+valores[i]+"="+(aux+valores[i])+"<br>");
+                document.write(aux+"x"+valores[i]+"="+(aux*valores[i])+"<br>");
+                }
+              }
+            }
+          }
+
+
+      comprobarString();
+      comprobarBoolean();
+      comprobarNumber()
+
+  </script>
+</body>
+</html>
