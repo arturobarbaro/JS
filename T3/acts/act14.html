@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      function extreaerFrase() {
+        do {
+          var frase = prompt("Introduzca una frase");
+        } while (frase.length<1);
+        do {
+          var m1 = prompt("Introduzca la primera marca");
+        } while (m1.length<1)
+        do {
+          var m2 = prompt("Introduzca la segunda marca");
+        } while (m2.length<1);
+
+        var l1=frase.indexOf(m1);
+        var inicio = l1+m1.length;
+        var l2=frase.indexOf(m2);
+        if (l1!=-1 && l2!=-1){
+          alert(frase.slice(inicio,l2));
+        } else {
+          alert(`La frase "${frase}" no contiene los marcadores ("${m1}"
+          y/o "${m2}") `);
+        }
+      }
+
+      //Moficacion 1
+      function extreaerFraseI() {
+        do {
+          var frase = prompt("Introduzca una frase");
+        } while (frase.length<1);
+        do {
+          var m1 = prompt("Introduzca la primera marca");
+        } while (m1.length<1)
+
+        var longitud = frase.length;
+        var l1=frase.indexOf(m1);
+        var inicio=l1+m1.length;
+        var copia = String(frase.slice(inicio,longitud));
+        var l2=copia.indexOf(m1)+inicio;
+        if (l1!=-1 && l2>inicio){
+          alert(frase.slice(inicio,l2));
+        } else {
+          alert(`La frase "${frase}" no contiene "${m1}"
+          al menos dos veces
+          para poder delimitar el contenido`);
+        }
+      }
+
+      //Moficacion 2
+      function extreaerFraseII() {
+        do {
+          var frase = prompt("Introduzca una frase");
+        } while (frase.length<1);
+
+        var m1 = "/*";
+        var m2 = "*/";
+        var l1=frase.indexOf(m1);
+        var inicio = l1 + m1.length;
+        var l2=frase.indexOf(m2);
+        if (l1!=-1 && l2!=-1){
+          alert(frase.slice(inicio,l2));
+        } else {
+          alert(`La frase "${frase}" no contiene los marcadores
+          "${m1}" y "${m2}"`);
+        }
+      }
+
+      extreaerFrase();
+    </script>
+  </body>
+</html>

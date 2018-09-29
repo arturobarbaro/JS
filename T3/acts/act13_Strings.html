@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var cadena;
+      var frase ="";
+
+      for (var i = 0; i < 5; i++) {
+        do {
+          cadena = prompt(`Introduzca una frase: (${i+1})`);
+        } while (!cadena);
+        frase += cadena;
+      }
+
+      document.write("Estadisticas: <br>");
+      var longitud=frase.length;
+
+      for (var i = 0; i < frase.length; i++) {
+        var aux = frase[i];
+        var auxLength = frase.length;
+        for (var j = auxLength; j ==frase.length; j--) {
+           frase = frase.replace(aux, "");
+        }
+        document.write(`${aux} = ${auxLength-frase.length}<br>`);
+      }
+    </script>
+  </body>
+</html>
