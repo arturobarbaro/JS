@@ -16,17 +16,20 @@
         frase += cadena;
       }
 
-      document.write("Estadisticas: <br>");
       var longitud=frase.length;
 
-      for (var i = 0; i < frase.length; i++) {
-        var aux = frase[i];
-        var auxLength = frase.length;
-        for (var j = auxLength; j ==frase.length; j--) {
-           frase = frase.replace(aux, "");
-        }
-        document.write(`${aux} = ${auxLength-frase.length}<br>`);
+      for (var i = 0; i < longitud; i++) {
+        var letra = frase[i];
+        //No funciona Debido a que no se como pasar el contenido
+        //de una variable como parametro de una RegExp
+
+        //Si cambiaramos letra por /caracter_a_reemplazar/ funcionaria
+        frase = frase.replace(letra, '');
+        longitudNueva=frase.length;
+        document.write(`${letra} = ${longitud-longitudNueva}<br>`);
+        longitud=longitudNueva;
       }
+
     </script>
   </body>
 </html>

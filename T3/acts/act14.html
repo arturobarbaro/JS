@@ -20,11 +20,11 @@
         var l1=frase.indexOf(m1);
         var inicio = l1+m1.length;
         var l2=frase.indexOf(m2);
-        if (l1!=-1 && l2!=-1){
+        if (l1!=-1 && l2!=-1 && (l1!=l2)){
           alert(frase.slice(inicio,l2));
-        } else {
+        }else {
           alert(`La frase "${frase}" no contiene los marcadores ("${m1}"
-          y/o "${m2}") `);
+          y/o "${m2}") y/o son identicos`);
         }
       }
 
