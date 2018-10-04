@@ -7,7 +7,10 @@
   <body>
     <script type="text/javascript">
     var m = prompt("9999XXX");
-    alert(m.match(/^\d{4}[B-DF-HJ-NP-TV-Z]{3}$/i));
+    var exp=/^\d{4}[B-DF-HJ-NP-TV-Z]{3}$/i
+    alert(exp.test(m));
+
+    //alert(m.match(/^\d{4}[B-DF-HJ-NP-TV-Z]{3}$/i));
     </script>
   </body>
 </html>

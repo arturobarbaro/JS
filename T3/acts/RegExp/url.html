@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+        var patron1= new RegExp('^[http|https]:\\/\\/([w]{3})\\.(\\w)+\\.\\w{2,3}\\/$','i');
+        var regurl = new RegExp("^((https|http)://www\.[a-z]+\.[a-z]+)$");
+
+
+        var patron = /^http[s]?\:\/\/\d+\.\d.\d+$/
+        var patt = /^(http\:\/\/)([w]{3})?[\.]?\w*[\.]\w*$/;
+        var patron = /^http\:\/\/(.+)?\..+\..+$/;
+        var patron = /http[s]?\:\/\/[w]*\.?[a-z]+\.[es]?[com]?/;
+        var patron =/^(http:\/\/ | https:\/\/)[A-Za-z]* \.(com|es)$/;
+        var patron = /^(http|https)\:\/\/(www\.)?[a-z0-9]+\.[a-z]$/;
+        var reg = /^http(s)?\:\/\/w{3}\.[a-z0-9]+\.(es|com)$/;
+        var patUrl = /^(http|https):\/\/(w{3}\.|)[a-zA-Z0-9]+\.[a-z]{3}$/;
+        var pat = /^(http|https)\:\/\/(www\.)?[a-zA-Z]*\.(es|com)$/
+        var u="https://www.google.es/";
+        var u1="https://url.com";
+        alert(patron1.test(u));
+    </script>
+  </body>
+</html>
