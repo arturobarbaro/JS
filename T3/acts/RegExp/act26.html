@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var exp=RegExp(`\\w*te\\w*`,"gi")
+    var frase=prompt(`Muestra el número de palabras contienen "te" dentro de una cadena.`);
+    frase=frase.match(exp);
+    var j=0;
+    for (var i = 0; i < frase.length; i++) {
+      frase[i]==",";
+      j++;
+    }
+    alert(j);
+    </script>
+  </body>
+</html>

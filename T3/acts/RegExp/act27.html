@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var e=prompt("Caracter a buscar");
+
+    function ej24(){
+      var exp=RegExp(`(^${e}\\w*|\\s${e}\\w*)`,`mgi`);
+      var frase=prompt(`Buscar las palabras que comiencen por '${e}' dentro de una cadena.`);
+      alert(frase.match(exp))
+    }
+
+    function ej25(){
+      var exp=RegExp(`\\w+${e}(\\s|$)`,`mgi`)
+      var frase=prompt(`Busca las palabras que terminen en '${e}' dentro de una cadena`);
+      alert(frase.match(exp))
+    }
+
+    function ej26(){
+      var exp=RegExp(`\\w*${e}\\w*`,"gi")
+      var frase=prompt(`Muestra el número de palabras contienen "${e}" dentro de una cadena.`);
+      frase=frase.match(exp);
+      var j=0;
+      for (var i = 0; i < frase.length; i++) {
+        frase[i]==",";
+        j++;
+      }
+      alert(j);
+    }
+
+    ej26();
+
+    </script>
+  </body>
+</html>

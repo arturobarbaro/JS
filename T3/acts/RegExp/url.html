@@ -1,27 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="es" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
     <script type="text/javascript">
-        var patron1= new RegExp('^[http|https]:\\/\\/([w]{3})\\.(\\w)+\\.\\w{2,3}\\/$','i');
-        var regurl = new RegExp("^((https|http)://www\.[a-z]+\.[a-z]+)$");
+        //patron1= new RegExp(/[http,https{1}]:\/\/[www?]\.[.*]\.[.*]/,i);
+        var patron1= new RegExp('^http|https:\\/\\/([w]{3}\\.)?\\w+\\.\\w{2,3}\\$/','i');
+        //regurl = new RegExp("^((https|http)://www\.[a-z]+\.[a-z]+)$");
+        var regurl = new RegExp("^((https|http):\\/\\/(www\\.)?[a-z]+\\.[a-z]+(\\/)?)$", "i");
 
+        //var patron = /^http[s]?\:\/\/\d+\.\d.\d+$/
+        var patron = /^http[s]?:\/\/(\w+\.)?\w+\.\w+(\/)?$/i;
 
-        var patron = /^http[s]?\:\/\/\d+\.\d.\d+$/
-        var patt = /^(http\:\/\/)([w]{3})?[\.]?\w*[\.]\w*$/;
-        var patron = /^http\:\/\/(.+)?\..+\..+$/;
-        var patron = /http[s]?\:\/\/[w]*\.?[a-z]+\.[es]?[com]?/;
-        var patron =/^(http:\/\/ | https:\/\/)[A-Za-z]* \.(com|es)$/;
-        var patron = /^(http|https)\:\/\/(www\.)?[a-z0-9]+\.[a-z]$/;
-        var reg = /^http(s)?\:\/\/w{3}\.[a-z0-9]+\.(es|com)$/;
-        var patUrl = /^(http|https):\/\/(w{3}\.|)[a-zA-Z0-9]+\.[a-z]{3}$/;
-        var pat = /^(http|https)\:\/\/(www\.)?[a-zA-Z]*\.(es|com)$/
+        //var patt = /^(http\:\/\/)([w]{3})?[\.]?\w*[\.]\w*$/;
+        var patt = /^http[s]?:\/\/([w]{3}\.)?\w+\.\w+\/?$/i;
+
+        //var patron = /^http\:\/\/(.+)?\..+\..+$/;
+        var patron = /^http[s]?:\/\/(\w+\.)?\w+\.\w+\/?$/i;
+
+        //var patron = /http[s]?\:\/\/[w]*\.?[a-z]+\.[es]?[com]?/
+        var patron = /^http[s]?:\/\/([w]+\.)?\w+\.(es|com)\/?$/i;
+
+        //var patron =/^(http:\/\/ | https:\/\/)[A-Za-z]* \.(com|es)$/;
+        var patron =/^(http:\/\/|https:\/\/)([A-Za-z]+\.)?\w+\.(com|es)\/?$/i;
+
+        //var patron = /^(http|https)\:\/\/(www\.)?[a-z0-9]+\.[a-z]$/;
+        var patron = /^(http|https):\/\/(www\.)?[a-z0-9]+\.[a-z]+\/?$/i;;
+
+        //var reg = /^http(s)?\:\/\/w{3}\.[a-z0-9]+\.(es|com)$/;
+        var reg = /^http(s)?:\/\/(w{3}\.)?[a-z0-9]+\.(es|com)\/?$/i;
+
+        //var patUrl = /^(http|https):\/\/(w{3}\.|)[a-zA-Z0-9]+\.[a-z]{3}$/;
+        var patUrl = /^(http|https):\/\/(w{3}\.|)[a-zA-Z0-9]+\.[a-z]+\/?$/;
+
+        //var pat = /^(http|https)\:\/\/(www\.)?[a-zA-Z]*\.(es|com)$/
+        var pat = /^(http|https):\/\/(www\.)?[a-zA-Z]+\.(es|com)\/?$/
+        
         var u="https://www.google.es/";
         var u1="https://url.com";
-        alert(patron1.test(u));
+        alert(pat.test(u));
     </script>
   </body>
 </html>

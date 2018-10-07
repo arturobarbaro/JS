@@ -6,10 +6,10 @@
   </head>
   <body>
     <script type="text/javascript">
-      var exp=/^\w+/mgi
+      var exp=/\w+$/mg
       var lineas=""
       do {
-        frase=prompt("Inserte cada frase, solo se mostrara la primera palabra");
+        frase=prompt("Inserte cada frase, solo se mostrara la ultima palabra");
         lineas+=frase+`\n`;
       } while (frase);
       alert(lineas.match(exp))
