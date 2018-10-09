@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var codigo ='hola<body>Juan</body>Adios';
+      var exp=RegExp(`<body>.*</body>`,`mg`);
+      alert(codigo.replace(exp,""));
+    </script>
+  </body>
+</html>
