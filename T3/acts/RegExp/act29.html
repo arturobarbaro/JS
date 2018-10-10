@@ -6,8 +6,8 @@
   </head>
   <body>
     <script type="text/javascript">
-      var frase=prompt(`Cadena que elimina "<script>"`);
-      var exp=RegExp(`<script>`,`mg`);
+      var frase=prompt(`Cadena que elimina etiquetas "<script>"`);
+      var exp=RegExp(`<script( [a-z"'\\/=]*)?>.*<\\/script>`,`mgi`);
       alert(frase.replace(exp,""));
     </script>
   </body>

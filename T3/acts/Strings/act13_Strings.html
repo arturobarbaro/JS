@@ -20,11 +20,8 @@
 
       for (var i = 0; i < longitud; i++) {
         var letra = frase[i];
-        //No funciona Debido a que no se como pasar el contenido
-        //de una variable como parametro de una RegExp
-
-        //Si cambiaramos letra por /caracter_a_reemplazar/ funcionaria
-        frase = frase.replace(letra, '');
+        var exp = RegExp(`${letra}`,"mgi")
+        frase = frase.replace(exp, '');
         longitudNueva=frase.length;
         document.write(`${letra} = ${longitud-longitudNueva}<br>`);
         longitud=longitudNueva;

@@ -6,9 +6,13 @@
   </head>
   <body>
     <script type="text/javascript">
-      var codigo ='hola<body>Juan</body>Adios';
+      var codigo ='hola<body> Juan <h1> Juajajaajaj</h1> <br> </body>Adios';
+      //para acceder a mi body
+      //document.getElementByTagName('body')[0].innertHTML;
       var exp=RegExp(`<body>.*</body>`,`mg`);
-      alert(codigo.replace(exp,""));
+      var exp1=RegExp(`<([_a-z0-9]+)>(?=.*<\\/\\1>)`,`mgi`);
+      alert(codigo.match(exp));
+      alert(codigo.match(exp1));
     </script>
   </body>
 </html>

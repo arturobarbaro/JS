@@ -10,23 +10,30 @@
       console.log("Opciones:\n"+ "1. Sumar \n"+ "2. Restar \n"+
       "3. Multiplicar\n"+ "4. Dividir\n"+ "5. Modulo\n"+ "6. Potencia\n"+
       "7. Raiz\n"+ "8. Cambio de base\n"+"9. Salir\n");
+      var exp1=RegExp("\d+","mgi")
       do {
         var opcion = Number(prompt("Introduzca una opcion"));
-        if (opcion<8){
+        if (opcion<8&&opcion!=9){
           do{
             var n1 = (prompt("Introduzca el primer digito"));
-          } while (isNaN(n1) && !n1);
+          } while (exp1.test(n1));
             n1 = Number(n1);
           do{
             var n2 = (prompt("Introduzca el segundodigito"));
-          } while (isNaN(n2) && !n2);
+          } while (exp1.test(n2));
             n2 = Number(n2);
         }
         else if (opcion==8){
-          var n1 = (prompt("Introduzca el primer digito"));
+          exp=RegExp("^\d+$","mgi")
+
           do{
             var n2 = (prompt("Introduzca la base"));
-          } while (isNaN(n2) && !n2);
+          } while (exp.test(n2));
+          let max=n2-1;
+          exp=RegExp(`^[0-${max}]+$`,"mgi")
+          do{
+            var n1 = prompt(`Introduzca su valor (en base ${n2})`);
+          } while (exp.test(n1));
             n2 = Number(n2);
         }
         switch (opcion) {

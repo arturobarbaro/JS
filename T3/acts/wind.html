@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+      document.write(`URL COMPLETA: ${location.href} <br>`);
+      document.write(`PATHNAME: ${location.pathname} <br>`);
+      document.write(`Protocolo: ${location.protocol} <br>`);
+      //document.write(`URL COMPLETA: ${location.href} <br>`);
+    </script>
+  </head>
+  <body>
+    <form>
+      <input type="button" value="Recargar" onclick="location.reload">
+      <input type="button" value="replace" onclick="location.replace('http://www.marca.com')">
+      <input type="button" value="assign" onclick="location.assign('http://www.marca.com')">
+    </form>
+
+  </body>
+</html>

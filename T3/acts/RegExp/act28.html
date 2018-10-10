@@ -31,7 +31,7 @@
     Every step that I take is another mistake to you
     Caught in…'`
 
-    var exp=RegExp(`\\b([A-Za-zÁ-Úá-úÑñ]{${longitud}})\\b`,`mgi`)
+    var exp=RegExp(`(^| )([A-Za-zÁ-Úá-úÑñ]{${longitud}})(?=[ .,;:])`,`mgi`)
     alert(frase.match(exp))
     </script>
   </body>
