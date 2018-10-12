@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang=es dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      document.write(`<form name="form">`);
+      document.write(`<input type="button" value="Parar" onclick="window.clearInterval(hora)">`);
+      document.write(`</form>`);
+      var hora= setInterval(function(){ var d = new Date();
+      document.title=`${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`; }, 1000);
+    </script>
+  </body>
+</html>

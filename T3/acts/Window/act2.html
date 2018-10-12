@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+          var body="<p>Crea una página web que realice las siguientes funciones: Imprimir, Abrir ventana (figura2), Abrir ventana y detenerla, Cerrar ventana nueva, Dar foco ventana nueva, Quitar foco ventana nueva, Scroll absoluto (0, 1000) y Scroll relativo (0, 10). </p>"
+         document.write(body);
+         document.write(`<form name="form">`);
+         document.write(`<input type="button" name="Buscar" value="Buscar" onclick="buscar()">`);
+         document.write(`<input type="button" name="B1" value="Palabras completas" onclick="buscar1()">`);
+         document.write(`<input type="button" name="B2" value="Mayusculas y minusculas" onclick="buscar2()">`);
+
+      function buscar(){
+        do {
+          var v=prompt("Cadena a buscar");
+        } while (!v);
+        if(window.find(v)){
+          if(confirm("¿Deseas hacer otra busqueda?")){
+            buscar();
+          }
+        } else{
+          alert("Error: cadena no encontrada");
+        }
+      }
+
+      function buscar1(){
+        do {
+          var v=prompt("Cadena a buscar");
+          var exp=RegExp(`( |^)+(${v})(?=([ ,\.\):]|$))`, "mgi");
+        } while (!v);
+        v=body.match(exp);
+        if(window.find(v)){
+          if(confirm("¿Deseas hacer otra busqueda?")){
+            buscar1();
+          }
+        }else{
+            alert("Error: cadena no encontrada");
+        }
+
+      }
+
+      function buscar2(){
+        do {
+          var v=prompt("Cadena a buscar");
+        } while (!v);
+        if(window.find(v, "true")){
+          if(confirm("¿Deseas hacer otra busqueda?")){
+            buscar1();
+          }
+        } else{
+          alert("Error: cadena no encontrada");
+        }
+      }
+   </script>
+  </body>
+</html>
