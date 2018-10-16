@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var hora= setInterval(function(){ var d = new Date());
+    //document.title=`${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`; }, 1000);
+    document.write("<form>");
+      document.write("HORA ACTUAL<br>");
+      document.write(`<input type="text" name="" value="${d.getHours()}">:`);
+      document.write(`<input type="text" name="" value="">:`);
+      document.write(`<input type="text" name="" value="">:`);
+    document.write("</form>");
+    document.write("ALARMA<br>");
+    document.write("<form>");
+      document.write(`<input type="text" name="" value="">:`);
+      document.write(`<input type="text" name="" value="">:`);
+      document.write(`<input type="button" name="" value="Activar">`);
+      document.write(`<input type="button" name="" value="Desactivar">`);
+    document.write("</form>");
+
+    </script>
+  </body>
+</html>
