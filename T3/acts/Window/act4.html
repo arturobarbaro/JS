@@ -6,22 +6,69 @@
   </head>
   <body>
     <script type="text/javascript">
-    var hora= setInterval(function(){ var d = new Date());
+    var hora= setInterval(function(){ var d = new Date()});
     //document.title=`${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`; }, 1000);
-    document.write("<form>");
-      document.write("HORA ACTUAL<br>");
-      document.write(`<input type="text" name="" value="${d.getHours()}">:`);
-      document.write(`<input type="text" name="" value="">:`);
-      document.write(`<input type="text" name="" value="">:`);
-    document.write("</form>");
-    document.write("ALARMA<br>");
-    document.write("<form>");
-      document.write(`<input type="text" name="" value="">:`);
-      document.write(`<input type="text" name="" value="">:`);
-      document.write(`<input type="button" name="" value="Activar">`);
-      document.write(`<input type="button" name="" value="Desactivar">`);
-    document.write("</form>");
+      </script>
+
+  <form>
+    HORA ACTUAL<br>
+    <input type="text" name="" value="">:
+    <input type="text" name="" value="">:
+    <input type="text" name="" value="">
+    </form>
+  ALARMA<br>
+  <form>
+      <input type="text" name="" value="">:
+      <input type="text" name="" value="">:
+      <input type="button" name="" value="Activar">
+      <input type="button" name="" value="Desactivar">
+  </form>
+
+  <script type="text/javascript">
+
+  var hora= setInterval(function(){ var d = new Date()
+  document.forms[0].elements[0].value=(d.getHours()<10)?0+`${d.getHours()}`:`${d.getHours()}`;
+  document.forms[0].elements[1].value=(d.getMinutes()<10)?0+`${d.getMinutes()}`:`${d.getMinutes()}`;
+  document.forms[0].elements[2].value=(d.getSeconds()<10)?0+`${d.getSeconds()}`:`${d.getSeconds()}`;
+  }, 1000);
+
+  document.forms[1].elements[2].onclick=alarma;
+  document.forms[1].elements[3].onclick=desactivar();
+
+  var alarma = setInterval(function(){
+  if (document.forms[0].elements[0].value==document.forms[1].elements[0].value
+    && document.forms[0].elements[1].value==document.forms[1].elements[1].value)
+    {
+      alert("Despierta");
+      if (confirm("Posponer alarma")){
+        confirmar();
+      } else{
+        desactivar();
+      }
+    }
+  }, 1000);
+
+
+    function desactivar(){
+      window.clearInterval(alarma);
+    }
+
+    function confirmar(){
+      if (document.forms[1].elements[1].value<58){
+        document.forms[1].elements[1].value=Number(document.forms[1].elements[1].value)+2;
+      }else{
+        document.forms[1].elements[1].value=Number(document.forms[1].elements[1].value)-60+2;
+
+        if (document.forms[1].elements[0].value>22){
+          document.forms[1].elements[0].value=Number(document.forms[1].elements[0].value)-23;
+        }else{
+              document.forms[1].elements[0].value=Number(document.forms[1].elements[0].value)+1;
+        }
+      }
+    }
 
     </script>
+
+
   </body>
 </html>
