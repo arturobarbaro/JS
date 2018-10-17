@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      function abrirVentana(){
+        var n = Math.round(Math.random()*2);
+        //alert(n);
+        if (n==0){
+          window.open("https://outlook.live.com/owa/");
+        } else if (n==1) {
+          window.open("https://mail.google.com/mail/");
+        } else {
+          window.open("https://google.com/");
+        }
+      }
+    </script>
+    <a onclick='abrirVentana()'>Hola</a>
+  </body>
+</html>

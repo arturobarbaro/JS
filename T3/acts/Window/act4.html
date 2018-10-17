@@ -52,7 +52,13 @@
       document.forms[1].elements[1].value="";
     }
 
+    var hora1 = new Date();
+    // hacer con date setHours
     function confirmar(){
+      hora1.setHours(document.forms[0].elements[0].value, document.forms[0].elements[1].value);
+      // hora1.getHours getMinutes
+      //
+      // //validar hora
       if (document.forms[1].elements[1].value<58){
         document.forms[1].elements[1].value=Number(document.forms[1].elements[1].value)+2;
       } else {

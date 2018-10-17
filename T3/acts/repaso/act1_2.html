@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Ventana secundaria</title>
+  </head>
+  <body>
+    <form>
+      <input type="button" value="mover derecha" onclick="window.moveBy(opener.document.forms[0].elements[0].value, 0)">
+      <input type="button" value="mover izquierda" onclick="window.moveBy(-opener.document.forms[0].elements[0].value, 0)">
+    </form>
+  </body>
+</html>

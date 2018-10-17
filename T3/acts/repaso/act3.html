@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title></title>
+ </head>
+ <body>
+
+   <iframe id="my" src="act3_1.html" style="width: 50%"></iframe>
+   <br>
+     El resultado de la potencia es:
+     <form>
+       <input type="button" value="Calcular" onclick="calcular()">
+       <input type="text" value="">
+     </form>
+
+     <script type="text/javascript">
+       function calcular(){
+          let n1=Number(window.frames[0].forms[0].element[0].value);
+          let n2=Number(window.frames[0].forms[0].element[1].value);
+
+          window.forms[0].element[1].value=Math.pow(n1, n2);
+
+       }
+     </script>
+<body>
+</html>
