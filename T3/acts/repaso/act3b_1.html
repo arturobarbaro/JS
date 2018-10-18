@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title></title>
+ </head>
+ <body>
+
+     El resultado de la potencia es:
+     <form>
+       <input type="button" value="Calcular" onclick="calcular()">
+       <input type="text" value="">
+     </form>
+
+     <script type="text/javascript">
+       function calcular(){
+          var n1=Number(opener.document.forms[0].elements[0].value);
+          var n2=Number(opener.document.forms[0].elements[1].value);
+
+          window.forms[0].elements[1].value=Math.pow(n1, n2);
+
+       }
+     </script>
+<body>
+</html>
