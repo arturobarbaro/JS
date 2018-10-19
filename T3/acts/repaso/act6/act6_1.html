@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+   <script type="text/javascript">
+     function funcion(){
+       opener.document.body.style.background=document.forms[0].elements[0].value;
+
+       opener.document.forms[0].elements[0].value=document.forms[0].elements[0].value;
+     }
+    </script>
+    <form>
+      <input type="color" name="">
+      <input type="button" value="Cambiar" onclick="funcion()">
+    </form>
+
+    </style>
+    </body>
+  </body>
+</html>

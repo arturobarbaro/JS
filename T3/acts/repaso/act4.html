@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+  <script type="text/javascript">
+      var a =[0,0,0,0,0,0,0,0,0,0,0];
+      function lanzar(){
+
+        for (var i = 0; i < 10; i++) {
+            var d1=Math.round((Math.random()*4+1));
+            document.forms[0].elements[0].value=d1;
+            var d2=Math.round((Math.random()*4+1));
+            document.forms[0].elements[1].value=d2;
+            var res=d1+d2;
+            alert(res);
+            asignar(res);
+        }
+
+        for (var i = 0; i < a.length; i++) {
+          alert(`${i+2} ha salido ${a[i]} veces`)
+        }
+      }
+
+      function asignar(res){
+        a[res-2]++;
+      }
+
+    </script>
+    <form>
+      <input type="text" value="">
+      <input type="text" value="">
+      <input type="button" value="Lanzar" onclick="lanzar()">
+    </form>
+
+  </body>
+</html>

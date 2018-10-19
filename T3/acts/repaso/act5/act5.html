@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <img src="./i1.jpeg" style="width:160px;height:160px">
+  </body>
+
+  <script type="text/javascript">
+  var i = 1;
+  function cambiar(){
+    if (i==4){
+      i=1;
+    } else{
+      document.images[0].src=`./i${i}.jpeg`;
+      i++;
+    }
+      setTimeout(cambiar, 2000);
+  }
+  setTimeout(cambiar, 2000);
+
+  </script>
+</html>
