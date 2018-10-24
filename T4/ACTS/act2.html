@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+        function obtenerImporteConImpuestos(importe, tipo) {
+            //var exp=/^\d+[.]\d{2}$/i;
+            tipo = Number(tipo) || 1;
+            importe = Number(importe);
+            var total=0;
+            var impuestos = 0;
+            if (tipo==1){
+                impuestos = importe*0.21;
+                total= importe + impuestos;
+            } else if (tipo==2) {
+                impuestos = importe*0.1;
+                total= importe + impuestos;
+            } else if (tipo==3) {
+                impuestos = importe*0.05;
+                total= importe + impuestos;
+            } else{
+                alert("Error......")
+            }
+            alert(total.toFixed(2));
+        }
+
+        var obtenerImporteConImpuestos2 = function(importe, tipo) {
+            importe = Number(importe);
+            var array=[];
+            array.push(undefined);
+            var total=0;
+            var impuestos = 0;
+            impuestos = importe*0.21;
+            total= importe + impuestos;
+            array.push(total.toFixed(2));
+            total=0; impuestos=0;
+            impuestos = importe*0.1;
+            total= importe + impuestos;
+            array.push(total.toFixed(2));
+            total=0; impuestos=0;
+            total= importe + impuestos;
+            impuestos = importe*0.05;
+            total= importe + impuestos;
+            array.push(total.toFixed(2));
+            total=0; impuestos=0;
+
+            return array;
+
+        }
+        alert(obtenerImporteConImpuestos2(10,3).toString());
+        o//btenerImporteConImpuestos(10,3);
+        </script>
+    </body>
+</html>
