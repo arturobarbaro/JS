@@ -7,16 +7,25 @@
     <body>
         <script type="text/javascript">
         var array=[];
-        function listar(){
-            do {
-                var item = prompt("Elemento a añadir a la lista");
-                var exp=/^\d+(.\d+)?/;
-                if (exp.test(item)){
-                    item = Number(item);
-                    array.push(item);
-                    document.write(`<li>${item}</li>`);
+        function pedir(){
+            var exp=/^\d+(.\d+)?/;
+            var item = prompt("Hola").split(",");
+            var j=0;
+            for (var i in item) {
+                if (exp.test(item[i])){
+                    item[j]=Number(item[i]);
+                    j++;
                 }
-            } while (exp.test(item));
+            }
+            listar(...item);
+        }
+        function listar(...item){
+            var exp=/^\d+(.\d+)?/;
+            for (var i in item) {
+                item[i] = Number(item[i]);
+                array.push(item[i]);
+                document.getElementById("myList").innerHTML+=(`<li>${item[i]}</li>`);
+            }
         }
         function menor(){
             var menor=array[0] || undefined;
@@ -41,10 +50,11 @@
 
         <ul id="myList">
             <script type="text/javascript">
-            listar()
+            pedir()
             </script>
         </ul>
         <form>
+            <input type="button" name="" value="Añadir"  onclick="pedir()">
             <input type="button" name="" value="Menor"  onclick="menor()">
             <input type="button" name="" value="Triplicar"  onclick="triplicar()">
         </form>

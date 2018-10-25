@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var array=[];
+            //alert("hola");
+            var palabras = prompt("Inserte las palabras separadas por ,").split(",");
+            for (var i in palabras) {
+                array.push(palabras[i]);
+            }
+
+            //Todas las palabras
+            //alert(array);
+            //alert(array.reverse());
+            //La primera palabra ingresada por el usuario
+            //alert(array.length>0?array[0]:"Array nulo");
+            // La última palabra ingresada por el usuario
+            //alert(array.length>0?array[array.length-1]:"Array nulo");
+            //Numro palabras
+            //alert(array.length);
+
+            //Ordenadas
+            alert(array.sort());
+            alert(array.reverse());
+        </script>
+    </body>
+</html>
