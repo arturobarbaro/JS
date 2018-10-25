@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+        var array=[];
+        function listar(){
+            do {
+                var item = prompt("Elemento a añadir a la lista");
+                var exp=/^\d+(.\d+)?/;
+                if (exp.test(item)){
+                    item = Number(item);
+                    array.push(item);
+                    document.write(`<li>${item}</li>`);
+                }
+            } while (exp.test(item));
+        }
+        function menor(){
+            var menor=array[0] || undefined;
+            for (var i = 1; i < array.length; i++) {
+                if (array[i]<menor){
+                    menor=array[i];
+                }
+            }
+            alert(`El menor elemento es ${menor}`);
+        }
+
+        function triplicar(){
+            var c=``;
+            for (var i = 0; i < array.length; i++) {
+                array[i]*=3;
+                //Para que muestre el menor despues de triplicar
+                c += `<li>${array[i]}</li>`;
+            }
+            document.getElementById("myList").innerHTML=c;
+        }
+        </script>
+
+        <ul id="myList">
+            <script type="text/javascript">
+            listar()
+            </script>
+        </ul>
+        <form>
+            <input type="button" name="" value="Menor"  onclick="menor()">
+            <input type="button" name="" value="Triplicar"  onclick="triplicar()">
+        </form>
+
+    </body>
+</html>
