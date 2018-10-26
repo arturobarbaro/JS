@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <style>
+            table, th, td {
+   border: 1px solid black;
+}
+        </style>
+        <table id="t">
+          <tr>
+            <th>Alumno</th>
+            <th>FOL</th>
+            <th>entornos</th>
+            <th>LM con maria jose</th>
+        </tr>
+        </table>
+        <script type="text/javascript">
+            var exp=/^([0123456789]|10)$/
+            var a = [];
+            for (var i = 0; i < 5; i++) {
+                var a2=[];
+                var n=prompt("Nombre del alumno");
+                a2.push(n);
+                for (var j = 0; j < 3; j++) {
+                    do {
+                        var n1 = prompt("Inserte las notas");
+                    } while (!exp.test(n1));
+
+                    a2.push(n1);
+                }
+                a.push(a2);
+                document.getElementById("t").innerHTML+=`<tr>
+                  <th>${a[i][0]}</th>
+                  <th>${a[i][1]}</th>
+                  <th>${a[i][2]}</th>
+                  <th>${a[i][3]}</th>
+                </tr>`;
+            }
+        </script>
+    </body>
+</html>
