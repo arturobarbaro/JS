@@ -19,6 +19,8 @@
         </tr>
         </table>
         <script type="text/javascript">
+        //[[nombre,nota1,..][][]]
+        //[[//dividir en metodos y comprobar nombres
             var exp=/^([0123456789]|10)$/
             var a = [];
             for (var i = 0; i < 5; i++) {
@@ -27,7 +29,7 @@
                 a2.push(n);
                 for (var j = 0; j < 3; j++) {
                     do {
-                        var n1 = prompt("Inserte las notas");
+                        var n1 = prompt(`Notas (${i})`);
                     } while (!exp.test(n1));
 
                     a2.push(n1);
