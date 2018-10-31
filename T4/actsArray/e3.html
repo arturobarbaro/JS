@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var a=[];
+            function tweet(a){
+                if (Array.isArray(a)){
+                    var exp=/^[A-ZÑÁEIOU]/;
+                    for (var i = 0; i < 5; i++) {
+                        do {
+                            var tweet=prompt("Inserte tweet, primera letra mayúscula");
+                        } while (exp.test(tweet));
+                        a.push(tweet);
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

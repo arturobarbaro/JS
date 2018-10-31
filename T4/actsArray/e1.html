@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function crearNumeros(){
+                var a=[];
+                for (let i = 0; i < 10; i++) {
+                    a.push(Math.round(Math.random()*10));
+                    //alert(a);
+                }
+                return a;
+            }
+
+            function impar(a){
+                if (!Array.isArray(a)){
+                    return a;
+                }
+                for (var i= 0; i< a.length(); i++) {
+                    if (a[i]%2==0){
+                        a = a.splice(i,i,"impar");
+                    }
+                }
+
+                a.forEach(function(valor){
+                    if (a[i]%2==0){
+                        a.fill("impar",i,i+1);
+                    }
+                    i++;
+                })
+                return a;
+
+            }
+            var a=crearNumeros().filter(function(elemento){return elemento<8;});
+            console.log(a);
+            a=impar(a);
+            console.log(a);
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function comprobarValor(a){
+                if (Array.isArray(a)){
+                    return a.every(element => element >=0);
+                }
+            }
+
+            function multiplicar(a){
+                var i=0;
+                a.forEach(function(valor){
+                    a.fill(valor*3,i,i+1);
+                    i++;
+                })
+                return a;
+            }
+
+            function multiplicarTodos(a){
+                return a.reduce(function(total,valor){return total * valor;});
+            }
+
+            var a =[1,-1,0,1,-2];
+            console.log(a);
+            console.log(comprobarValor(a));
+            console.log(multiplicarTodos(a));
+            console.log(multiplicar(a));
+
+
+        </script>
+    </body>
+</html>
