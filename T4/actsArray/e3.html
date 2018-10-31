@@ -6,18 +6,22 @@
     </head>
     <body>
         <script type="text/javascript">
-            var a=[];
-            function tweet(a){
+            function tweet(){
+                var a=[];
                 if (Array.isArray(a)){
                     var exp=/^[A-ZÑÁEIOU]/;
                     for (var i = 0; i < 5; i++) {
                         do {
                             var tweet=prompt("Inserte tweet, primera letra mayúscula");
-                        } while (exp.test(tweet));
+                        } while (!exp.test(tweet));
                         a.push(tweet);
                     }
                 }
+                return a;
             }
+
+            var a=tweet();
+            console.log(a);
         </script>
     </body>
 </html>
