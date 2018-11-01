@@ -10,27 +10,20 @@
                 var a=[];
                 for (let i = 0; i < 10; i++) {
                     a.push(Math.round(Math.random()*10));
-                    //alert(a);
                 }
                 return a;
             }
 
             function impar(a){
-                if (!Array.isArray(a)){
-                    return a;
+                if (Array.isArray(a)){
+                    var i=0;
+                    a.forEach(function(valor){
+                        if (a[i]%2!=0){
+                            a[i] = "impar";
+                        }
+                        i++;
+                    })
                 }
-                for (var i= 0; i< a.length(); i++) {
-                    if (a[i]%2==0){
-                        a = a.splice(i,i,"impar");
-                    }
-                }
-
-                a.forEach(function(valor){
-                    if (a[i]%2==0){
-                        a.fill("impar",i,i+1);
-                    }
-                    i++;
-                })
                 return a;
 
             }

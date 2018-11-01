@@ -6,6 +6,7 @@
     </head>
     <body>
         <script type="text/javascript">
+        //La primera letra de cada tweet debe estar en mayúscula
             function tweet(){
                 var a=[];
                 if (Array.isArray(a)){
@@ -14,14 +15,63 @@
                         do {
                             var tweet=prompt("Inserte tweet, primera letra mayúscula");
                         } while (!exp.test(tweet));
-                        a.push(tweet);
+                        function longitud(a){
+                            if (Array.isArray(a)){
+                                var a2=[];
+                                for (var i = 0; i < 5; i++) {
+                                    a2.push(a[i].length);
+                                }
+                            }
+                            return a2;
+                        }            a.push(tweet);
                     }
                 }
                 return a;
             }
 
+            //Devolver en un nuevo array las longitudes de cada tweet.
+            function longitud(a){
+                if (Array.isArray(a)){
+                    var a2=[];
+                    for (var i = 0; i < 5; i++) {
+                        a2.push(a[i].length);
+                    }
+                }
+                return a2;
+            }
+            //Comprobar si todas las entradas cumplen la antigua restricción de Twitter (inferior a 140 caracteres)
+            function longitudCaracteres(a){
+                return Math.max(...longitud(a))<140;
+            }
+
+            //¿Cuántos caracteres ha escrito el usuario de media?
+            function media(a){
+                a=longitud(a);
+                return a.reduce(function(a,b){
+                    return a+b;
+                })/5;
+            }
+
+            //Comprobar si el usuario habla en alguno de sus tweets sobre software’.
+            function software($a){
+                if (Array.isArray(a)){
+                    var exp=/software/;
+                    if (a.some(function() {return exp.test(a)})){
+                        return a[a.findIndex(function(a) {return exp.test(a)})];
+                    }
+                }
+            }
+            //La primera letra de cada tweet debe estar en mayúscula
             var a=tweet();
             console.log(a);
+            //Devolver en un nuevo array las longitudes de cada tweet.
+            console.log(longitud(a));
+            //Comprobar si el usuario habla en alguno de sus tweets sobre ‘software’.
+            console.log(software(a));
+            //Comprobar si todas las entradas cumplen la antigua restricción de Twitter (inferior a 140 caracteres)
+            console.log(longitudCaracteres(a));
+            //¿Cuántos caracteres ha escrito el usuario de media?
+            console.log(media(a));
         </script>
     </body>
 </html>
