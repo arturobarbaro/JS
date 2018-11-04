@@ -3,30 +3,35 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Ejercicio 1 - XXX</title>
-		
+
 	</head>
 	<body>
 		<form>
 			<h1>QUIZ DOÑANA</h1>
 			<p>
 				<label>Pregunta 1: ¿Cuál es el número mayor?</label>
-				<input type ='number' readonly>
-				<input type ='number' readonly>
-				<input type ='number' readonly>
-				<input type='text'>	
+				<input type ='number' id="n1" readonly>
+				<input type ='number' id="n2" readonly>
+				<input type ='number' id="n3" readonly>
+				<input type='text' id="p1">
 			</p>
 			<p>
 				<label>Pregunta 2: ¿Cuántas horas han pasado?</label>
-				<input type='text' readonly>	
-				<input type='text' >	
+				<input type='text' id="fecha" readonly>
+				<input type='text' id="p2">
 			</p>
 			<p>
 				<label>TIEMPO</label>
-				<input type='number'>	
+				<input type='number' id="tiempo">
 			</p>
-			<input type='button'>
-			
+			<input type='button' value="Parar" onClick="fin()">
+
 		</form>
-		
+		<script type="text/javascript" src="ej1.js"></script>
+		<script type="text/javascript">
+			imprimirFecha();
+			imprimirNumeros();
+		</script>
+
 	</body>
 </html>
