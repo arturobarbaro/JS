@@ -1,4 +1,4 @@
-var aciertos=0;
+
 
 function generarNumero(valor){
     return Math.round(Math.random()*valor);
@@ -29,7 +29,7 @@ var tiempo = setInterval(function(){
     if (d==0){
         var my = window.open("", "my", "width=200, height=100");
         my.document.write(`LA BOMBA EXPLOTO`);
-        clearInterval(tiempo)
+        clearInterval(tiempo);
     }}
 , 1000);
 
@@ -46,16 +46,17 @@ function comprobarFecha(){
 }
 
 function fin(){
-
+    var aciertos=0;
     if (document.getElementById(`p1`).value==comprobarNumeros()){
         aciertos++;
     }
     if (document.getElementById(`p2`).value==comprobarFecha()){
         aciertos++;
     }
-    var tiempo = 60-d;
-    var my = window.open("", "my", "width=200, height=100");
-    my.document.write(`Has tardado ${tiempo} segundos. <br>
-        El numero de respuestas acertadas ha sido: ${aciertos}.`);
+    var t = 60-d;
     clearInterval(tiempo);
+    var my = window.open("", "my", "width=200, height=100");
+    my.document.write(`Has tardado ${t} segundos. <br>
+        El numero de respuestas acertadas ha sido: ${aciertos}.`);
+
 }
