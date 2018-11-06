@@ -22,11 +22,14 @@ function imprimirFecha(){
     document.getElementById(`fecha`).value=generarFecha(d);
 }
 
-var d = 60;
+var tiempo2 = 10;
+var d = 10;
 var tiempo = setInterval(function(){
     d--;
     document.getElementById(`tiempo`).value=`${d}`;
     if (d==0){
+        //usar moveTo()
+        //funcion
         var my = window.open("", "my", "width=200, height=100");
         my.document.write(`LA BOMBA EXPLOTO`);
         clearInterval(tiempo);
@@ -53,9 +56,11 @@ function fin(){
     if (document.getElementById(`p2`).value==comprobarFecha()){
         aciertos++;
     }
-    var t = 60-d;
+    var t = tiempo2-d;
     clearInterval(tiempo);
     var my = window.open("", "my", "width=200, height=100");
+    //llamada a funcion mens(parametro)
+    // comprobar()
     my.document.write(`Has tardado ${t} segundos. <br>
         El numero de respuestas acertadas ha sido: ${aciertos}.`);
 
