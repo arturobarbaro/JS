@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function Producto_alimenticio(codigo, nombre, precio){
+                this.codigo = codigo;
+                this.nombre = nombre;
+                this.precio = precio;
+            }
+
+            Producto_alimenticio.prototype.imprimeDatos = function(){
+                for (var i in this) {
+                    if (this.hasOwnProperty(i)) {
+                        console.log(`${i}: ${this[i]}`);
+                    }
+                }
+            };
+
+            var p1 = new Producto_alimenticio(1, "leche", 2);
+            var p2 = new Producto_alimenticio(2, "leche desnadata", 2);
+            var p3 = new Producto_alimenticio(3, "leche semi", 2);
+
+            var productos = [p1,p2,p3];
+            
+            for (var i = 0; i < productos.length; i++) {
+                productos[i].imprimeDatos();
+            }
+
+
+        </script>
+    </body>
+</html>

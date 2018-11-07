@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function Vehiculo(marca, modelo, color, fecha_fabricacion){
+                this.marca=marca;
+                this.modelo=modelo;
+                this.color=color;
+                this.fecha_fabricacion = fecha_fabricacion;
+            }
+
+            var v1 = new Vehiculo("Seat", "Panda", "Verde... creo", 1999);
+            var v2 = new Vehiculo("Opel", "Astra", "Plata", 2007);
+
+            console.log(v1.color);
+            console.log(v2['marca']);
+
+            Vehiculo.prototype.mostrarDatos = function(){
+                for (var i in this) {
+                    if (this.hasOwnProperty(i)) {
+                        console.log(`${i}: ${this[i]}`);
+                    }
+                }
+            };
+
+            Vehiculo.prototype.acelerar = function(){
+                console.log(`Espero que tengas el Opel...`);
+            };
+
+            Vehiculo.prototype.acelerar = function(velocidad){
+                for (var i in this) {
+                    if (this.hasOwnProperty(i)) {
+                        console.log(`Guau... vamos a ${velocidad}`);
+                    }
+                }
+            };
+
+            Coche.prototype.cilindrada=1600;
+
+            object.defineProperty(siteTitle, {
+                'cilindrada', {
+                    writable: false,
+                    configurable: false,
+                    enumerable: true
+                }
+            });
+
+            Vehiculo.prototype.frenar = function(velocidad){
+                console.log(`${this.mostrarDatos()}`);
+                    }
+                }
+            };
+
+
+
+
+        </script>
+    </body>
+</html>
