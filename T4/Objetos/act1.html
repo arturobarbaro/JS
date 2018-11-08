@@ -81,13 +81,20 @@
             //k
             Object.defineProperties(v1, {
                 'marca':{
+                    writable: true,     //modificable
                     configurable: false, //no eliminado
                     enumerable: true     //aparece en for..in
                 },
                 'modelo':{
                     value: "xx",
                     writable: false,     //no modificable
+                    configurable: true,  // eliminable
                     enumerable: true     //aparece en for..in
+                },
+                'mostrarDatos': {
+                    writable:true,
+                    configurable: true,
+                    enumerable: false
                 }
             });
 
@@ -118,8 +125,6 @@
                 }
                 document.getElementById("t").innerHTML+=`</tr>`;
             }
-
-
         </script>
     </body>
 </html>

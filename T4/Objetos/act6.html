@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function Persona(nombre, edad, genero){
+                this.nombre=nombre;
+                this.edad=edad;
+                this.genero=genero;
+            }
+            Persona.prototype.obtDetalles = function(){
+                console.log(`El humano: ${this.nombre}, ${this.edad} años es ${this.genero}`);
+            }
+
+            function Estudiante(nombre, edad, genero, curso, grupo){
+                Persona.call(this,nombre,edad,genero);
+                this.curso=curso;
+                this.grupo=grupo;
+            }
+            Estudiante.prototype = new Persona();
+            Estudiante.prototype.registrar = function(){
+                this.obtDetalles();
+                console.log(`matriculado en ${this.curso}, grupo ${this.grupo}`);
+            }
+
+            function Profesor(nombre, edad, genero, asignatura, nivel){
+                Persona.call(this,nombre, edad, genero);
+                this.asignatura=asignatura;
+                this.nivel=nivel;
+            }
+            Profesor.prototype = new Persona();
+            Profesor.prototype.asignar = function(){
+                this.obtDetalles();
+                console.log(`da ${this.asignatura} a nivel ${this.nivel}`);
+            }
+
+            var p1=new Persona("Juanito", 90, "Hombre");
+            console.log(p1);
+            p1.obtDetalles();
+            var e1=new Estudiante("Juanita", 90, "Mujer", "2ºDAW", "La peor generacion");
+            console.log(e1);
+            e1.registrar();
+            var pro1=new Profesor("Sr. Juan", 92, "Hombre", "Lenguaje de Marcas con Maria Jose","bajo");
+            console.log(pro1);
+            pro1.asignar();
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function Vehiculo(marca, modelo, color, fecha_fabricacion){
+                this.marca=marca;
+                this.modelo=modelo;
+                this.color=color;
+                this.fecha_fabricacion = fecha_fabricacion;
+            }
+
+            function Furgoneta(marca, modelo, color, fecha_fabricacion, num_pasajeros){
+                Vehiculo.call(this,marca, modelo, color, fecha_fabricacion);
+                this.num_pasajeros=num_pasajeros;
+
+            }
+            Furgoneta.prototype = new Vehiculo();
+
+            function Todoterreno(marca, modelo, color, fecha_fabricacion, traccion){
+                Vehiculo.call(this,marca, modelo, color, fecha_fabricacion);
+                this.traccion=traccion;
+
+            }
+            Todoterreno.prototype = new Vehiculo();
+
+            var fragonetaGitana = new Furgoneta("Ford","C290", "blanca", 1980, 6);
+            var coche2 = new Todoterreno("Audi","Q7","amarillo", 2017, "creo que si");
+
+            console.log(fragonetaGitana);
+            console.log(coche2);
+        </script>
+    </body>
+</html>

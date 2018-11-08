@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function Empleado(nombre="",departamento="General"){
+                this.nombre=nombre;
+                this.departamento=departamento;
+            }
+
+            function Director(nombre="",departamento="General",informes=[]){
+                Empleado.call(this,nombre,departamento);
+                this.informes=informes;
+            }
+            Director.prototype=new Empleado();
+
+            function Trabajador(nombre="",departamento="General",proyectos=[]){
+                Empleado.call(this,nombre,departamento);
+                this.proyectos=proyectos;
+            }
+            Trabajador.prototype=new Empleado();
+
+            function Ingeniero(nombre="",departamento="Ingenieria",proyectos=[],maquina=""){
+                Trabajador.call(this,nombre,departamento,proyectos);
+                this.maquina=maquina;
+            }
+            Ingeniero.prototype=new Trabajador();
+
+            var e1=new Empleado("Juan");
+            console.log(e1);
+            var d1=new Director("Maria");
+            var d2=new Director("Mario", "The Boss", ["Despedir a Maria","Despedir a Juan"]);
+            console.log(d1);
+            console.log(d2);
+            var t1=new Trabajador("");
+            console.log(t1);
+            var i1 = new Ingeniero("Jose","Ingenieria",["Despedir a Mario"],"Superordenador");
+            console.log(i1);
+        </script>
+    </body>
+</html>
