@@ -5,20 +5,36 @@
         <title></title>
     </head>
     <body>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
+        <table id="t">
+          <tr>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Color</th>
+            <th>Año fabricacion</th>
+        </tr>
+        </table>
         <script type="text/javascript">
+            // a y b
             function Vehiculo(marca, modelo, color, fecha_fabricacion){
                 this.marca=marca;
                 this.modelo=modelo;
                 this.color=color;
                 this.fecha_fabricacion = fecha_fabricacion;
             }
-
-            var v1 = new Vehiculo("Seat", "Panda", "Verde... creo", 1999);
+            //c
+            var v1 = new Vehiculo("Seat", "Panda", "Verde", 1999);
             var v2 = new Vehiculo("Opel", "Astra", "Plata", 2007);
 
-            console.log(v1.color);
-            console.log(v2['marca']);
+            //e y d
+            console.log(v1.marca);
+            console.log(v2['color']);
 
+            //f
             Vehiculo.prototype.mostrarDatos = function(){
                 for (var i in this) {
                     if (this.hasOwnProperty(i)) {
@@ -27,35 +43,81 @@
                 }
             };
 
-            Vehiculo.prototype.acelerar = function(){
-                console.log(`Espero que tengas el Opel...`);
-            };
-
+            //g
             Vehiculo.prototype.acelerar = function(velocidad){
                 for (var i in this) {
                     if (this.hasOwnProperty(i)) {
-                        console.log(`Guau... vamos a ${velocidad}`);
+                        console.log(`Alcanzamos los ${velocidad} km/h. Hemos adelantado al Mclaren de Alonso...`);
                     }
                 }
             };
+            console.log(v1.acelerar(200));
 
-            Coche.prototype.cilindrada=1600;
+            //h
+            Vehiculo.prototype.arrancar = function(){
+                for (var i in this) {
+                    if (this.hasOwnProperty(i)) {
+                        console.log(`El coche de marca ${this.marca} modelo ${this.modelo}
+                            color ${this.color} ha arrancado.`);
+                    }
+                }
+            };
+            console.log(v1.arrancar());
 
-            object.defineProperty(siteTitle, {
-                'cilindrada', {
-                    writable: false,
-                    configurable: false,
-                    enumerable: true
+            //i
+            Vehiculo.prototype.cilindrada=1600;
+
+            //j
+            Vehiculo.prototype.frenar = function(){
+                for (var i in this) {
+                    if (this.hasOwnProperty(i)) {
+                        console.log(`El coche de marca ${this.marca} modelo ${this.modelo}
+                            color ${this.color} ha parado.`);
+                    }
+                }
+            };
+            console.log(v1.frenar());
+
+            //k
+            Object.defineProperties(v1, {
+                'marca':{
+                    configurable: false, //no eliminado
+                    enumerable: true     //aparece en for..in
+                },
+                'modelo':{
+                    value: "xx",
+                    writable: false,     //no modificable
+                    enumerable: true     //aparece en for..in
                 }
             });
 
-            Vehiculo.prototype.frenar = function(velocidad){
-                console.log(`${this.mostrarDatos()}`);
+            //l
+            delete v1.marca;
+            v1.modelo="Ibiza";
+            v1.mostrarDatos();
+
+
+            //m
+            Vehiculo.prototype.imprimeDatos = function(){
+                for (var i in this) {
+                    if (this.hasOwnProperty(i)) {
+                        console.log(`${i}: ${this[i]}`);
                     }
                 }
             };
+            console.log(v1.imprimeDatos());
 
-
+            var vehiculos=[v1,v2];
+            for (var i = 0; i < vehiculos.length; i++) {
+                document.getElementById("t").innerHTML+=`<tr id=${i}>`;
+                for (var variable in vehiculos[i]) {
+                    if (vehiculos[i].hasOwnProperty(variable)) {
+                        document.getElementById(i).innerHTML+=`
+                        <th>${vehiculos[i][variable]}</th>`;
+                    }
+                }
+                document.getElementById("t").innerHTML+=`</tr>`;
+            }
 
 
         </script>
