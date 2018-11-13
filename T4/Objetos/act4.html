@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function Cliente(nombre,direccion,telefono,cif){
+                this.nombre=nombre;
+                this.direccion=direccion;
+                this.telefono=telefono;
+                this.cif=cif;
+            }
+            function Info(base_imponible = 0, iva = 21, total =0, forma_pago="contado"){
+                this.base_imponible=base_imponible;
+                this.iva=iva;
+                this.total=total;
+                this.forma_pago=forma_pago;
+            }
+            function Factura(cliente,elementos,info){
+                this.cliente=cliente;
+                this.elementos=elementos;
+                this.info=info;
+            }
+            Factura.prototype.calcular_total() = function(){
+                return this.info.base_imponible *= this.info.iva;
+            }
+            c1=new Cliente("Juan","C/ xxx", "600606060", "XXXXX");
+            i1=new Info();
+            f1=new Factura(c1,[],i1);
+            console.log(f1);
+        </script>
+    </body>
+</html>
