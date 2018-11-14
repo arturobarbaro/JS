@@ -12,24 +12,45 @@
                 this.telefono=telefono;
                 this.cif=cif;
             }
+            function Empresa(nombre,direccion,telefono,cif){
+                this.nombre=nombre;
+                this.direccion=direccion;
+                this.telefono=telefono;
+                this.cif=cif;
+            }
             function Info(base_imponible = 0, iva = 21, total =0, forma_pago="contado"){
                 this.base_imponible=base_imponible;
                 this.iva=iva;
                 this.total=total;
                 this.forma_pago=forma_pago;
             }
-            function Factura(cliente,elementos,info){
+            function Factura(cliente,elementos,info,empresa){
                 this.cliente=cliente;
                 this.elementos=elementos;
                 this.info=info;
+                this.empresa=empresa;
             }
-            Factura.prototype.calcular_total() = function(){
-                return this.info.base_imponible *= this.info.iva;
+            Factura.prototype.calcular_total = function(){
+                return this.info.total=this.info.base_imponible+this.info.base_imponible*this.info.iva/100;
             }
+            Factura.prototype.mostrar_total = function(){
+                //console.log(this.info.total);
+                console.log(this.calcular_total());
+            }
+            //Instancia Cliente
             c1=new Cliente("Juan","C/ xxx", "600606060", "XXXXX");
-            i1=new Info();
-            f1=new Factura(c1,[],i1);
+            //Instancia info
+            i1=new Info(1,21,0);
+            //Instancia empresa
+            e1=new Empresa("XX S.A","C/ABC S/N","900102030","XXXX")
+            //Array elementos
+            elementos = [descripcion=>".....",
+                         cantidad=>1,
+                         precio=>1]
+            //Instancia Factura
+            f1=new Factura(c1,elementos,i1,e1);
             console.log(f1);
+            f1.mostrar_total();
         </script>
     </body>
 </html>
