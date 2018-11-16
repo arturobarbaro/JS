@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            class Persona{
+                constructor(nombre,edad,genero){
+                    var _nombre = nombre;
+                    var _edad = edad;
+                    var _genero = genero;
+
+                    this.getNombre = function(){
+                        return _nombre;
+                    }
+                    this.getEdad = function(){
+                        return _edad;
+                    }
+                    this.getGenero = function(){
+                        return _genero;
+                    }
+                }
+                obtDetalles(){
+                    console.log(`Nombre: ${this.getNombre()}, edad: ${this.getEdad()}, género: ${this.getGenero()}`);
+                }
+            }
+
+            class Estudiante extends Persona{
+                constructor(nombre,edad,genero,curso){
+                    super(nombre,edad,genero);
+                    var _curso=curso;
+
+
+                }
+                obtDetalles(){
+                    super.obtDetalles();
+                }
+            }
+            var persona=new Estudiante("2pac",45,"Hombre","2DAW");
+            console.log(persona);
+            console.log(persona.getNombre());
+            console.log(persona.obtDetalles());
+
+        </script>
+    </body>
+</html>
