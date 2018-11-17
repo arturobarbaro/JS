@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            class Empleado{
+                constructor(nombre="",departamento="General"){
+                    var _nombre=nombre;
+                    var _departamento=departamento;
+
+                    this.getNombre = function(){
+                        return _nombre;
+                    }
+                    this.getDepartamento = function(){
+                        return _departamento;
+                    }
+                }
+                obtDetalles(){
+                    return `Clase: ${this.constructor.name} \n Nombre: ${this.getNombre()}. Departamento: ${this.getDepartamento()}\n`;
+                }
+            }
+            class Director extends Empleado{
+                constructor(nombre,departamento,informes=[]){
+                    super(nombre,departamento);
+                    var _informes=informes;
+                    this.getInformes = function(){
+                        return _informes;
+                    }
+                }
+                getNombre(){
+                    super.getNombre();
+                }
+                getDepartamento(){
+                    super.getDepartamento();
+                }
+                obtDetalles(){
+                    return `${super.obtDetalles()} Informes: ${this.getInformes()}\n`;
+                }
+
+            }
+            class Trabajador extends Empleado{
+                constructor(nombre,departamento,proyectos=[]){
+                    super(nombre,departamento);
+                    var _proyectos=proyectos;
+                    this.getProyectos = function(){
+                        return _proyectos;
+                    }
+                }
+                getNombre(){
+                    super.getNombre();
+                }
+                getDepartamento(){
+                    super.getDepartamento();
+                }
+
+                obtDetalles(){
+                    return `${super.obtDetalles()} Proyectos: ${this.getProyectos()}\n`;
+                }
+
+            }
+            class Ingeniero extends Trabajador{
+                constructor(nombre,departamento="Ingenieria",proyectos,maquina=""){
+                    super(nombre,departamento,proyectos);
+                    var _maquina=maquina;
+                    this.getMaquina = function(){
+                        return _maquina;
+                    }
+                }
+                getNombre(){
+                    super.getNombre();
+                }
+                getDepartamento(){
+                    super.getDepartamento();
+                }
+                getProyectos(){
+                    super.getProyectos();
+                }
+
+                obtDetalles(){
+                    return `${super.obtDetalles()} Maquina ${this.getMaquina()}`;
+                }
+
+            }
+            var e1=new Empleado("Juan");
+            console.log(e1.obtDetalles());
+            var d2=new Director("Maria", "The Boss", ["Despedir a Jose","Despedir a Juan"]);
+            console.log(d2.obtDetalles());
+            var t1=new Trabajador();
+            console.log(t1.obtDetalles());
+            var i1 = new Ingeniero("Jose","Ingenieria",["Sacar un 10 en tareas",`Descubrir el nombre del trabajador t1`],"Superordenador");
+            console.log(i1.obtDetalles());
+        </script>
+    </body>
+</html>
