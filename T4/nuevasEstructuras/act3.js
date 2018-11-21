@@ -1,8 +1,8 @@
 //a y b
-var aprobadas = new Map();
-map.set("DWECL");
-map.set("DAW");
+var aprobadas = new Set().add("DAW");
+aprobadas.add("DWECL");
+aprobadas.add("DAW");
 //c
-console.log(map.size);
+console.log(aprobadas.size);
 //d
-console.log(map.has("DWECL"));
+console.log(aprobadas.has("DWECL"));
