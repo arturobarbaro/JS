@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script type="text/javascript">
+            window.onload = function() {
+                document.getElementById('imagen1').addEventListener('mousedown',function(e){
+                    alert(document.getElementById('imagen1').src);
+                });
+                document.getElementById('imagen2').addEventListener('mousedown',function(e){
+                    alert(document.getElementById('imagen2').src);
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div id="imagenes">
+            <img id="imagen1" src="./imagen1.jpeg" height="100">
+            <img id="imagen2" src="./imagen2.jpg" height="100">
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            body{
+                background: white;
+            }
+        </style>
+        <script type="text/javascript">
+            /**
+             * Realizar un script que, al pulsar un botón del ratón, el color de fondo del cuadro de mensaje
+             debe ser amarillo (#FFFF00) y cuando se pulsa una tecla, el color de fondo debe ser azul
+             (#CCE6FF). Al volver a mover el ratón, el color de fondo vuelve a ser blanco.
+             */
+             function clickeo(e){
+                 b.style.background="#FFFF00";
+             }
+             function tecleo(e){
+                 b.style.background="#CCE6FF";
+             }
+
+             window.onload = function() {
+                 document.getElementById('b').addEventListener('mousedown',clickeo);
+                 document.getElementById('b').addEventListener('keydown',tecleo);
+             }
+        </script>
+    </head>
+    <body id="b">
+    </body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script type="text/javascript">
+            function cancelar(e){
+                alert("Juna");
+                if (e.cancelable){
+                    e.preventDefault();
+                }
+
+}
+            }
+            window.onload = function() {
+                document.getElementById('boton').addEventListener('mousedown',cancelar);
+            }
+        </script>
+    </head>
+    <body>
+        <button type="button" name="button" id="boton">Pincha</button>
+    </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            div{
+                width: 100px;
+                height: 100px;
+                background: red;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+        </style>
+        <script type="text/javascript">
+        var x=0;
+        var y=0;
+            function mover(e){
+
+                switch (e.code) {
+                    case "ArrowRight":
+                        x+=10;
+                        document.getElementById('div').innerHTML="tu no mete cabra";
+                        div.style.left=x+'px';
+                    break;
+                    case "ArrowUp":
+                        y-=10;
+                        div.style.top=y+'px';
+                        document.getElementById('div').innerHTML="sarabambiche";
+                    break;
+                    case "ArrowLeft":
+                        x-=10;
+                        document.getElementById('div').innerHTML="tu no mete cabraaa";
+                        div.style.left=x+'px';
+                    break;
+                    case "ArrowDown":
+                        y+=10;
+                        div.style.top=y+'px';
+                        document.getElementById('div').innerHTML="zarabambiche";
+                    break;
+                default:
+            }
+        }
+
+            window.onload = function() {
+                window.addEventListener('keydown',mover);
+            }
+        </script>
+    </head>
+    <body>
+        <div id="div">
+
+        </div>
+
+    </body>
+</html>
