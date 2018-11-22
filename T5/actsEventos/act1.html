@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script type="text/javascript">
+            function clickeo(e){
+                var e = e.button;
+            switch (e) {
+                case 0:
+                    console.log("ere");
+                break;
+                case 1:
+                    console.log("un");
+                break;
+                case 2:
+                    console.log("matao");
+                break;
+            default:
+
+}
+            }
+            window.onload = function() {
+                document.getElementById('boton').addEventListener('mousedown',clickeo);
+            }
+        </script>
+    </head>
+    <body>
+        <button type="button" name="button" id="boton">Pincha</button>
+    </body>
+</html>
