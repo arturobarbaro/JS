@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script type="text/javascript">
+            function code(e){
+                e.preventDefault();
+                document.getElementById('a').innerHTML=``;
+                if(e.altKey){
+                    document.getElementById('a').innerHTML=`Alt`;
+                } else if(e.ctrlKey){
+                    document.getElementById('a').innerHTML=`Ctrl`;
+                } else if(e.shiftKey){
+                    document.getElementById('a').innerHTML=`Shift`;
+                }
+
+                // (!e.ctrlKey && !e.shiftKey && !e.altKey)?
+                // document.getElementById('a').innerHTML+=` ${e.code}`:
+                // document.getElementById('a').innerHTML+=``;
+                document.getElementById('a').innerHTML+=` ${e.code}`;
+
+            }
+            function pintar(e){
+                document.getElementById('a').innerHTML=`${e.code}`;
+            }
+            window.onload = function() {
+                //window.addEventListener('keypress',code);
+                window.addEventListener('keydown',code);
+
+            }
+        </script>
+    </head>
+    <body>
+            <div id="a"></div>
+    </body>
+</html>

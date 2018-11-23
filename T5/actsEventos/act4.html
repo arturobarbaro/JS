@@ -4,13 +4,16 @@
         <meta charset="utf-8">
         <title></title>
         <script type="text/javascript">
+        //refactorizacion this
+        //
+        function mostrarURL(){
+            console.log(this.src);
+        }
             window.onload = function() {
-                document.getElementById('imagen1').addEventListener('mousedown',function(e){
-                    alert(document.getElementById('imagen1').src);
-                });
-                document.getElementById('imagen2').addEventListener('mousedown',function(e){
-                    alert(document.getElementById('imagen2').src);
-                });
+                var imagenes=document.getElementsByTagName('img');
+                for (var i = 0; i < imagenes.length; i++) {
+                    imagenes[i].addEventListener('mouseenter',mostrarURL);
+                }
             }
         </script>
     </head>

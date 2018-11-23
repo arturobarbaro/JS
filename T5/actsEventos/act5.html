@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <title></title>
         <style media="screen">
-            body{
+            div{
+                width: 1000px;
+                height: 1000px;
                 background: white;
             }
         </style>
@@ -22,11 +24,17 @@
              }
 
              window.onload = function() {
-                 document.getElementById('b').addEventListener('mousedown',clickeo);
-                 document.getElementById('b').addEventListener('keydown',tecleo);
+                 window.addEventListener('mousedown',clickeo);
+                 window.addEventListener('keydown',tecleo);
+                 window.addEventListener('mousemove',function(e){
+                     b.style.background="white";
+                 });
              }
         </script>
     </head>
-    <body id="b">
+    <body>
+        <div id="b">
+
+        </div>
     </body>
 </html>

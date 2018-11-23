@@ -4,20 +4,19 @@
         <meta charset="utf-8">
         <title></title>
         <script type="text/javascript">
-            function cancelar(e){
-                alert("Juna");
-                if (e.cancelable){
-                    e.preventDefault();
+            function cancelar(event){
+                var b=event.button;
+                if (b==2){
+                    event.preventDefault();
                 }
-
-}
             }
-            window.onload = function() {
-                document.getElementById('boton').addEventListener('mousedown',cancelar);
+            window.onload = function(){
+                document.getElementById("mi").addEventListener("click", cancelar);
+                window.addEventListener("click",cancelar);
             }
         </script>
     </head>
     <body>
-        <button type="button" name="button" id="boton">Pincha</button>
+        <a id="mi" href="http://agora.iesdonana.org/">Enlace magico</a>
     </body>
 </html>
