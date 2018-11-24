@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-        <style media="screen">
-            body{
-                background: white
-            }
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    body{
+        background: white
+    }
 
-        </style>
-        <script type="text/javascript">
-            function cambiarColor(){
-                b.style.background=this.value;
+    </style>
+    <script type="text/javascript">
+        var dias=[""];
+        function cambiarColor(){
+            b.style.background=this.value;
+        }
+        function cambiarDia(){
+            //orden
+            if (this.checked) {
+                dias.push(this.value);
+            } else if(!this.checked){
+                dias.pop();
             }
-            function cambiarDia(){
-                document.getElementById('diaPref').value=this.value;
+            document.getElementById('diaPref').value = dias[dias.length-1];
+        }
+        window.onload = function(){
+            var colores=document.getElementById('color').getElementsByTagName('input');
+            for (var i = 0; i < colores.length; i++) {
+                colores[i].addEventListener('click',cambiarColor);
             }
-            window.onload = function(){
-                var colores=document.getElementById('color').getElementsByTagName('input');
-                for (var i = 0; i < colores.length; i++) {
-                    colores[i].addEventListener('click',cambiarColor);
-                }
-                var dias=document.getElementById('dias').getElementsByTagName('input');
-                for (var i = 0; i < dias.length; i++) {
-                    dias[i].addEventListener('change',cambiarDia);
-                }
-                document.getElementById('b2').addEventListener('click',function(){window.location.reload(false); });
-                document.getElementById('b3').addEventListener('click',function(){window.open("https://www.google.com"); });
+            var dias=document.getElementById('dias').getElementsByTagName('input');
+            for (var i = 0; i < dias.length; i++) {
+                dias[i].addEventListener('change',cambiarDia);
             }
+            document.getElementById('b2').addEventListener('click',function(){window.location.reload(false); });
+            document.getElementById('b3').addEventListener('click',function(){window.open("https://www.google.com"); });
+        }
         </script>
     </head>
 
@@ -57,10 +64,10 @@
         <br>
         <form>
             Selecciona el dia preferente:<br>
-            <input readonly type="text" name="dia" id="diaPref" value="Lunes">
+            <input readonly type="text" name="dia" id="diaPref" value="Seleccione un dia">
         </form> <br>
         <button type="button" name="button">Enviar informacion</button>
         <button type="button" name="button" id="b2">Volver a rellenar</button>
         <button type="button" name="button" id="b3">sobre mi</button>
     </body>
-</html>
+    </html>
