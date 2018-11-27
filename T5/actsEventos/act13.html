@@ -19,7 +19,7 @@
             if (this.checked) {
                 dias.push(this.value);
             } else if(!this.checked){
-                dias.pop();
+                dias = dias.filter(elem => elem != this.value);
             }
             document.getElementById('diaPref').value = dias[dias.length-1];
         }
