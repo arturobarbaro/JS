@@ -1,4 +1,4 @@
-//rehacer
+//rehacer change eb cada input
 function comprobar(){
     //limpiar el campo
     console.clear();
@@ -38,6 +38,7 @@ function comprobarContraseña(){
     }
 }
 window.onload = function(){
+    //input change
     document.getElementById('b1').addEventListener('click',comprobar);
 }
 
