@@ -39,7 +39,7 @@ function delCookie (name,path,domain) {
 function comprobarCampo(){
     var campos=document.getElementsByTagName('input');
     var exps=[/^\d{2}\.\d{3}\.\d{3}\-[TRWAGMYFPDXBNJZSQVHLCKE]$/gi,/^[A-ZÑÁÉIOU]+\s[A-ZÑÁÉIOU]+($||(\s[A-ZÑÁÉIOU]+$||(\s[A-ZÑÁÉIOU]+$)?)?)/i,
-        /^([012]\d|3[01])\/([0]\d|1[012])\/(1\d{3}|20[01][0-8])$/i,/^\w+@\w+\.[a-z]{2,3}$/i,/^http[s]?:\/\/[a-z0-9]+\.[a-z]{2,3}$/i];
+        /^([012]\d|3[01])\/([0]\d|1[012])\/(1\d{3}|20[01][0-8])$/i,/^\w+@\w+\.[a-z]{2,3}$/i,/^http:\/\/www.[a-z0-9]+\.[a-z]{2,3}$/i];
         for (var i = 0; i < exps.length; i++) {
             var e=campos[i].value;
             var exp=exps[i];
@@ -81,8 +81,25 @@ window.onload = function(){
             inputs[i].name!=''?setCookie(inputs[i].name,inputs[i].value):'';
         }
     })
-    document.getElementById('b2').addEventListener('click',function(){
+    b2.addEventListener('click',function(){
         var ck = prompt("Nombre de la cookie");
-        getCookie(ck)?getCookie(ck):console.log("No existe la cookie");
+        getCookie(ck)?alert(getCookie(ck)):console.log("No existe la cookie");
+    })
+    b3.addEventListener('click',function(){
+        var inputs=document.getElementsByTagName('input');
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].value!=''?alert(getCookie(inputs[i].name)):'';
+        }
+    })
+    b4.addEventListener('click',function(){
+        var ck = prompt("Nombre de la cookie");
+        getCookie(ck)?delCookie(ck):console.log("No existe la cookie");
+    })
+    b3.addEventListener('click',function(){
+        var inputs=document.getElementsByTagName('input');
+        for (var i = 0; i < inputs.length; i++) {
+            var ck=inputs[i].name;
+            delCookie(ck);
+        }
     })
 }

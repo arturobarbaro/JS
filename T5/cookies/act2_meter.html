@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script type="text/javascript">
+            window.onload=function(){
+                b.addEventListener('click',function(){
+                    var inputs=document.getElementsByTagName('input');
+                    for (var i = 0; i < inputs.length; i++) {
+                        var campo=inputs[i];
+                        if(campo.checked){
+                            var id=campo.value;
+                            var valor=Number(document.getElementById(id).value)+1;
+                            document.getElementById(id).value=`${valor}`;
+                        }
+                    }
+                })
+
+            }
+        </script>
+    </head>
+    <body>
+        <form>
+            Elige un SO:<br>
+            <input type="radio" name="gender" value="iOS">iOS<br>
+            <input type="radio" name="gender" value="Android">Android<br>
+            <input type="radio" name="gender" value="Windows Phone">Windows Phone<br>
+            <input type="radio" name="gender" value="Otro">Otro<br><br>
+            <button type="button" id="b" name="button">Votar</button><br><br>
+            <meter value="0" min="0" max="10" id="iOS">iOS</meter><br>
+            <meter value="0" min="0" max="10" id="Android">Android</meter><br>
+            <meter value="0" min="0" max="10" id="Windows Phone">Windows Phone</meter><br>
+            <meter value="0" min="0" max="10" id="Otro">Otro</meter><br>
+        </form>
+    </body>
+</html>
