@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title></title>
+        <script src="cookies.js" charset="utf-8"></script>
         <script type="text/javascript">
             window.onload=function(){
                 b.addEventListener('click',function(){
@@ -12,8 +13,9 @@
                         if(campo.checked){
                             var id=campo.value;
                             var valor=Number(document.getElementById(id).value)+1;
-                            document.getElementById(id).value=`${valor}`;
-                        }
+                            setCookie(id,valor)
+                            document.getElementById(id).value=getCookie(id);
+                        };
                     }
                 })
 
