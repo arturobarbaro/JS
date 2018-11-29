@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='es'>
+
+	<head>
+		<meta charset='utf-8'>
+		<script>
+
+			function valida (e){
+				//e.target === this
+	            if (!e.target.validity.valid) {
+	                if (e.target.name == "username") {
+	                    e.target.setCustomValidity("El campo nombre solo puede contener caracteres alfabéticos");
+	                }
+	                else {
+	                    e.target.setCustomValidity("El campo password tiene que tener al menos 5 caracteres");
+	                }
+	            }
+			}
+
+			window.onload = function () {
+			    var intputElements = document.getElementsByTagName("input");
+			    for (var i = 0; i < intputElements.length; i++) {
+			        intputElements[i].oninvalid = valida;
+			        
+			    }
+			}
+			
+
+		</script>
+
+	</head>
+
+	<body>
+
+		<p>Introduzca un mensaje y haga click en ok</p>
+	
+		<form>
+			<input name='username' type='text' pattern='[a-z]+'>
+			<input name='password' type='password' pattern='[\w]{5,}'>
+			<input type="submit" value='OK' id='validar'>
+	
+		</form>
+		
+		<p id="error"></p>
+
+		
+	</body>
+</html>
+

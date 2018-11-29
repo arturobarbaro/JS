@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		
+		<script>
+
+			function myFunction(e) {
+				 e.preventDefault();
+			    var txt = "";
+			    
+			    if (id1.validity.patternMismatch) {
+			        
+			        id1.setCustomValidity('Solo puede introducir caracteres alfabéticos de a - z');
+			        //id1.validationMessage = "Solo puede introducir caracteres alfabéticos de a - z"; //no se puede hacer, SOLO LECTURA
+			    }
+			    if (id1.validity.valueMissing) {
+			    	id1.setCustomValidity('Es obligatorio rellenar este campo del formulario');
+			    }
+			    error.innerHTML = id1.validationMessage;
+			}    
+		
+		    window.onload = function(){
+
+		    	//la validación salta al enviar la información
+		    	validar.onclick = myFunction;
+			    
+			    //La validación se realiza al modificar el campo
+		    	//validar.onclick = function(e){ e.preventDefault();} //evitamos que salga el mensaje con el error
+		    	// id1.onchange = myFunction;
+			}
+
+		</script>
+
+	</head>
+
+	<body>
+
+		<p>Introduzca un mensaje y haga click en ok</p>
+		<form>
+			<input id="id1" type="text" pattern='[a-z]+' required>
+			<input type="submit" value='OK' id='validar'>	
+
+		</form>
+		<p id="error"></p>
+
+		
+	</body>
+</html>
+

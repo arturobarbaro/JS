@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang='es'>
+        <head>
+              <meta charset="utf-8" />
+              <title>Validación de un Formulario</title>
+             
+        </head>
+        <body>
+             
+              <form>
+                  <fieldset>
+                      <legend>Validación de un Formulario </legend>
+                            
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" name="nombre" id="nombre"  maxlength='20' placeholder='Xxx' pattern='[A-Z][a-z]+(\s[A-Z][a-z]+)?' required/>
+                        <br>
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" name="apellidos" id="apellidos" maxlength='50' pattern='[A-Z][a-z]+\s[A-Z][a-z]+' required/>
+                        <br>
+                        <label for="edad">Edad:</label>
+                        <input name="edad" type="number" id="edad" min="0" max="125" required/>
+                        <br>
+                        <label for="email">Edad:</label>
+                        <input name="email" type="email" id="email" required/>
+                        <br>
+                        <label for="matricula">Matrícula Coche:</label>
+                        <input name="matricula" type="text" id="matricula" placeholder="XXXX AAA" pattern='^\d{4}\s[A-Z]{3}$' required/>
+                        <br>
+                        <label for="provincia">Provincia:</label>
+                        <select name="provincia" id="provincia">
+                          <option value="0" selected="selected">Seleccione Provincia</option>
+                          <option value="H">Huesca</option>
+                          <option value="ZA">Zaragoza</option>
+                          <option value="T">Teruel</option>
+                        </select>
+                        <br>
+                        <input type="reset" name="limpiar" id="limpiar" value="Limpiar" />
+                        <input type="submit" name="enviar" id="enviar" value="Enviar" />
+                               
+                             
+                    </fieldset>
+              </form>
+             
+        </body>
+</html>
