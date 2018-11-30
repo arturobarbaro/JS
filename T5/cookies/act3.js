@@ -43,6 +43,7 @@ function validarNombre(){
         }
 
         document.getElementById("error").innerHTML =` ${this.validationMessage}. ${this.title}`;
+        this.reportValidity();
         this.value = '';
     }
 }
@@ -56,6 +57,7 @@ function validarHijos(){
             document.getElementById('hijos').setCustomValidity("El numero de hijos debe ser minimo 0");
         }
         document.getElementById("error").innerHTML =` ${this.validationMessage}`;
+        this.reportValidity();
         this.value = '';
     }
 }
