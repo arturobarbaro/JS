@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            .color{
+                color: blue;
+            }
+            .enlace{
+                font-size: 0.2em;
+            }
+            .todo{
+                color: blue;
+                font-size: 0.2em;
+            }
+        </style>
+        <script type="text/javascript">
+            function color() {
+                var clase=this.value;
+                document.body.setAttribute("class",`${clase}`);
+                var x = document.querySelectorAll(`.${clase}`);
+                //x[0].style.color = "red";
+            }
+            function cambiar(){
+                var clase=this.value;
+                document.body.setAttribute("class",`${clase}`);
+            }
+            window.onload = function(){
+                select.addEventListener('change', color);
+            }
+        </script>
+    </head>
+    <body>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do <a href="www.marca.com">Enlace 1</a>eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad <a href="#">Enlace 2</a>minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            <a href="www.marca.com">Enlace 3</a>mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, <a href="www.marca.com">Enlace 1</a>sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum <a href="www.marca.com">Enlace 1</a>dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <select id="select">
+            <option value="enlace">Modificar enlaces</option>
+            <option value="color">Modificar parrafos</option>
+            <option value="todo">Ambos</option>
+        </select>
+    </body>
+</html>
