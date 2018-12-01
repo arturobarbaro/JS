@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script type="text/javascript">
+            function eliminarP(){
+                var p = document.getElementsByTagName('p');
+                for (var i = 0; i < p.length; i++) {
+                    d.removeChild(p[i]);
+                }
+            }
+
+            window.onload=function(){
+                var coches = document.getElementsByTagName('img');
+                for (var i = 0; i < coches.length; i++) {
+                    coches[i].addEventListener('click',function(){
+                        eliminarP();
+                        var p=document.createElement('p');
+                        var texto = document.createTextNode(`${this.alt}`);
+                        p.appendChild(texto);
+                        document.getElementById('d').appendChild(p);
+                    })
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="d">
+            <img src="./image1.jpg" width="350px" height="200px" alt="Opel Astra encargado de llevarme a clase cuando no me da tiempo a ir caminando o llueve">
+            <img src="./image2.jpg" width="350px" height="200px" alt="Mi futuro coche para los Domingos">
+            <img src="./image3.jpg" width="350px" height="200px" alt="El coche de Castillo">
+        </div>
+    </body>
+</html>
