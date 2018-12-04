@@ -9,19 +9,33 @@
                 var texto = document.createTextNode(`${nodo.value}`);
                 li.appendChild(texto);
                 document.getElementById('ul').appendChild(li);
+                nodo.value="";
             }
 
             function eliminar(){
-                var lista = document.getElementsByTagName('lista');
+                var lista = document.getElementsByTagName('li');
                 lista= Array.from(lista);
-                vacios = lista.filter(elemento => elemento.childNodes[0].nodeValue =="");
-                console.log(vacios);
+                var vacios = lista.filter(e=> e.childNodes[0].nodeValue == "");
+                if (vacios.length>0){
+                    for (var i = 0; i < lista.length; i++) {
+                        ul.removeChild(vacios[i]);
+                    }
+                }
+            }
+
+            function clon(){
+                var lista = document.getElementsByTagName('li');
+                lista= Array.from(lista);
+                var li=document.createElement('li');
+                var texto = document.createTextNode(`${lista[lista.length-1].childNodes[0].nodeValue}`);
+                li.appendChild(texto);
+                document.getElementById('ul').appendChild(li);
             }
 
             window.onload=function(){
                 insertar.addEventListener('click',insert);
                 vacios.addEventListener('click', eliminar);
-                // clonar.addEventListener('');
+                clonar.addEventListener('click', clon);
             }
         </script>
     </head>
