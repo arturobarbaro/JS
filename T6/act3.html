@@ -4,10 +4,24 @@
         <meta charset="utf-8">
         <title></title>
         <script type="text/javascript">
+            function insert(){
+                var li=document.createElement('li');
+                var texto = document.createTextNode(`${nodo.value}`);
+                li.appendChild(texto);
+                document.getElementById('ul').appendChild(li);
+            }
+
+            function eliminar(){
+                var lista = document.getElementsByTagName('lista');
+                lista= Array.from(lista);
+                vacios = lista.filter(elemento => elemento.childNodes[0].nodeValue =="");
+                console.log(vacios);
+            }
+
             window.onload=function(){
-                insertar.addEventListener('');
-                vacios.addEventListener('');
-                clonar.addEventListener('');
+                insertar.addEventListener('click',insert);
+                vacios.addEventListener('click', eliminar);
+                // clonar.addEventListener('');
             }
         </script>
     </head>
@@ -19,7 +33,9 @@
             <button id="vacios" type="button" name="button">Borrar vacios</button>
             <button id="clonar" type="button" name="button">Clonar ultimo</button>
         </div>
-        <div class="">
+        <div class="" >
+            <ul id="ul">
+            </ul>
 
         </div>
     </body>
