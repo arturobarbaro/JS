@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title></title>
         <script type="text/javascript">
+        //practicar eventos de taclado
             function insert(){
                 var li=document.createElement('li');
                 var texto = document.createTextNode(`${nodo.value}`);
@@ -24,6 +25,7 @@
             }
 
             function clon(){
+                //con cloneNode(true)
                 var lista = document.getElementsByTagName('li');
                 lista= Array.from(lista);
                 var li=document.createElement('li');

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            h1{
+                text-align: center;
+            }
+            a{
+                color: red;
+            }
+            .visitado{
+                color: green;
+            }
+            p{
+                visibility: hidden;
+            }
+
+        </style>
+        <script src="limpiar.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            function ocultar(){
+                var ps=Array.from(document.getElementsByTagName('p'));
+                for (var i = 0; i < ps.length; i++) {
+                    ps[i].style.visibility = "hidden";
+                }
+            }
+            function responder(){
+                ocultar()
+                var padre=this.id;
+                var pos=Number(this.name);
+                d.childNodes[pos].style.visibility = "visible"
+            }
+            window.onload = function() {
+                buscar();
+                p1.addEventListener('click',responder);
+                p2.addEventListener('click',responder);
+                p3.addEventListener('click',responder);
+                b.addEventListener('click',function(){
+                    window.print();
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <div class="">
+            <button id="b" type="button" name="button">Imprimir</button>
+        </div>
+        <div class="">
+            <h1>LISTADO FAQS</h1>
+        </div>
+        <div id="d">
+            <a id="p1" name="1">¿Puedo ser mejor persona?</a>
+            <p>Si estudias mucho y no votas a vox si</p>
+            <a id="p2" name="3">¿Es posible aprobar con Eduardo?</a>
+            <p>Si se da de baja si</p>
+            <a id="p3" name="5">¿Es posible que Ricardo recuerde mi nombre?</a>
+            <p>No</p>
+        </div>
+    </body>
+</html>
