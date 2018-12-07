@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+
+        </style>
+        <script type="text/javascript">
+            var imagenActual=0;
+            var imagenes=Array.from(document.getElementsByTagName('img'));
+            function mostrar(event, imagenActual){
+                imagenes=Array.from(diapositivas.getElementsByTagName('img'));
+                event.preventDefault()
+                for (var i = imagenes.length-1; i >= 0; i--) {
+
+                    if (imagenes[i]!=imagenes[imagenActual]){
+
+                        diapositivas.removeChild(imagenes[i]);
+                    }
+                }
+            }
+            function siguiente(event){
+
+                imagenActual<3?imagenActual++:imagenActual=0;
+                mostrar(event, imagenActual);
+            }
+            function anterior(event){
+                //event.preventDefault()
+                imagenActual>0?imagenActual--:imagenActual=3;
+                mostrar(event, imagenActual);
+            }
+
+            window.onload=function(event){
+                var imagenes=Array.from(diapositivas.getElementsByTagName('img'));
+                sig.addEventListener('click',siguiente);
+                atras.addEventListener('click',anterior);
+                mostrar(event,imagenActual);
+                event.preventDefault()
+            }
+        </script>
+    </head>
+    <body>
+        <a id="atras" href="">Atras</a>
+        <span id="diapositivas">
+            <img src="image1.jpg" alt="Foto 1" height="100" width="100">
+            <img src="image2.jpg" alt="Foto 2" height="100" width="100">
+            <img src="image3.jpg" alt="Foto 3" height="100" width="100">
+        </span>
+        <a id="sig" href="">Adelante</a>
+    </body>
+</html>

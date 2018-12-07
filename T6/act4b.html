@@ -28,9 +28,11 @@
             }
             function responder(){
                 ocultar()
-                var padre=this.id;
+                this.setAttribute("class","visitado");
                 var pos=Number(this.name);
-                d.childNodes[pos].style.visibility = "visible"
+                d.childNodes[pos].style.visibility != "visible"?
+                d.childNodes[pos].style.visibility = "visible":
+                d.childNodes[pos].style.visibility = "hidden"
             }
             window.onload = function() {
                 buscar();
