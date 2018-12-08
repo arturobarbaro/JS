@@ -10,6 +10,9 @@
             a{
                 color: red;
             }
+            p{
+                color: black;
+            }
             .visitado{
                 color: green;
             }
@@ -17,25 +20,29 @@
         <script src="limpiar.js" charset="utf-8"></script>
         <script type="text/javascript">
             function eliminar(){
-                var ps=Array.from(d.getElementsByTagName('p'));
-                for (var i = 0; i < ps.length; i++) {
-                    d.removeChild(ps[i]);
-                    i--;
+                var elementos=Array.from(d.getElementsByTagName('p'));
+                for (var i = elementos.length-1; i >= 0; i--) {
+                    elementos[i].parentElement.removeChild(elementos[i]);
                 }
             }
-            function insertar(pos){
+            function insertar(pos,padre){
                 var respuestas=["Si lees la biblia y rezas si","Es como que caiga una moneda de canto","No"];
                 var respuesta=document.createElement('p');
                 var texto = document.createTextNode(respuestas[pos-1]);
                 respuesta.appendChild(texto);
-                d.insertBefore(respuesta, d.childNodes[pos*pos]);
+                document.getElementById(padre).appendChild(respuesta);
             }
             function responder(){
                 var padre=this.id;
                 this.setAttribute("class","visitado");
                 var pos=Number(this.name);
-                eliminar();
-                insertar(pos);
+                var nodosHijo = document.getElementById(padre).getElementsByTagName('p');
+                if (nodosHijo.length>0){
+                    eliminar();
+                } else{
+                    eliminar();
+                    insertar(pos,padre);
+                }
             }
             window.onload = function() {
                 buscar();
@@ -57,11 +64,15 @@
             <h1>LISTADO FAQS</h1>
         </div>
         <div id="d">
-            <a id="p1" name="1">¿Puedo ser mejor persona?</a>
-            <br>
-            <a id="p2" name="2">¿Es posible aprobar con Eduardo?</a>
-            <br>
-            <a id="p3" name="3">¿Es posible que Ricardo recuerde mi nombre?</a>
+            <div class="">
+                <a id="p1" name="1">¿Puedo ser mejor persona?</a>
+            </div>
+            <div class="">
+                <a id="p2" name="2">¿Es posible aprobar con Eduardo?</a>
+            </div>
+            <div class="">
+                <a id="p3" name="3">¿Es posible que Ricardo recuerde mi nombre?</a>
+            </div>
         </div>
     </body>
 </html>
