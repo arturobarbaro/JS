@@ -37,12 +37,36 @@ function eliminarP(id){
 }
 window.onload = function(){
     var campos=document.getElementsByTagName('input');
-    var exps=[/^\d{2}\.\d{3}\.\d{3}\-[TRWAGMYFPDXBNJZSQVHLCKE]$/gi,/^[A-ZÑÁÉIOU]+\s[A-ZÑÁÉIOU]+($||(\s[A-ZÑÁÉIOU]+$||(\s[A-ZÑÁÉIOU]+$)?)?)/i,
-        /^([012]\d|3[01])\/([0]\d|1[012])\/(1\d{3}|20[01][0-8])$/i,/^\w+@\w+\.[a-z]{2,3}$/i,/^https?:\/\/www.[a-z0-9]+\.[a-z]{2,3}$/i];
-    for (var i = 0; i < campos.length -2; i++) {
-        campos[i].addEventListener('change',function(){
-            comprobar(this,exps[i])
-        })
-    }
+    var exps=[
+                /^\d{2}\.\d{3}\.\d{3}\-[TRWAGMYFPDXBNJZSQVHLCKE]$/gi,
+                /^[A-ZÑÁÉIOU]+\s[A-ZÑÁÉIOU]+($||(\s[A-ZÑÁÉIOU]+$||(\s[A-ZÑÁÉIOU]+$)?)?)/i,
+                /^([012]\d|3[01])\/([0]\d|1[012])\/(1\d{3}|20[01][0-8])$/i,
+                /^\w+@\w+\.[a-z]{2,3}$/i,
+                /^https?:\/\/www.[a-z0-9]+\.[a-z]{2,3}$/i
+            ];
+    campos[0].addEventListener('change',function(){
+            comprobar(this,exps[0])
+    })
+    campos[1].addEventListener('change',function(){
+            comprobar(this,exps[1])
+    })
+    campos[2].addEventListener('change',function(){
+            comprobar(this,exps[2])
+    })
+    campos[3].addEventListener('change',function(){
+            comprobar(this,exps[3])
+    })
+    campos[4].addEventListener('change',function(){
+            comprobar(this,exps[4])
+    })
+
+    // FALLA AL PASAR exp[i]
+
+    // for (var i = 0; i < campos.length -2; i++) {
+    //     var exp= exps[i];
+    //     campos[i].addEventListener('change',function(){
+    //         comprobar(this,exp)
+    //     })
+    // }
     document.getElementById('b1').addEventListener('click',comprobarContraseña);
 }

@@ -7,35 +7,33 @@
 
         </style>
         <script type="text/javascript">
-            var imagenActual=0;
-            var imagenes=Array.from(document.getElementsByTagName('img'));
-            function mostrar(event, imagenActual){
-                imagenes=Array.from(diapositivas.getElementsByTagName('img'));
-                event.preventDefault()
-                for (var i = imagenes.length-1; i >= 0; i--) {
-
-                    if (imagenes[i]!=imagenes[imagenActual]){
-
-                        diapositivas.removeChild(imagenes[i]);
-                    }
+            var posicionActual=1;
+            function mostrar(event, posicionActual){
+                imagenActual=Array.from(diapositivas.getElementsByTagName('img'));
+                event.preventDefault();
+                for (var i = 0; i < imagenActual.length; i++) {
+                    diapositivas.removeChild(imagenActual[i]);
                 }
+                var foto=document.createElement('img');
+                foto.setAttribute("src", `image${posicionActual}.jpg`);
+                foto.setAttribute("width", "100");
+                foto.setAttribute("height", "100");
+                diapositivas.appendChild(foto);
             }
             function siguiente(event){
-
-                imagenActual<3?imagenActual++:imagenActual=0;
-                mostrar(event, imagenActual);
+                posicionActual<3?posicionActual++:posicionActual=1;
+                mostrar(event, posicionActual);
             }
             function anterior(event){
                 //event.preventDefault()
-                imagenActual>0?imagenActual--:imagenActual=3;
-                mostrar(event, imagenActual);
+                posicionActual>1?posicionActual--:posicionActual=3;
+                mostrar(event, posicionActual);
             }
 
             window.onload=function(event){
-                var imagenes=Array.from(diapositivas.getElementsByTagName('img'));
                 sig.addEventListener('click',siguiente);
                 atras.addEventListener('click',anterior);
-                mostrar(event,imagenActual);
+                mostrar(event,posicionActual);
                 event.preventDefault()
             }
         </script>

@@ -27,12 +27,14 @@
                 }
             }
             function responder(){
-                ocultar()
                 this.setAttribute("class","visitado");
                 var pos=Number(this.name);
-                d.childNodes[pos].style.visibility != "visible"?
-                d.childNodes[pos].style.visibility = "visible":
-                d.childNodes[pos].style.visibility = "hidden"
+                if(d.childNodes[pos].style.visibility == "visible"){
+                    ocultar();
+                } else{
+                    d.childNodes[pos].style.visibility = "visible";
+                }
+
             }
             window.onload = function() {
                 buscar();
