@@ -4,20 +4,29 @@
         <meta charset="utf-8">
         <title></title>
         <style media="screen">
-
+            img{
+                width: 200px;
+                height: 200px;
+            }
         </style>
         <script type="text/javascript">
+            window.onload=function(event){
+                sig.addEventListener('click',siguiente);
+                atras.addEventListener('click',anterior);
+                mostrar(event,posicionActual);
+            }
             var posicionActual=1;
             function mostrar(event, posicionActual){
-                imagenActual=Array.from(diapositivas.getElementsByTagName('img'));
                 event.preventDefault();
+                imagenActual=Array.from(diapositivas.getElementsByTagName('img'));
                 for (var i = 0; i < imagenActual.length; i++) {
-                    diapositivas.removeChild(imagenActual[i]);
+                    imagenActual[i]!=imagenActual[posicionActual-1]||posicionActual==1?diapositivas.removeChild(imagenActual[i]):'';
                 }
+                Array.from(diapositivas.getElementsByTagName('img')).length<1?insertar():'';
+            }
+            function insertar(){
                 var foto=document.createElement('img');
                 foto.setAttribute("src", `image${posicionActual}.jpg`);
-                foto.setAttribute("width", "200");
-                foto.setAttribute("height", "200");
                 diapositivas.appendChild(foto);
             }
             function siguiente(event){
@@ -25,16 +34,8 @@
                 mostrar(event, posicionActual);
             }
             function anterior(event){
-                //event.preventDefault()
                 posicionActual>1?posicionActual--:posicionActual=3;
                 mostrar(event, posicionActual);
-            }
-
-            window.onload=function(event){
-                sig.addEventListener('click',siguiente);
-                atras.addEventListener('click',anterior);
-                mostrar(event,posicionActual);
-                event.preventDefault()
             }
         </script>
     </head>
