@@ -28,14 +28,8 @@
             }
             function responder(){
                 this.setAttribute("class","visitado");
-                var pos=Number(this.name);
-                if(d.childNodes[pos].style.visibility == "visible"){
-                    ocultar();
-                } else{
-                    ocultar();
-                    d.childNodes[pos].style.visibility = "visible";
-                }
-
+                ocultar();
+                this.nextSibling.style.visibility = "visible";
             }
             window.onload = function() {
                 buscar();
@@ -56,11 +50,11 @@
             <h1>LISTADO FAQS</h1>
         </div>
         <div id="d">
-            <a id="p1" name="1">¿Puedo ser mejor persona?</a>
+            <a id="p1">¿Puedo ser mejor persona?</a>
             <p>Si estudias mucho y no votas a vox si</p>
-            <a id="p2" name="3">¿Es posible aprobar con Eduardo?</a>
+            <a id="p2">¿Es posible aprobar con Eduardo?</a>
             <p>Si se da de baja si</p>
-            <a id="p3" name="5">¿Es posible que Ricardo recuerde mi nombre?</a>
+            <a id="p3">¿Es posible que Ricardo recuerde mi nombre?</a>
             <p>No</p>
         </div>
     </body>

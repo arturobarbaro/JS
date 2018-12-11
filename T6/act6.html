@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script type="text/javascript">
+            function genera(){
+                var divs=Array.from(document.getElementsByTagName('div'));
+                for (var i = 0; i < divs.length-1; i++) {
+                    divs[i].removeChild(divs[i].childNodes[0]);
+                    var p = document.createElement('p');
+                    var texto = document.createTextNode(`${parseInt(Math.random()*10)}`);
+                    p.appendChild(texto);
+                    divs[i].appendChild(p);
+                }
+            }
+            function compara(){
+                var divs=Array.from(document.getElementsByTagName('div'));;
+                var num1 = parseInt(divs[0].childNodes[0].innerText);
+                var num2 = parseInt(divs[1].childNodes[0].innerText);
+                if (!isNaN(num1) && !isNaN(num2)){
+                    var d=divs[divs.length-1]
+                    d.removeChild(d.childNodes[0]);
+                    if(num1>num2){
+                        var texto = document.createTextNode(`${num1}`);
+                        divs[0].childNodes[0].innerText='';
+                    } else{
+                        divs[1].childNodes[0].innerText='';
+                        var texto = document.createTextNode(`${num2}`);
+                    }
+                    var p = document.createElement('p');
+                    p.appendChild(texto);
+                    d.appendChild(p);
+                }
+            }
+            window.onload = function(){
+                generar.addEventListener('click',genera);
+                comparar.addEventListener('click',compara);
+            }
+        </script>
+    </head>
+    <body>
+        <div id="n1" class="">
+
+        </div>
+        <div id="n2" class="">
+
+        </div>
+        <button id="generar" type="button" name="button">Generar</button>
+        <div class="">
+
+        </div>
+        <button id="comparar" type="button" name="button">Comparar</button>
+    </body>
+</html>
