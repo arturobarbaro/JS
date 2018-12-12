@@ -1,14 +1,55 @@
-inicializar(){
-    var filas = prompt("Numero de filas");
+function inicializar(){
+    var filas;
+    do {
+        filas = parseInt(Number(prompt("Numero de filas")));
+    } while (!parseInt(filas));
+    for (var i = 0; i < filas; i++) {
+        pintarTabla();
+    }
 }
 
 function insertarFila(){
+    var pos=comprobarPos();
+    pintarTabla(pos);
+}
 
+function pintarTabla(pos=0){
+    var tr=document.createElement('tr');
+    for (var i = 0; i < 3; i++) {
+        var td=document.createElement('td');
+        td.addEventListener('click',modificar)
+        tr.appendChild(td);
+    }
+    tabla.insertBefore(tr,tabla.childNodes[pos-1]);
+}
+
+function eliminarFila(){
+    pos = comprobarPos()-1;
+    var trs =Array.from(tabla.getElementsByTagName('tr'));
+    console.log(tabla.removeChild(trs[pos]));
+}
+
+function estilosFila(){
+    console.log(tabla.class);
+    tabla.class=""?tabla.setAttribute("class","clase2"):tabla.setAttribute("class","");
+
+}
+
+function comprobarPos(){
+    var pos;
+    do {
+        pos = parseInt(prompt("Inserte la posicion"));
+    } while (!parseInt(pos) & pos>0  & pos<=tabla.rows.length);
+    return pos;
+}
+
+function modificar(){
+    this.innerText=prompt("Nuevo valor");;
 }
 
 window.onload = function(){
     inicializar();
-    insertar.addEventListener(click,insertarFila);
-    eliminar.addEventListener(click,eliminarFila);
-    estilos.addEventListener(click,estilosFila);
+    insertar.addEventListener('click',insertarFila);
+    eliminar.addEventListener('click',eliminarFila);
+    estilos.addEventListener('click',estilosFila);
 }
