@@ -26,7 +26,7 @@ function pintarTabla(pos=0){
 function eliminarFila(){
     pos = comprobarPos()-1;
     var trs =Array.from(tabla.getElementsByTagName('tr'));
-    console.log(tabla.removeChild(trs[pos]));
+    tabla.removeChild(trs[pos]);
 }
 
 function estilosFila(){
@@ -39,7 +39,7 @@ function comprobarPos(){
     var min=0;
     do {
         pos = parseInt(Number(prompt("Inserte la posicion")));
-    } while (!(parseInt(pos)) && pos>min && pos<=max);
+    } while ((!Number.isInteger(pos))||pos<=min || pos>max);
     return pos;
 }
 
