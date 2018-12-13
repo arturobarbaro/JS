@@ -30,21 +30,21 @@ function eliminarFila(){
 }
 
 function estilosFila(){
-    console.log(tabla.class);
-    tabla.class=""?tabla.setAttribute("class","clase2"):tabla.setAttribute("class","");
-
+    tabla.className=="clase1"?tabla.setAttribute("class","clase2"):tabla.setAttribute("class","clase1");
 }
 
 function comprobarPos(){
     var pos;
+    var max=tabla.rows.length;
+    var min=0;
     do {
-        pos = parseInt(prompt("Inserte la posicion"));
-    } while (!parseInt(pos) & pos>0  & pos<=tabla.rows.length);
+        pos = parseInt(Number(prompt("Inserte la posicion")));
+    } while (!(parseInt(pos)) && pos>min && pos<=max);
     return pos;
 }
 
 function modificar(){
-    this.innerText=prompt("Nuevo valor");;
+    this.innerText=prompt("Nuevo valor");
 }
 
 window.onload = function(){
