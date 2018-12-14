@@ -3,7 +3,7 @@ function comprobar(element,exp){
     eliminarP(element.parentElement.id);
     if (valor==''){
         error(`Error: introduzca un valor en ${element.name} no vacío`,element.parentElement.id);
-    }else if (!valor.match(exp)){
+    }else if (!exp.test(valor)){
         error(`Error: formato de ${element.name} no válido`,element.parentElement.id);
         element.value='';
     }
@@ -34,7 +34,7 @@ function eliminarP(id){
     }
 }
 window.onload = function(){
-    var campos=document.getElementsByTagName('input');
+    var campos=Array.from(document.getElementsByTagName('input'));
     var exps=[
                 /^\d{2}\.\d{3}\.\d{3}\-[TRWAGMYFPDXBNJZSQVHLCKE]$/gi,
                 /^[A-ZÑÁÉIOU]+\s[A-ZÑÁÉIOU]+($||(\s[A-ZÑÁÉIOU]+$||(\s[A-ZÑÁÉIOU]+$)?)?)/i,
@@ -44,9 +44,9 @@ window.onload = function(){
             ];
     // FALLA AL PASAR exp[i]. Por lo que asignamos los eventos manualmente.
     // for (var i = 0; i < campos.length -2; i++) {
-    //     var exp= exps[i];
     //     campos[i].addEventListener('change',function(){
-    //         comprobar(this,exp)
+    //         comprobar(this,exp[i])
+    //         console.log(i+1);
     //     })
     // }
     campos[0].addEventListener('change',function(){comprobar(this,exps[0])})
