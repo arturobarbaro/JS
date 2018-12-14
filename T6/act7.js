@@ -1,8 +1,12 @@
+var columnas;
 function inicializar(){
     var filas;
     do {
         filas = parseInt(Number(prompt("Numero de filas")));
     } while (!parseInt(filas));
+    do {
+        columnas = parseInt(Number(prompt("Numero de columnas")));
+    } while (!parseInt(columnas));
     for (var i = 0; i < filas; i++) {
         pintarTabla();
     }
@@ -15,7 +19,7 @@ function insertarFila(){
 
 function pintarTabla(pos=0){
     var tr=document.createElement('tr');
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < columnas; i++) {
         var td=document.createElement('td');
         td.addEventListener('click',modificar)
         tr.appendChild(td);
