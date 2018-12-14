@@ -30,12 +30,6 @@
                         return _informes;
                     }
                 }
-                getNombre(){
-                    super.getNombre();
-                }
-                getDepartamento(){
-                    super.getDepartamento();
-                }
                 obtDetalles(){
                     return `${super.obtDetalles()} Informes: ${this.getInformes()}\n`;
                 }
@@ -49,13 +43,6 @@
                         return _proyectos;
                     }
                 }
-                getNombre(){
-                    super.getNombre();
-                }
-                getDepartamento(){
-                    super.getDepartamento();
-                }
-
                 obtDetalles(){
                     return `${super.obtDetalles()} Proyectos: ${this.getProyectos()}\n`;
                 }
@@ -69,16 +56,6 @@
                         return _maquina;
                     }
                 }
-                getNombre(){
-                    super.getNombre();
-                }
-                getDepartamento(){
-                    super.getDepartamento();
-                }
-                getProyectos(){
-                    super.getProyectos();
-                }
-
                 obtDetalles(){
                     return `${super.obtDetalles()} Maquina ${this.getMaquina()}`;
                 }
