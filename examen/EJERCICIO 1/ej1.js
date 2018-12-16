@@ -18,27 +18,49 @@ function insertarColumnas(tr,elemento){
 }
 
 function ventana(){
-    var ventana=window.open("./ventanaej1.html","Mi ventana",false);
-    //no sabia como recoger aqui el valor
+    var ventana=window.open("","Mi ventana");
+    for (var i = 0; i < 3; i++) {
+        ventana.document.write(`<div class=""><input type="text" name="" value=""></div>`);
+    }
+    ventana.document.write(`<button type="button" name="button">Cerrar</button>`);
+    var e = ventana.document.getElementsByTagName('input');
+    for (var i = 0; i < e.length; i++) {
+        e[i].addEventListener('change',function(){
+            reg = /^\d{2}$/
+            if (reg.test(this.value)) {
+                this.setAttribute('readonly',`readonly`);
+            } else{
+                var sp = document.createElement('span');
+                var text = document.createTextNode('Introduzca dos digitos');
+                sp.appendChild(text);
+                console.log(sp);
+                this.appendChild(sp);
+            }
+        });
+    }
+    ventana.document.getElementsByTagName('button')[0].addEventListener('click',function(){
+        var e = ventana.document.getElementsByTagName('input');
+        var casillas = document.getElementsByTagName('input');
+        reg = /^\d{2}$/
+        for (var i = 0; i < e.length; i++) {
+            if (reg.test(e[i].value)) {
+                casillas[i].value=e[i].value;
+            }
+        }
+        ventana.close();
+    });
 }
 
 function pintar(){
     var bo=document.getElementsByTagName('input');
-    if(valor && this.value!=''){
-        console.log(this.value);
+    if(valor && !this.value){
         this.innerText=valor;
     }
 }
 
 function limpiar(){
     delCookie('Partida');
-    var tabla = document.getElementsByTagName('tr');
-    for (var i = 0; i < tabla.length; i++) {
-        document.body.removeChild(tabla[i]);
-    }
-    insertarTabla();
-    // var botones = Array.from(document.getElementsByTagName('button'));
-    // insertarTabla(botones[1]);
+    window.location.reload();
 
 }
 
@@ -60,13 +82,7 @@ function sumaTotal(){
 }
 
 function guardar(){
-    var numero;
-    do {
-        numero = Number.parseInt(prompt('Introduzca un numero'));
-    } while (numero<10 | numero>99);
-
-    valor=numero;
-    this.value=numero;
+    valor=this.value
 }
 
 window.onload = function(){
@@ -83,5 +99,5 @@ window.onload = function(){
     for (var i = 0; i < botones.length; i++) {
         botones[i].addEventListener('click',guardar)
     }
-    alert(`Partida nº ${getCookie('Partida')}`);
+    //alert(`Partida nº ${getCookie('Partida')}`);
 }
