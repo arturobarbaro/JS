@@ -20,7 +20,7 @@ function insertarColumnas(tabla,tr,elemento){
 }
 
 function ventana(){
-    var ventana=window.open("","Mi ventana");
+    var ventana=window.open("","Mi ventana",false);
     for (var i = 0; i < 3; i++) {
         ventana.document.write(`<div class=""><input type="text" name="" value=""></div>`);
     }
@@ -31,11 +31,14 @@ function ventana(){
             reg = /^\d{2}$/
             if (reg.test(this.value)) {
                 this.setAttribute('readonly',`readonly`);
+                if(Array.from(this.parentNode.getElementsByTagName('span')).length>0){
+                    this.parentNode.removeChild(this.parentNode.getElementsByTagName('span')[0]);
+                }
             } else{
                 var sp = document.createElement('span');
                 var text = document.createTextNode('Introduzca dos digitos');
                 sp.appendChild(text);
-                //ventana.document.body.this.appendChild(sp)
+                this.parentNode.appendChild(sp);
             }
         });
     }
@@ -43,12 +46,18 @@ function ventana(){
         var e = ventana.document.getElementsByTagName('input');
         var casillas = document.getElementsByTagName('input');
         reg = /^\d{2}$/
+        contador=0;
         for (var i = 0; i < e.length; i++) {
             if (reg.test(e[i].value)) {
-                casillas[i].value=e[i].value;
+                contador++;
             }
         }
-        ventana.close();
+        if (contador==3){
+            for (var i = 0; i < e.length; i++) {
+                reg.test(e[i].value)?casillas[i].value=e[i].value:'';
+            }
+            ventana.close();
+        }
     });
 }
 
