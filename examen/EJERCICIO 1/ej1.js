@@ -1,5 +1,4 @@
 var valor;
-var partida=getCookie('Partida');
 
 function insertarTabla(elemento){
     var tabla=document.createElement('table');
@@ -63,7 +62,7 @@ function ventana(){
 
 function pintar(){
     var bo=document.getElementsByTagName('input');
-    if(valor && !this.value){
+    if(valor && this.innerText.length<2){
         this.innerText=valor;
     }
 }
@@ -95,7 +94,8 @@ function guardar(){
 }
 
 window.onload = function(){
-    setCookie('Partida',partida++);
+    var partida = 0;
+    getCookie('Partida')?partida=getCookie('Partida'):setCookie('Partida',partida++);
     var botones = Array.from(document.getElementsByTagName('button'));
     insertarTabla(botones[1]);
     botones[0].addEventListener('click',ventana);
@@ -108,5 +108,5 @@ window.onload = function(){
     for (var i = 0; i < botones.length; i++) {
         botones[i].addEventListener('click',guardar)
     }
-    //alert(`Partida nº ${getCookie('Partida')}`);
+    alert(`Partida nº ${getCookie('Partida')}`);
 }
