@@ -95,7 +95,8 @@ function guardar(){
 
 window.onload = function(){
     var partida = 0;
-    getCookie('Partida')?partida=getCookie('Partida'):setCookie('Partida',partida++);
+    getCookie('Partida')?partida=getCookie('Partida'):'';
+    setCookie('Partida',partida++)
     var botones = Array.from(document.getElementsByTagName('button'));
     insertarTabla(botones[1]);
     botones[0].addEventListener('click',ventana);

@@ -20,26 +20,14 @@
 
         this.metodoA = function(fecha){
             var i1 = usuarios.values();
+            var si=[];
             for (var i = 0; i < i1.length; i++) {
-                var usuario = i1.next.values();
-                if(usuario.getF()>fecha){
+                alert(i1.next.values());
+                if(usuario.getF()==fecha){
                     console.log(usuario);
                 }
             }
-        }
-
-        this.metodoB = function(){
-            var i1 = usuarios.values();
-            var entradas = new Array();
-            var exp = /^[A-Z]ÁÉÚÍÓ$/gm;
-            for (var i = 0; i < i1.length; i++) {
-                var usuario = i1.next.values();
-                if(usuario.isPrototypeOf(UsurarioConPermiso)){
-                    entradas.push(usuario.getEntradas());
-                }
-            }
-            var b=entradas.every(e=>e.test(exp))
-            return b;
+            return si;
         }
 
     }
@@ -67,23 +55,27 @@
         this.getEntradas=function(){
             return _entradas;
         }
+        this.metodoB = function(){
+            var exp = /^[A-ZÁÉÚÍÓ]/;
+             _entradas.every(e=>exp.test(e))?exp=`Todos comienzan por mayuscula`:exp=`No todos`;
+            return exp;
+        }
     }
 
     UsurarioConPermiso.prototype=new Usuario();
 
     var b=new Blog();
     var u1=new Usuario('Juan');
-    var u2=new UsurarioConPermiso('Juana',2);
+    var u2=new UsurarioConPermiso('Juana',['aAA','BBB']);
     b.setUsuario(u1);
     console.log(b.getUsuarios());
-    //b.metodoA(new Date());
-    console.log(b.metodoB());
-
-    console.log(b.getNombre());
-    console.log(u1.getNick());
-    console.log(u1.getFecha());
-    console.log(u2.getNick());
-    console.log(u2.getEntradas());
+    //console.log(b.metodoA(new Date()));
+    // console.log(u2.metodoB());
+    // console.log(b.getNombre());
+    // console.log(u1.getNick());
+    // console.log(u1.getFecha());
+    // console.log(u2.getNick());
+    // console.log(u2.getEntradas());
 </script>
 </head>
 <body>
