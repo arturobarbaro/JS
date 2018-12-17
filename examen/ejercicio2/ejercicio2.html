@@ -19,25 +19,27 @@
         }
 
         this.metodoA = function(fecha){
-            var i1 = set.values();
+            var i1 = usuarios.values();
             for (var i = 0; i < i1.length; i++) {
                 var usuario = i1.next.values();
-                if(usuario.getFecha()>fecha){
+                if(usuario.getF()>fecha){
                     console.log(usuario);
                 }
             }
         }
 
         this.metodoB = function(){
-            var i1 = set.values();
-            var usuarios = new Array();
+            var i1 = usuarios.values();
+            var entradas = new Array();
+            var exp = /^[A-Z]ÁÉÚÍÓ$/gm;
             for (var i = 0; i < i1.length; i++) {
                 var usuario = i1.next.values();
                 if(usuario.isPrototypeOf(UsurarioConPermiso)){
-                    usuarios.push(usuario.getEntradas);
+                    entradas.push(usuario.getEntradas());
                 }
             }
-            //var b=usuarios.filter(e=>)
+            var b=entradas.every(e=>e.test(exp))
+            return b;
         }
 
     }
@@ -52,6 +54,9 @@
         }
         this.getFecha=function(){
             return _fecha;
+        }
+        this.getF=function(){
+            return f;
         }
     }
 
@@ -71,6 +76,8 @@
     var u2=new UsurarioConPermiso('Juana',2);
     b.setUsuario(u1);
     console.log(b.getUsuarios());
+    //b.metodoA(new Date());
+    console.log(b.metodoB());
 
     console.log(b.getNombre());
     console.log(u1.getNick());
