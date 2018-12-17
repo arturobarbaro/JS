@@ -2,19 +2,21 @@ var valor;
 var partida=getCookie('Partida');
 
 function insertarTabla(elemento){
+    var tabla=document.createElement('table');
     for (var i = 0; i < 3; i++) {
         var tr = document.createElement('tr');
-        insertarColumnas(tr,elemento);
+        insertarColumnas(tabla,tr,elemento);
     }
 }
 
-function insertarColumnas(tr,elemento){
+function insertarColumnas(tabla,tr,elemento){
     for (var i = 0; i < 3; i++) {
         var td = document.createElement('td');
         td.addEventListener('mouseenter',pintar)
         tr.appendChild(td);
     }
-    document.body.insertBefore(tr,elemento);
+    tabla.appendChild(tr);
+    document.body.insertBefore(tabla,elemento);
 }
 
 function ventana(){
@@ -33,8 +35,7 @@ function ventana(){
                 var sp = document.createElement('span');
                 var text = document.createTextNode('Introduzca dos digitos');
                 sp.appendChild(text);
-                console.log(sp);
-                this.appendChild(sp);
+                //ventana.document.body.this.appendChild(sp)
             }
         });
     }
@@ -65,20 +66,19 @@ function limpiar(){
 }
 
 function sumaTotal(){
+    var ps = Array.from(document.getElementsByTagName('p'));
+    ps.length>0?document.body.removeChild(ps[0]):'';
     var valores=Array.from(document.getElementsByTagName('td'));
     var sum=0;
     for (var i = 0; i < valores.length; i++) {
         var v=Number.parseInt(valores[i].innerText);
-        if (Number.isInteger(v)){
-            sum+=v;
-        }
+        Number.isInteger(v)?sum+=v:'';
     }
     var pa= document.createElement('p');
     var txt= document.createTextNode(`La suma total es ${sum}`);
     pa.appendChild(txt);
     var elemt= document.getElementsByTagName('button');
     document.body.insertBefore(pa,elemt[1]);
-    elemt[2].removeEventListener('click',sumaTotal)
 }
 
 function guardar(){
