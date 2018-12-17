@@ -1,76 +1,84 @@
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-        <script>
-        function Blog(nombre="Doñana"){
-            var usuarios=new Set();
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+    function Blog(nombre="Doñana"){
+        var _nombre=nombre;
+        var usuarios=new Set();
 
-            this.set_usuario = function(usuario){
-                usuarios.add(usuario);
-            }
+        this.getNombre=function(){
+            return _nombre;
+        }
+        this.setUsuario = function(usuario){
+            usuarios.add(usuario);
+        }
+        this.getUsuarios = function(){
+            return usuarios;
+        }
 
-            this.metodoA = function(fecha){
-                var i1 = set.values();
-                for (var i = 0; i < i1.length; i++) {
-                    var usuario = i1.next.values();
-                    if(usuario.getFecha()>fecha){
-                        console.log(usuario);
-                    }
+        this.metodoA = function(fecha){
+            var i1 = set.values();
+            for (var i = 0; i < i1.length; i++) {
+                var usuario = i1.next.values();
+                if(usuario.getFecha()>fecha){
+                    console.log(usuario);
                 }
             }
+        }
 
-            this.metodoB = function(){
-                var i1 = set.values();
-                var usuarios = new Array();
-                for (var i = 0; i < i1.length; i++) {
-                    var usuario = i1.next.values();
-                    if(usuario.isPrototypeOf(UsurarioConPermiso)){
-                        usuarios.push(usuario.getEntradas);
-                    }
+        this.metodoB = function(){
+            var i1 = set.values();
+            var usuarios = new Array();
+            for (var i = 0; i < i1.length; i++) {
+                var usuario = i1.next.values();
+                if(usuario.isPrototypeOf(UsurarioConPermiso)){
+                    usuarios.push(usuario.getEntradas);
                 }
-                //var b=usuarios.filter(e=>)
             }
-
+            //var b=usuarios.filter(e=>)
         }
 
-        function Usuario(nick){
-            var _nick=nick;
-            var _fecha=new Date();
+    }
 
-            this.get_nick=function(){
-                return _nick;
-            }
-            this.getFecha=function(){
-                return _fecha;
-            }
+    function Usuario(nick){
+        var _nick=nick;
+        var f=new Date();
+        var _fecha=`${f.getDate()}/${f.getMonth()}/${f.getFullYear()}`;
+
+        this.getNick=function(){
+            return _nick;
         }
-
-        function UsurarioConPermiso(nick,entradas=[]){
-            Usuario.call(this,nick);
-            var _entradas=entradas;
-
-            this.get_entradas=function(){
-                return _entradas;
-            }
+        this.getFecha=function(){
+            return _fecha;
         }
+    }
 
-        UsurarioConPermiso.prototype=new Usuario();
+    function UsurarioConPermiso(nick,entradas=[]){
+        Usuario.call(this,nick);
+        var _entradas=entradas;
 
-        var b=new Blog();
-        var u1=new Usuario('Juan');
-        var u2=new UsurarioConPermiso('Juana',2);
-        //b.setUsuario(u1);
-        //b.metodoA;
+        this.getEntradas=function(){
+            return _entradas;
+        }
+    }
 
+    UsurarioConPermiso.prototype=new Usuario();
 
-        var f=u1.get_nick;
-        console.log(f);
-        var e=u2.get_entradas;
-        console.log(e);
+    var b=new Blog();
+    var u1=new Usuario('Juan');
+    var u2=new UsurarioConPermiso('Juana',2);
+    b.setUsuario(u1);
+    console.log(b.getUsuarios());
+
+    console.log(b.getNombre());
+    console.log(u1.getNick());
+    console.log(u1.getFecha());
+    console.log(u2.getNick());
+    console.log(u2.getEntradas());
 </script>
-    </head>
-    <body>
-    </body>
+</head>
+<body>
+</body>
 </html>
