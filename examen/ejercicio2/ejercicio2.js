@@ -34,15 +34,15 @@ function Usuario(nick){
     var _fecha=new Date();
 
     this.get_nick=function(){
-        return this._nick;
+        return _nick;
     }
     this.getFecha=function(){
-        return this._fecha;
+        return _fecha;
     }
 }
 
 function UsurarioConPermiso(nick,entradas=[]){
-    Usuario.call(nick);
+    Usuario.call(this,nick);
     var _entradas=entradas;
 
     this.get_entradas=function(){
