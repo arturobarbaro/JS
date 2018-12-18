@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+        function insertar(){
+            var u = document.createElement('li');
+            var valor = document.getElementsByTagName('input')[0].value;
+            var text = document.createTextNode(valor);
+            document.getElementsByTagName('input')[0].value='';
+            u.appendChild(text);
+            document.getElementsByTagName('ul')[0].appendChild(u);
+        }
+
+        function borrar(){
+            var padre = document.getElementsByTagName('ul')[0];
+            var lis = Array.from(padre.getElementsByTagName('li'));
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].innerText==''?padre.removeChild(lis[i]):'';
+            }
+        }
+
+        function clonar(){
+            var padre = document.getElementsByTagName('ul')[0];
+            var lista = Array.from(padre.getElementsByTagName('li'));
+            if (lista.length>0){
+                var li=document.createElement('li');
+                var texto = document.createTextNode(`${lista[lista.length-1].childNodes[0].nodeValue}`);
+                li.appendChild(texto);
+                padre.appendChild(li);
+            } else{
+                alert('Introduzca un Elemento')
+            }
+        }
+        window.onload = function(){
+            botones=Array.from(document.getElementsByTagName('button'));
+            botones[0].addEventListener('click',insertar);
+            botones[1].addEventListener('click',borrar);
+            botones[2].addEventListener('click',clonar);
+            textos=Array.from(document.getElementsByTagName('div')[0].getElementsByTagName('input'));
+            textos[0].addEventListener('change',function(){
+                var exp=/^[A-ZÁÉÍÓÚ]\w+\s[A-Z]$/;
+                console.log(exp.test(this.value));
+                if(exp.test(this.value)){
+                    var b= document.createElement('button');
+                    var t=document.createTextNode('Has superado la fase 1');
+                    b.appendChild(t)
+                    document.body.appendChild(b);
+                    console.log(b);
+                }
+            })
+            // textos[1],addEventListener('change',function(){
+            //     alert('aa');
+            // })
+            // textos[2],addEventListener('change',function(){
+            //     alert('aa');
+            // })
+            // textos[3],addEventListener('change',function(){
+            //     alert('aa');
+            // })
+        }
+    </script>
+</head>
+<body>
+    Elemento a insertar
+    <input type="text" name="" value="">
+    <button type="button" name="button">Añadir</button>
+    <button type="button" name="button">Borrar vacios</button>
+    <button type="button" name="button">Clonar ultimo</button>
+    <ul></ul>
+    <div class="">
+        <input type="text" name="" value="">
+        <input type="text" name="" value="">
+        <input type="text" name="" value="">
+        <input type="text" name="" value="">
+    </div>
+</body>
+</html>
