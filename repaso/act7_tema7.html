@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style type="text/css">
+    		td {
+    			border:1px solid black;
+    			width: 30px;
+    			height: 30px;
+    		}
+    	</style>
+        <script type="text/javascript">
+            var filas;
+            var columnas;
+            function insertarTabla(filas,columnas){
+                var ta=document.createElement('table');
+                insertarFilas(ta,filas,columnas);
+                document.body.appendChild(ta);
+            }
+            function insertarFilas(tabla,filas,columnas){
+                for (var i = 0; i < filas; i++) {
+                    var tr=document.createElement('tr')
+                    insertarColumnas(tr,columnas);
+                    tabla.appendChild(tr)
+                }
+            }
+
+            function insertarColumnas(tr,columnas){
+                for (var i = 0; i < columnas; i++) {
+                    td=document.createElement('td');
+                    td.addEventListener('click',modificar)
+                    tr.appendChild(td);
+                }
+            }
+
+            function parametrosIniciales(filas){
+                do {
+                    filas=prompt('Numero de filas')
+                } while (filas<=0 || Number.isNaN(filas));
+                return filas;
+            }
+
+            function comprobarParametros(posicion,longitud){
+                do {
+                    posicion=prompt('Numero de fila')
+                } while (posicion<=0 || Number.isNaN(posicion) || posicion>longitud);
+                return --posicion;
+            }
+
+            function insertar(){
+                var padre=document.getElementsByTagName('table')[0];
+                var elementos = Array.from(padre.getElementsByTagName('tr'));
+                var posicion=comprobarParametros(posicion,elementos.length);
+                var tr=document.createElement('tr');
+                insertarColumnas(tr,columnas)
+                var elemento = elementos[posicion]
+                padre.insertBefore(tr,elemento);
+            }
+
+            function borrar(){
+                var padre=document.getElementsByTagName('table')[0];
+                var elementos = Array.from(padre.getElementsByTagName('tr'));
+                var posicion=comprobarParametros(posicion,elementos.length);
+                var elemento = elementos[posicion]
+                padre.removeChild(elemento);
+            }
+
+            function modificar(){
+                this.innerText='aa';
+            }
+
+            window.onload=function(){
+                filas = parametrosIniciales(filas);
+                columnas=parametrosIniciales(columnas);
+                insertarTabla(filas,columnas);
+                var botones = Array.from(document.getElementsByTagName('button'));
+                botones[0].addEventListener('click',insertar);
+                botones[1].addEventListener('click',borrar);
+                botones[2].addEventListener('click',modificar);
+                window.addEventListener('keydown',function(e){
+                    if(e.key=='i'){
+                        insertar()
+                    }
+                })
+            }
+        </script>
+    </head>
+    <body>
+        <button type="button" name="button">Insertar</button>
+        <button type="button" name="button">Borrar</button>
+        <button type="button" name="button">Modificar</button>
+    </body>
+</html>
