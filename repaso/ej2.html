@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script type="text/javascript">
+            window.onload=function(){
+                var ps=Array.from(document.getElementsByTagName('p'));
+                for (var i = 0; i < ps.length; i++) {
+                    ps[i].addEventListener('click',function(){
+                        var sp=Array.from(this.getElementsByTagName('span'));
+                        if(sp.length>0){
+                            this.removeChild(sp[0])
+                        } else{
+                            sp=document.createElement('span');
+                            var text = document.createTextNode('Matao');
+                            sp.appendChild(text)
+                            this.appendChild(sp)
+                        }    
+                    })
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <p>Prueba 1</p>
+        <p>Prueba 2</p>
+        <p>Prueba 3</p>
+    </body>
+</html>
