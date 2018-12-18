@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script type="text/javascript">
+            function Persona(nombre,edad,genero){
+                var _nombre=nombre;
+                var _edad=edad;
+                this.getEdad=function(){
+                    return _edad;
+                }
+            }
+
+            function Estudiante(nombre,edad,genero,clase,grupo){
+                Persona.call(this,nombre,edad,genero);
+            }
+            Estudiante.prototype=new Persona();
+
+            var p=new Persona('Arturo Barba',19,'man');
+            console.log(p.getEdad());
+            var e=new Estudiante('Arturo Barba',19,'man');
+            console.log(e.getEdad());
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
