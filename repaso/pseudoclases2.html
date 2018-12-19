@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script type="text/javascript">
+            function Cliente(nombre,direccion) {
+                var _nombre=nombre;
+                var _direccion=direccion;
+                this.getNombre=function(){
+                    return _nombre;
+                }
+                this.getDireccion=function(){
+                    return _direccion;
+                }
+            }
+            function Info(base,iva,total){
+                var _base=base;
+                var _iva=iva;
+                this.getBase=function(){
+                    return _base;
+                }
+                this.getIva=function(){
+                    return _iva;
+                }
+                this.calcularTotal=function(){
+                    return Math.round(Number(this.getBase()+(this.getBase()*this.getIva()/100)),-2);
+                }
+            }
+
+            function Cantidad(base,iva,total,cantidad){
+                Info.call(this,base,iva,total);
+                var _cantidad=cantidad;
+                this.getCantidad=function(){
+                    return _cantidad;
+                }
+            }
+            Cantidad.prototype=new Info();
+            var i=new Info(10,21,0);
+            console.log(i.calcularTotal());
+            var can=new Cantidad(11,21,0,2);
+            console.log(can.calcularTotal());
+            console.log(can.getIva());
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

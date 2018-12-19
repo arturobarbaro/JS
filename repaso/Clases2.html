@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script type="text/javascript">
+            class Factura{
+                constructor(cliente, elementos, info){
+                    var _cliente=cliente;
+                    var _elementos=elementos;
+                    var _info=info;
+                    this.getCliente=function(){
+                        return _cliente.getNombre();
+                    }
+                }
+            }
+
+            class Cliente{
+                constructor(nombre,direccion){
+                    var _nombre=nombre;
+                    var _direccion=direccion;
+                    this.getNombre=function(){
+                        return _nombre;
+                    }
+                    this.getDireccion=function(){
+                        return _direccion;
+                    }
+                }
+                Datos(){
+                    return `${this.getNombre()}`;
+                }
+            }
+
+            class Socio extends Cliente{
+                constructor(nombre,direccion,id){
+                    super(nombre,direccion);
+                    var _id=id;
+                    this.getId=function(){
+                        return _id;
+                    }
+                }
+
+                Datos(){
+                    return `${super.Datos()}, ${this.getId()}`;
+                }
+            }
+
+            class Info{
+                constructor(base=0,iva=21,total=0){
+                    var _base=base;
+                    var _iva=iva;
+                    var _total=total;
+                    this.getBase=function(){
+                        return _base;
+                    }
+                    this.getIva=function(){
+                        return _iva;
+                    }
+                    this.getTotal=function(){
+                        return _total;
+                    }
+                }
+                Calcular(){
+                    var total=Number(this.getBase()+(this.getBase()*this.getIva()/100));
+                    return total;
+                }
+            }
+
+            var i1=new Info(10.11,21,12);
+            console.log(i1.getIva());
+            console.log(i1.Calcular());
+            var c=new Cliente("Aaa","BB");
+            console.log(c.getNombre());
+            var f=new Factura(c,['boli'],i1);
+            console.log(f.getCliente());
+            var s=new Socio("Arturo","abc",1234);
+            console.log(s.Datos())
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

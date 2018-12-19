@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+        var valor;
+        function ventana(){
+            var ventana=window.open('','Valores',false);
+            if(!ventana.document.getElementsByTagName('input')[0]){
+                var b=document.createElement('input');
+                b.setAttribute('type','button');
+                b.value='Limpiar';
+                ventana.document.body.appendChild(b);
+                b.addEventListener('click',function(){
+                    var botones=Array.from(ventana.document.getElementsByTagName('button'));
+                    var exp=/^\d{1,2}$/;
+                    var botones=botones.filter(e => exp.test(e.innerText));
+                    for (var i = 0; i < botones.length; i++) {
+                        ventana.document.body.removeChild(botones[i]);
+                    }
+                })
+            }
+            for (var i = 0; i < 2; i++) {
+                var b=document.createElement('button');
+                var t=document.createTextNode(Math.round(Math.random()*10));
+                b.appendChild(t)
+                b.addEventListener('click',function(){
+                    valor=this.childNodes[0].nodeValue;
+                })
+                ventana.document.body.appendChild(b);
+            }
+        }
+        function mostrar(){
+            console.log(valor);
+        }
+        window.onload=function(){
+            document.getElementsByTagName('div')[0].getElementsByTagName('button')[0].addEventListener('click',ventana)
+            document.getElementsByTagName('div')[1].getElementsByTagName('button')[0].addEventListener('click',mostrar)
+        }
+    </script>
+</head>
+<body>
+    <div class="">
+        <button type="button" name="button">Genera</button>
+    </div>
+    <div class="">
+        <button type="button" name="button">Compara</button>
+    </div>
+</body>
+</html>
