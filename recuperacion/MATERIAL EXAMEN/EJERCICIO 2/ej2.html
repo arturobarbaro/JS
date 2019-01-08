@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+        class Tienda{
+            constructor(productos=[]){
+                this.productos=productos;
+            }
+            Stock(){
+                var productos=Array.from(productos);
+                for (var i = 0; i < productos.length; i++) {
+                    document.write(`Producto informático ${i}`);
+                    document.write(`${productos[i].Detalles()}`);
+                }
+            }
+            CalcularStock(){
+                var total = productos[0].getCantidad()
+                for (var i = 1; i < productos.length; i++) {
+                    total+=productos[i].getCantidad();
+                }
+                return total;
+            }
+        }
+
+        class Producto{
+            constructor(nombre,precio,cantidad=0){
+                var _nombre=nombre;
+                var _precio=precio;
+                var _cantidad=cantidad;
+                this.getNombre=function(){
+                    return _nombre;
+                }
+                this.getPrecio=function(){
+                    return _precio;
+                }
+                this.getCantidad=function(){
+                    return _cantidad;
+                }
+            }
+            Detalles(){
+                return `Nombre: ${this.getNombre()}. Precio: ${this.getPrecio()}. Cantidad: ${this.getCantidad()}.`
+            }
+
+        }
+        class Monitor extends Producto{
+            constructor(nombre,precio,cantidad,tamanio){
+                super(nombre,precio,cantidad);
+                var _tamanio=tamanio;
+                this.getTamanio=function(){
+                    return _tamanio
+                }
+            }
+            Detalles(){
+                return `${super.Detalles()} Tamaño: ${this.getTamanio()}`;
+            }
+        }
+        class Memoria extends Producto{
+            constructor(nombre,precio,cantidad,frecuencia,capacidad){
+                super(nombre,precio,cantidad);
+                var _frecuencia=frecuencia;
+                var _capacidad=capacidad;
+                this.getFrecuencia=function(){
+                    return _frecuencia
+                }
+                this.getCapacidad=function(){
+                    return _capacidad
+                }
+            }
+            Detalles(){
+                return `${super.Detalles()} Frecuencia; ${this.getFrecuencia()}. Capacidad: ${this.getCapacidad()}.`;
+            }
+        }
+
+        function pintar(array){
+            for (var i = 0; i < array.length; i++) {
+                document.body.innerHTML+=`Producto informatico: ${i+1}`
+                document.body.innerHTML+='\n';
+                document.body.innerHTML+=array[i].Detalles();
+
+            }
+            document.body.innerHTML+=`<button type="button" name="button">Calcular Stock</button>
+            <input type="text" name="" value="" readonly="readonly">`
+        }
+        //console.log(tienda.CalcularStock());
+        //tienda.Stock();
+        window.onload=function(){
+            var memoria=new Memoria('Memoria',50,10,"1029",9);
+            var monitor=new Monitor('Monitor 4k',480,2,'26"');
+            var teclado=new Producto('Teclado para teclear mas rapido',4801,20);
+            var array=[memoria,monitor,teclado];
+            var tienda=new Tienda(array);
+            pintar(array);
+            var b=Array.from(document.body.getElementsByTagName('button'));
+            b[0].addEventListener('click',function(){
+                var total = array[0].getCantidad();
+                for (var i = 1; i < array.length; i++) {
+                    total+=array[i].getCantidad();
+                }
+                document.getElementsByTagName('input')[0].value=total;
+            });
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

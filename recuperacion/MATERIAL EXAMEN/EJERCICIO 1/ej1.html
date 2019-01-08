@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style type="text/css">
+
+			.verde{
+				color:green;
+				list-style-image: url("images/ok.png");
+
+			}
+
+			.rojo {
+				color:red;
+				list-style-image: url("images/wrong.png");
+			}
+
+			.caja {
+
+				border: dotted 5px black;
+				height: 200px;
+				width: 300px;
+				padding: 20px;
+			}
+
+			body{
+				display: flex;
+				justify-content:center;
+				align-items: center;
+
+				min-height: 600px;
+			}
+
+			body form{
+				padding: 20px;
+				border: solid 1px;
+			}
+
+		</style>
+		<script src="cookies.js" charset="utf-8"></script>
+		<script src="ej1.js" charset="utf-8"></script>
+	</head>
+	<body>
+		<form>
+			<p>
+				<label>Contraseña</label>
+				<input type='password' ></input>
+			</p>
+			<p>
+				<label>Repetir contraseña</label>
+				<input type='password' ></input>
+			</p>
+			<input type='button' value='Guardar'>
+		</form>
+
+	</body>
+</html>
