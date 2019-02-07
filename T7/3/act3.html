@@ -34,8 +34,10 @@
 			//k. En la lista de los módulos de segundo, añade al final de cada uno de ellos
 			//la cantidad de horas semanales que tienen cuando se haga click sobre ellos.
 			//Parte del nombre de cada módulo y añade la información desde ul.
-			$('ul li ul li').after($('ul li ul li').parent().attr('data-hours'));
-			console.log($('ul li ul li').parent().attr('data-hours'));
+			$("ul li ul li").on('click', function(){
+				$(this).parent().append(`<li>${$(this).parent().attr('data-hours')} horas</li>`);
+				$(this).off();
+			});
 			//l. Vacía la lista que contiene los módulos de segundo.
 			$('p:contains("egundo")').next().text('');
 			//m. Elimina la lista que contiene los módulos de primero.
