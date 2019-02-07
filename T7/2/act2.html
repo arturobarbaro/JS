@@ -3,19 +3,44 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-    <script src="../jquery.js" charset="utf-8"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-			//a. Selecciona todos los módulos de primero
-            $('ul li a');
-			
-			//b. Selecciona el módulo Sistemas Informáticos
-			$('ul li a [href*="SImod.html"]');
-			//c. Selecciona el módulo que va detrás de Sistemas Informáticos
-			$('ul li a [href*="SImod.html"]').next();
-			//
-        });
-    </script>
+	<script src="../jquery.js" charset="utf-8"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		//a. Selecciona todos los módulos de primero
+		$('ul li a');
+		$('a');
+		//b. Selecciona el módulo Sistemas Informáticos
+		$('ul li a [href*="SImod.html"]');
+		$(':contains("Sistemas Informáticos")');
+		//c. Selecciona el módulo que va detrás de Sistemas Informáticos
+		$('ul li a [href*="SImod.html"]').next();
+		$(':contains("Sistemas Informáticos")').next();
+		//d. Selecciona los módulos que van detrás de Sistemas Informáticos
+		$('a[href="SImod.html"]').nextAll();
+		$(':contains("Sistemas Informáticos")').nextAll();
+		//e.Selecciona los módulos que tengan el atributo href
+		$('[href]');
+		//f.Selecciona los módulos que no tengan el atributo href
+		$('ul>li :not("[href]")');
+		//g. Selecciona aquellos módulos que contengan la cadena 'mod'
+		$('[href*="mod"]');
+		$('ul li a[href*="mod"]');
+		//h. Selecciona aquellos módulos que empiecen por la cadena 'mod'
+		$('[href^="mod"]');
+		$('ul li a[href^="mod"]');
+		//i. Selecciona aquellos módulos que terminen con la cadena '.html'
+		$('[href$="mod"]');
+		$('ul li a[href$="mod"]');
+		//j. Selecciona todas las horas de los módulos de segundo
+		$('ul>li>ul').find('li:eq(1)');
+		//k. Selecciona los ítems vacíos y añade el contenido 'Nodo vacío'
+		$('li:empty').append('Nodo vacío');
+		//l. Selecciona los módulos DWESE, DAW y EIE
+		$('li:contains("DWESE"), li:contains("DAW"), li:contains("EIE")');
+		//m. Añade el atributo href al módulo de FOL (inventa su valor).
+		$('a').last().attr('href','mod-FOL');
+	});
+	</script>
 </head>
 
 <body>
