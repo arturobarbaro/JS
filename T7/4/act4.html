@@ -12,52 +12,61 @@
 <script src="../jquery.js" charset="utf-8"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        //1. Muestra en un alert la cantidad de cursos por los que está compuesto el ciclo.
-		alert(`${$("ul li").length - $("ul li[class]").length - $("ul li:empty").length} cursos componen el ciclo.`);
-		//2. Muestra las listas al pasar por encima el ratón de Primero o Segundo y ocultar al retirarlo. Utiliza el
-		//método hover. Tardará en aparecer y desparecer la información 2 segundos.
-		$("p").next().hide();
-		$("p").hover(function(){
-			$(this).next().fadeIn(2000);
-			$(this).next().fadeOut(2000);
-			$(this).off();
-		});
-		//3. Despliega el contenido de las listas al pulsar la tecla
-		//y volver a plegar al pulsar . Utilizar el método on. Se realizará de forma rápida.
-		$(window).on('keydown',
-        function(){
-            ($('p').next().css('display') == 'none')?$('p').next().show():$('p').next().hide();
-		});
-		 //Lo comento para que no de conflicto con el ejercicio de abajo
-		//4. Modifica el comportamiento anterior para poderlo hacer con una sola tecla.
-		$(window).keypress(function(e){
-			if (e.key.toLowerCase() == 'a') {
-				$('p').next().css('display') == 'none')?$('p').next().show():$('p').next().hide();
-			}
-		});
-		//5. Elimina el efecto del punto 3.
-		$(window).off('keydown');
-		//6. Vuelve a repetir el comportamiento del punto 4 pero ahora solo se producirá la primera vez que se pulse la tecla.
-		$(window).keypress(function(e){
-			if (e.key.toLowerCase() == 'a') {
-				$('p').next().css('display') == 'none')?$('p').next().show():$('p').next().hide();
-			}
-			$(window).off('keypress');
-		});
-		//7. Al pasar el ratón por cada uno de los títulos de los módulos de segundo se mostrará la cantidad de horas semanales.
-		//Esta información emergente se mostrará a continuación de donde ubiquemos el ratón. Utiliza hover.
-		$('li[class]').hover(function(e){
-            $(this).off();
-			$(document.body).append($(`<p>${$(this).parent().attr('data-hours')} horas</p>`));
-			p.css({'position':'absolute','top':`${e.pageY}px`,'left':`${e.pageX}px`,
-            'background-color':'yellow','z-index':'2'});
-		});
-		//8. Ahora aparecerá el número de horas cuando el usuario haga clic sobre el nombre del módulo.
-		//Realiza una delegación de eventos utilizando on.
-		//9. Modifica el ejercicio 8 para que al hacer click sobre el nombre aparezca el tipo de modalidad
-		//(presencial). Esta información será pasada a la función que trata el
-		//evento a través del método on.
-
+        // //1. Muestra en un alert la cantidad de cursos por los que está compuesto el ciclo.
+		// alert(`${$("ul li").length - $("ul li[class]").length - $("ul li:empty").length} cursos componen el ciclo.`);
+		// //2. Muestra las listas al pasar por encima el ratón de Primero o Segundo y ocultar al retirarlo. Utiliza el
+		// //método hover. Tardará en aparecer y desparecer la información 2 segundos.
+		// $("p").next().hide();
+		// $("p").hover(function(){
+		// 	$(this).next().fadeIn(2000);
+		// 	$(this).next().fadeOut(2000);
+		// 	$(this).off();
+		// });
+		// //3. Despliega el contenido de las listas al pulsar la tecla
+		// //y volver a plegar al pulsar . Utilizar el método on. Se realizará de forma rápida.
+		// $(window).on('keydown',
+        // function(){
+        //     ($('p').next().css('display') == 'none')?$('p').next().show():$('p').next().hide();
+		// });
+		// //4. Modifica el comportamiento anterior para poderlo hacer con una sola tecla.
+        //
+		// //USO ENTER
+		// $(window).keypress(function(e){
+		// 	if (e.key == 'Enter') {
+		// 		$('p').next().css('display') == 'none'?$('p').next().show():$('p').next().hide();
+		// 	}
+		// });
+		// //5. Elimina el efecto del punto 3.
+		// $(window).off('keydown');
+		// //6. Vuelve a repetir el comportamiento del punto 4 pero ahora solo se producirá la primera vez que se pulse la tecla.
+		// $(window).keypress(function(e){
+		//  $(window).off('keypress');
+		// 	if (e.key == 'Enter') {
+		// 		$('p').next().css('display') == 'none'?$('p').next().show():$('p').next().hide();
+		// 	}
+		// });
+		// //7. Al pasar el ratón por cada uno de los títulos de los módulos de segundo se mostrará la cantidad de horas semanales.
+		// //Esta información emergente se mostrará a continuación de donde ubiquemos el ratón. Utiliza hover.
+		// $('li[class]').hover(function(e){
+        //     $(this).off();
+        //     var elemento=$(`<p>${$(this).parent().attr('data-hours')} horas</p>`);
+		// 	$(document.body).append();
+		// 	elemento.css({'position':'absolute','top':`${e.pageY}px`,'left':`${e.pageX}px`,
+        //     'background-color':'yellow','z-index':'2'});
+		// });
+		// //8. Ahora aparecerá el número de horas cuando el usuario haga clic sobre el nombre del módulo.
+		// //Realiza una delegación de eventos utilizando on.
+		// $('li[class]').on('click', function(e){
+        //     alert(`${$(this).parent().attr('data-hours')} horas`);
+		// });
+		// //9. Modifica el ejercicio 8 para que al hacer click sobre el nombre aparezca el tipo de modalidad
+		// //(presencial). Esta información será pasada a la función que trata el
+		// //evento a través del método on.
+        //
+		// ////No entendí esta actividad
+        // $('li[class]').on('click', function(e){
+        //     alert(`${$(this).parent().attr('data-hours')} horas. Presencial`);
+		// });
     });
 </script>
 </head>
