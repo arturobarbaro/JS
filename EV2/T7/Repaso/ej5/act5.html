@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            div{
+                border: 10px solid black;
+                padding: 15px;
+            }
+        </style>
+        <script src="../jquery.js" charset="utf-8"></script>
+        <script type="text/javascript">
+        var i=0;
+            $(function(){
+                $('img').hide();
+                $('div').on('click',function(){
+                    if (i==0){
+                        $(this).children().show();
+                    }else{
+                        $(this).children().show();
+                        setTimeout(function(){
+                            $('img').hide();
+                        }, 2000);
+                        i=0;
+                    }
+                    i++;
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="">
+            <img src="./photos/london.jpg" alt="">
+        </div>
+        <div class="">
+        <img src="./photos/paris1.jpg" alt=""></div>
+        <div class="">
+        <img src="./photos/newyork1.jpg" alt=""></div>
+        <div class="">
+        <img src="./photos/london.jpg" alt=""></div>
+        <div class=""><img src="./photos/paris1.jpg" alt=""></div>
+        <div class=""><img src="./photos/newyork1.jpg" alt=""></div>
+    </body>
+</html>
