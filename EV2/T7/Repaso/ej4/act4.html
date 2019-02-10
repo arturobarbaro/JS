@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="../jquery.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            $(function(){
+                $('img').on('click',function(){
+                    $('img').animate({ opacity: 0.4})
+                    $(this).animate({ opacity: 1});
+                    $(this).fadeIn(100);
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <img src="./photos/london.jpg" alt="">
+        <img src="./photos/paris1.jpg" alt="">
+        <img src="./photos/newyork1.jpg" alt="">
+    </body>
+</html>
