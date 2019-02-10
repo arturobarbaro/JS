@@ -12,7 +12,7 @@
         <script src="../jquery.js" charset="utf-8"></script>
         <script type="text/javascript">
             $(function(){
-                //ejercicio 1
+                ////ejercicio 1
                 // $('body').append('<div id="d1"></div>');
                 // $('#d1').css({'height': '800px', 'width': '70px'});
                 // $('#d1').on('click',function(e){
@@ -28,17 +28,94 @@
                 //     $(this).after(`<p> left: ${$('#d1').position().left}, top: ${$('#d1').position().top}. 'height': '800px', 'width': '70px'</p>`);
                 // })
 
-                //ejercicio 2
-                $('body').append('<div id="d1"></div>');
-                $('#d1').css({'height': '250px', 'width': '250px'});
-                $('#d1').on('click',function(e){
-                    e.preventDefault();
-                    $(this).off();
-                    $(this).after(`<button id="boton" type="button" name="button">Mover</button>`);
-                    $('#boton').click(function(){
-                        alert('a');
-                    })
-                })
+                // //ejercicio 2
+                // $('body').append('<div id="d1"></div>');
+                // $('#d1').css({'height': '350px', 'width': '350px', 'position': 'relative', 'left': '100px'});
+                // $('#d1').on('click',function(e){
+                //     e.preventDefault();
+                //     $(this).off();
+                //     $(this).after(`<button id="boton" type="button" name="button">Mover</button>`);
+                //     $('#boton').click(function(){
+                //         $('#d1').css({'height': `${$('#d1').height()-150}px`,
+                //         'width': `${$('#d1').width()-150}px`, 'left': `${$('#d1').position().left-100}px`});
+                //         //mostramos por consola las coordenadas, para demostrar que se desplaza
+                //         console.log($('#d1').position().left);
+                //     })
+                // })
+
+                // //ejercicio 3
+                //
+                // //CON CSS
+                // $('body').append('<div id="d1"></div>');
+                // $('#d1').css({'height': '350px', 'width': '350px', 'position': 'relative', 'left': '100px'});
+                // $('#d1').after(`<button id="boton" type="button" name="button">Aumentar</button>`);
+                // $('#d1').after(`<button id="boton1" type="button" name="button">Minimizar</button>`);
+                // $('#boton').click(function(){
+                //     $('#d1').css({'height': `${$('#d1').height()+100}px`,
+                //     'width': `${$('#d1').width()+100}px`});
+                // })
+                // $('#boton1').click(function(){
+                //     $('#d1').css({'height': `${$('#d1').height()-50}px`,
+                //     'width': `${$('#d1').width()-50}px`});
+                // })
+
+                // //CON ANIMATE
+                // $('body').append('<div id="d1"></div>');
+                // $('#d1').css({'height': '350px', 'width': '350px', 'position': 'relative', 'left': '100px'});
+                // $('#d1').after(`<button id="boton" type="button" name="button">Aumentar</button>`);
+                // $('#d1').after(`<button id="boton1" type="button" name="button">Minimizar</button>`);
+                // $('#boton').click(function(){
+                //     $('#d1').animate({height: "+=100", width: "+=100"});
+                // })
+                // $('#boton1').click(function(){
+                //     $('#d1').animate({height: "-=50", width: "-=50"});
+                // })
+
+                //¿Qué diferencias hay? Con animate se produce un efecto de animación de forma que da la sensación de
+                //un cambio de propiedades con un intervalo de tiempo, mientras con css asignamos directamente las nuevas propiedades
+                //de forma que el cambio es menos paulatino
+
+                ////ejercicio 4
+                // $('body').append('<div id="d1"></div>');
+                // $('#d1').css({'height': '350px', 'width': '350px', 'position': 'relative', 'left': '100px'});
+                // $('#d1').after(`<button id="boton" type="button" name="button">Aumentar</button>`);
+                // $('#d1').after(`<button id="boton1" type="button" name="button">Minimizar</button>`);
+                // function comprobarPosicion(){
+                //     var posicion;
+                //     do {
+                //         posicion=prompt('Dimensiones a modificar')
+                //     } while (posicion<=0 || parseInt(posicion));
+                //     return posicion;
+                // }
+                // $('#boton').click(function(){
+                //     var pos=comprobarPosicion();
+                //     $('#d1').animate({height: `+=${pos}`, width: `+=${pos}`});
+                // })
+                // $('#boton1').click(function(){
+                //     var pos=comprobarPosicion()
+                //     $('#d1').animate({height: `-=${pos}`, width: `-=${pos}`});
+                // })
+
+                // // ejercicio 5
+                // $('body').append('<div id="d1"></div>');
+                // $('#d1').css({'height': '350px', 'width': '350px', 'position': 'relative', 'left': '100px'});
+                // $('#d1').hide(100);
+                // $('#d1').show(200);
+
+                // // ejercicio 6
+                // $('body').append('<div id="d1"></div>');
+                // $('#d1').css({'height': '350px', 'width': '350px', 'position': 'relative', 'left': '100px'});
+                // $('#d1').hide(100);
+                // setTimeout(function(){$('#d1').show(200)},2000);
+
+                ////ejercicio 7
+                // $('body').append('<div id="d1">Texto de ejemplo</div>');
+                // $('#d1').css({'height': '350px', 'width': '350px', 'position': 'relative', 'left': '100px'});
+                // $('#d1').after(`<button id="boton" type="button" name="button">Pulsame!!</button>`);
+                // $('#boton').click(function(){
+                //     $('#d1').animate({left: "+=100"});
+                //     $('#d1').css({'font-size': "+=30px"});
+                // })
             });
 
         </script>
