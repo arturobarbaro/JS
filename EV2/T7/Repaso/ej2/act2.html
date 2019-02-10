@@ -7,12 +7,22 @@
         <script type="text/javascript">
             //Busca información en la API de jQuery sobre el método prop. ¿Qué diferencia existe
             //con attr?¿Cuándo se usa? Haz un ejemplo donde muestres la diferencia entre los dos.
+            //
+            //attr() trabaja con atributos y prop() con propiedades. La confusión surge debido
+            //a que ahasta la versión 1.6 de JQuery attr() devolvia tanto atributos como propiedades
             $(function(){
-                
+                //Aqui tenemos un ejemplo de dos radio buttons: attr() siempre devolvera cheked mientras
+                //prop() devilvera true o false en funcion si es el elemento chequeado.
+                $("#boton").on("click", function() {
+                    console.log("Atributo checked (attr) = " + $("#radio2").attr("checked"));
+                    console.log("Propiedad checked (prop) = " + $("#radio2").prop("checked"));
+                })
             })
         </script>
     </head>
     <body>
-
+        <input id="radio1" name="miRadio" type="radio" value="1" />
+        <input id="radio2" name="miRadio" type="radio" value="2" checked="checked" />
+        <button id="boton">Comprobar</button>
     </body>
 </html>
