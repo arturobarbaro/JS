@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="../jquery.js" charset="utf-8"></script>
+        <script type="text/javascript">
+        $(function(){
+            //a Eliminar la lista completa
+            var ul = $('ul').detach();
+            //b Restaurar lista
+            $('body').append(ul);
+            //c Añadir un elemento al final de la lista
+            $('li:last').after('<li>actividad c </li>')
+            //d Añadir un elemento al principio de la lista
+            $('li:first').before('<li>actividad d </li>')
+            //e Eliminar el último elemento
+            $('li:last').remove()
+            //f Eliminar el primer elemento
+            $('li:first').remove()
+            //g Eliminar el primero y segundo elemento
+            $('li:first').next().remove()
+            $('li:first').remove()
+            //h Eliminar los dos últimos.
+            $('li:last').prev().remove()
+            $('li:last').remove()
+        })
+        </script>
+    </head>
+    <body>
+        <ul>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+        </ul>
+    </body>
+</html>
