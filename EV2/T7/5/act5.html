@@ -1,41 +1,48 @@
-<html lang ='es'>
-<head>
-	<meta charset='utf-8'>
-	<title></title>
-	<style type="text/css">
-		body > ul { display: flex;
-					flex-direction:row;}
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            div {
+                border: 3px solid #73AD21;
+                background-color: powderblue;
+            }
+        </style>
+        <script src="../jquery.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            $(function(){
+                //ejercicio 1
+                // $('body').append('<div id="d1"></div>');
+                // $('#d1').css({'height': '800px', 'width': '70px'});
+                // $('#d1').on('click',function(e){
+                //     e.preventDefault();
+                //     $('p').remove();
+                //     $(this).css({'height': '250px', 'width': '250px'});
+                //     $(this).after(`<p> left: ${$('#d1').position().left}, top: ${$('#d1').position().top}. 'height': '250px', 'width': '250px'</p>`);
+                // })
+                // $('#d1').on('dblclick',function(e){
+                //     e.preventDefault();
+                //     $('p').remove();
+                //     $(this).css({'height': '800px', 'width': '70px'});
+                //     $(this).after(`<p> left: ${$('#d1').position().left}, top: ${$('#d1').position().top}. 'height': '800px', 'width': '70px'</p>`);
+                // })
 
-		body > ul >li {flex:1;
-						display: flex;
-						flex-direction:column;
-						align-items: center;
-						justify-content: center;
-						border:1px solid;
-						background-color: lightgrey;}
-	</style>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                //ejercicio 2
+                $('body').append('<div id="d1"></div>');
+                $('#d1').css({'height': '250px', 'width': '250px'});
+                $('#d1').on('click',function(e){
+                    e.preventDefault();
+                    $(this).off();
+                    $(this).after(`<button id="boton" type="button" name="button">Mover</button>`);
+                    $('#boton').click(function(){
+                        alert('a');
+                    })
+                })
+            });
 
-</head>
-<body>
-<ul>
-  <li class="tour" data-loc="london" data-temp="48°">
-    London, UK
-    <input type='button' value='Más información'></input>
-    <div class="results"></div>
-  </li>
-
-  <li class="tour" data-loc="paris1" data-temp="55°">
-    Paris, France
-    <input type='button' value='Más información'></input>
-    <div class="results"></div>
-  </li>
-
-  <li class="tour" data-loc="newyork1" data-temp="62°">
-    New York, NY, USA
-    <input type='button' value='Más información'></input>
-    <div class="results"></div>
-  </li>
-</ul>
-</body>
+        </script>
+    </head>
+    <body>
+    </body>
 </html>
