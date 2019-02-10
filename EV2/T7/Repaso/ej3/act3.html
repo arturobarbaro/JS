@@ -3,8 +3,73 @@
     <head>
         <meta charset="utf-8">
         <title></title>
+        <style media="screen">
+            h1{
+                text-align: center;
+            }
+            a{
+                color: red;
+            }
+            p{
+                color: black;
+            }
+            .visitado{
+                color: green;
+            }
+        </style>
+        <script src="../jquery.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            function eliminar(){
+                var elementos=Array.from(d.getElementsByTagName('p'));
+                for (var i = elementos.length-1; i >= 0; i--) {
+                    elementos[i].parentElement.removeChild(elementos[i]);
+                }
+            }
+            function insertar(pos,padre){
+                var respuestas=["Si lees la biblia y rezas si","Es como que caiga una moneda de canto","No"];
+                var respuesta=document.createElement('p');
+                var texto = document.createTextNode(respuestas[pos-1]);
+                respuesta.appendChild(texto);
+                document.getElementById(padre).appendChild(respuesta);
+            }
+            function responder(){
+                var padre=this.id;
+                this.setAttribute("class","visitado");
+                var pos=Number(this.name);
+                var nodosHijo = document.getElementById(padre).getElementsByTagName('p');
+                if (nodosHijo.length>0){
+                    eliminar();
+                } else{
+                    eliminar();
+                    insertar(pos,padre);
+                }
+            }
+            window.onload = function() {
+                $('a').on('click',responder);
+                $('#b').on('click',function(){
+                    window.print();
+                })
+
+            }
+        </script>
     </head>
     <body>
-        
+        <div class="">
+            <button id="b" type="button" name="button">Imprimir</button>
+        </div>
+        <div class="">
+            <h1>LISTADO FAQS</h1>
+        </div>
+        <div id="d">
+            <div class="">
+                <a id="p1" name="1">¿Puedo ser mejor persona?</a>
+            </div>
+            <div class="">
+                <a id="p2" name="2">¿Es posible aprobar con Eduardo?</a>
+            </div>
+            <div class="">
+                <a id="p3" name="3">¿Es posible que Ricardo recuerde mi nombre?</a>
+            </div>
+        </div>
     </body>
 </html>
