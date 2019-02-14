@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ejercicio Anexo 1</title>
+ 
+<script type="text/javascript">
+var READY_STATE_COMPLETE=4;
+var peticion_http = null;
+
+function inicializa_xhr() {
+	if(window.XMLHttpRequest) {
+		return new XMLHttpRequest();
+	}
+	else if(window.ActiveXObject) {
+		return new ActiveXObject("Microsoft.XMLHTTP");
+	}
+}
+function crea_query_string() {
+	var fecha = document.getElementById("fecha_nacimiento");
+	var cp = document.getElementById("codigo_postal");
+	var telefono = document.getElementById("telefono");
+	return "fecha_nacimiento=" + encodeURIComponent(fecha.value) +
+	"&codigo_postal=" + encodeURIComponent(cp.value) +
+	"&telefono=" + encodeURIComponent(telefono.value) +
+	"&nocache=" + Math.random();
+}
+
+function valida_datos() {
+	
+	peticion_http = inicializa_xhr();
+	if(peticion_http) {
+		peticion_http.onreadystatechange = procesaRespuesta;
+		peticion_http.open("POST", "validadatosAnexo1.php", true);
+		peticion_http.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		var query_string = crea_query_string();
+		peticion_http.send(query_string);
+	}
+}
+ 
+function procesaRespuesta() {
+	
+	if(peticion_http.readyState == READY_STATE_COMPLETE) {
+		if(peticion_http.status == 200) {
+			document.getElementById("respuesta").innerHTML = peticion_http.responseText;
+		}
+	}
+}
+
+window.onload = function(){
+	document.querySelector('input[type="button"]').addEventListener('click',valida_datos);
+	
+}
+
+</script>
+ 		
+</head>
+<body>
+<form>
+	<label for="fecha_nacimiento">Fecha de nacimiento:</label>
+	<input type="text" id="fecha_nacimiento" name="fecha_nacimiento" />
+	<br/>
+	<label for="codigo_postal">Codigo postal:</label>
+	<input type="text" id="codigo_postal" name="codigo_postal" /><br/>
+	<label for="telefono">Telefono:</label>
+	<input type="text" id="telefono" name="telefono" /><br/>
+	<input type="button" value="Validar datos"/>
+</form>
+<div id="respuesta"></div>
+</body>
+</html>

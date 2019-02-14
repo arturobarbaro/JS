@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script>
+			window.onload = function (){
+				var xmlhttp;
+				var contenidosRecibidos = [];
+				var nodoMostrarResultados = document.getElementById('listaCiudades');
+				var contenidosAMostrar = '';
+	
+				xmlhttp=new XMLHttpRequest();
+				xmlhttp.onreadystatechange = function() {
+				  	if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+					    contenidosRecibidos = xmlhttp.responseText.split(",");
+					    
+					    for (var i=0; i<contenidosRecibidos.length;i++) {
+							contenidosAMostrar = contenidosAMostrar+'<div id="ciudades'+i+'"> <a href="#">' + contenidosRecibidos[i]+ '</a></div>';
+					    }
+					    nodoMostrarResultados.innerHTML = contenidosAMostrar;
+				    }
+				    else if(xmlhttp.readyState==4 && xmlhttp.status!=200){
+				    	alert("Ha ocurrido el siguiente error: " + xmlhttp.statusText);
+				    }
+				}
+
+				xmlhttp.open("GET","servidor4.php",true);
+				xmlhttp.send();
+			}
+		</script>
+	</head>
+	<body>
+		<div id='listaCiudades'></div>
+	</body>
+</html>
