@@ -4,7 +4,25 @@
 		<meta charset="utf-8" />
 		<title>Ejercicio 1 - Comprobar disponibilidad del login</title>
 		<script type="text/javascript">
-
+		document.getElementById('comprobar').addEventListener('click', loadDoc);
+		function loadDoc() {
+		var xmlhttp;
+			var contenidosRecibidos = '';
+			var nodoMostrarResultados = document.getElementById('disponibilidad');
+			var contenidosAMostrar = '';
+			xmlhttp=new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+					contenidosAMostrar = xmlhttp.responseText;
+					nodoMostrarResultados.innerHTML = contenidosAMostrar;
+				}
+				else if(xmlhttp.readyState==4 && xmlhttp.status!=200){
+					alert("Ha ocurrido el siguiente error: " + xmlhttp.statusText);
+				}
+			}
+			xmlhttp.open("GET","../servidor/compruebaDisponibilidad.php",true);
+			xmlhttp.send();
+		}
 		</script>
 	</head>
 
