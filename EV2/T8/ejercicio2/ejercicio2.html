@@ -3,27 +3,50 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Ejercicio 1 - Comprobar disponibilidad del login</title>
-		<script type="text/javascript">
-		function loadDoc() {
-			var xmlhttp;
-			var nodoMostrarResultados = document.getElementById('disponibilidad');
-			var contenidosAMostrar = '';
-			xmlhttp=new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function() {
-				if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-					contenidosAMostrar = xmlhttp.responseText;
-					nodoMostrarResultados.innerHTML = contenidosAMostrar;
-				}
-				else if(xmlhttp.readyState==4 && xmlhttp.status!=200){
-					alert("Ha ocurrido el siguiente error: " + xmlhttp.statusText);
+        <script type="text/javascript">
+			var READY_STATE_COMPLETE=4;
+			var peticion_http = null;
+
+			function inicializa_xhr() {
+				if (window.XMLHttpRequest) {
+					return new XMLHttpRequest();
+				} else if (window.ActiveXObject) {
+					return new ActiveXObject("Microsoft.XMLHTTP");
 				}
 			}
-			xmlhttp.open("GET","./compruebaDisponibilidadJSON.php",true);
-			xmlhttp.send();
-		}
-		window.onload=function(){
-			document.getElementById('comprobar').addEventListener('click', loadDoc);
-		}
+
+			function comprobar() {
+
+				peticion_http = inicializa_xhr();
+				if(peticion_http) {
+                    peticion_http.onreadystatechange = procesaRespuesta;
+    				peticion_http.open("POST", "compruebaDisponibilidadJSON.php", true);
+    				peticion_http.setRequestHeader("Content-Type", "application/json");
+    				peticion_http.send(JSON.stringify({ "login" : document.getElementById('login').value}));
+                }
+			}
+
+            function procesaRespuesta() {
+				if(peticion_http.readyState == READY_STATE_COMPLETE) {
+					if (peticion_http.status == 200) {
+						respuesta = JSON.parse(peticion_http.responseText);
+						if (respuesta.disponible == 'no') {
+							var alternativas ='';
+							for(i=0;i<respuesta.alternativas.length;i++){
+								alternativas += respuesta.alternativas[i] + '<br>' ;
+							}
+							document.getElementById('disponibilidad').innerHTML= `${respuesta.disponible}!<br>Alternativas:<br> ${alternativas}`;
+						}else {
+							document.getElementById('disponibilidad').innerHTML= `${respuesta.disponible}`;
+						}
+					}
+				}
+			}
+
+			window.onload = function() {
+				document.getElementById("comprobar").onclick = comprobar;
+			}
+
 		</script>
 	</head>
 
