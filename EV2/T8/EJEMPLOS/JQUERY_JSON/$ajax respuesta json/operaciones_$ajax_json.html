@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+    	<div>
+            Valor 1: <input type="text" id="text1">
+            Valor 2: <input type="text" id="text2">
+            <button id="botonCalcular">Calcular</button>
+    	</div>
+    	<div id="respuesta">
+            Aquí se mostrará la respuesta
+    	</div>
+		<script>
+			function siRespuesta(r){
+		 
+				// Crear HTML con las respuestas del servidor
+				/*
+				var rHtml = 'El resultado de la suma es: ' + r.suma + '<br/>';
+					rHtml += 'El resultado del producto es: ' + r.producto;
+				*/
+
+				
+				var rHtml='Los resultados son: <br>';
+				for(i in r){
+					rHtml+= i + ' : ' + r[i] + '<br>';
+				}	
+		 		$('#respuesta').html(rHtml);   
+				
+				
+			}
+		 
+			function siError(e){
+				alert('Ocurrió un error al realizar la petición: '+ e.statusText);
+			}
+		 
+			function peticion(){
+				// Realizar la petición
+				
+				$.ajax({
+					data: {"variable1": $('#text1').val(),"variable2": $('#text2').val()},
+					type: "GET",
+					dataType: "json",
+					//success:siRespuesta,
+					//error:siError,
+					url: "servidor_$ajax_json.php"
+				})
+				.done(siRespuesta)
+				.fail(siError);         
+			}
+		 
+			$('#botonCalcular').click(peticion); // Registrar evento al boton "Calcular" con la funcion "peticion"
+		</script>
+    </body>
+</html>

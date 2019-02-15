@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+    	<div>
+            Valor 1: <input type="text" id="text1">
+            Valor 2: <input type="text" id="text2">
+            <button id="botonCalcular">Calcular</button>
+    	</div>
+    	<div id="respuesta">
+            Aquí se mostrará la respuesta
+    	</div>
+		<script>
+			function siRespuesta(r){
+		 
+				// Crear HTML con las respuestas del servidor
+				var rHtml='Los resultados son: <br>';
+				for(i in r){
+					rHtml+= i + ' : ' + r[i] + '<br>';
+				}	
+		 
+				$('#respuesta').html(rHtml);   // Mostrar la respuesta del servidor en el div con el id "respuesta"
+			}
+		 
+			function peticion(){
+				// Realizar la petición
+				var parametros = {
+					variable1: $('#text1').val(),
+					variable2: $('#text2').val()
+				};
+		 
+		 		//jQuery.post( url [, data ] [, success ] [, dataType ] )
+				$.post("servidor_$post.php", parametros, siRespuesta, 'json')
+				.fail(function(request,status){alert("Se ha producido el siguiente error: "+ status)}); //status:"success","notmodified","error","timeout", "parsererror"      
+				
+			}
+		 
+			$('#botonCalcular').click(peticion); 
+			
+		</script>
+    </body>
+</html>

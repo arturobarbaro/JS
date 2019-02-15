@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+<meta charset='utf-8' />
+<title>Decodifica un objeto en JSON</title>
+<script type="application/javascript">
+
+var http_request = new XMLHttpRequest();
+
+http_request.open("POST", "respuestajson_post.php", true);
+http_request.setRequestHeader("Content-Type", "application/json");
+//http_request.send(JSON.stringify({ "articulo" : Math.random()}));
+var obj = { "articulo" : Math.random()};
+var objT = JSON.stringify(obj);
+http_request.send(objT);
+
+http_request.onreadystatechange = manejaJSON;
+
+
+function manejaJSON() {
+  if (http_request.readyState == 4) {
+    if (http_request.status == 200) {
+      var objDatos = JSON.parse(http_request.responseText);
+      //Ahora con el objeto desplegamos los datos mandados desde el servidor
+      document.getElementById("divId").innerHTML = objDatos.id;
+      document.getElementById("divNombre").innerHTML = objDatos.nombre;
+      document.getElementById("divCategoria").innerHTML = objDatos.categoria;
+      document.getElementById("divPrecio").innerHTML = objDatos.precio;
+      document.getElementById("divDetalles").innerHTML = objDatos.detalles.toString();
+    } else {
+      alert("Ocurrió un problema con la URL.");
+    }
+    http_request = null;
+  }
+}
+</script>
+</head>
+<body>
+<h2>Producto</h2>
+<div id="divId"></div>
+<div id="divNombre"></div>
+<div id="divCategoria"></div>
+<div id="divPrecio"></div>
+<div id="divDetalles"></div>
+</body>
+</html>
+

@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+    	<div>
+            Valor 1: <input type="text" id="text1">
+            Valor 2: <input type="text" id="text2">
+            <button id="botonCalcular">Calcular</button>
+    	</div>
+    	<div id="respuesta">
+            Aquí se mostrará la respuesta
+    	</div>
+		<script>
+		
+			function siRespuesta(r){
+		 
+				var rHtml='Los resultados son: <br>';
+				for(i in r){
+					rHtml+= i + ' : ' + r[i] + '<br>';
+				}	
+		 
+				$('#respuesta').html(rHtml);  
+			}
+		 
+			function siError(e){
+				alert('Ocurrió un error al realizar la petición: '+e.statusText);
+			}
+		 
+			function peticion(e){
+				// Realizar la petición
+				//jQuery.getJSON( url [, data ] [, success ] )		 
+				var json = $.getJSON("servidor_getJSON.php", {	variable1: $('#text1').val(),variable2: $('#text2').val()}, siRespuesta);
+				json.fail(siError);         // Si ocurrió un error al ejecutar la petición se ejecuta "siError"
+			}
+		 
+			$('#botonCalcular').click(peticion); 
+		</script>
+    </body>
+</html>

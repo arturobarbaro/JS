@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang='es'>
+	<head>
+		<meta charset='utf-8'/>
+		<title>JSON</title>
+		<script type="text/javascript">
+			var READY_STATE_COMPLETE=4;
+			var peticion_http = null;
+
+			function inicializa_xhr() {
+				if (window.XMLHttpRequest) {
+					return new XMLHttpRequest(); 
+				} else if (window.ActiveXObject) {
+					return new ActiveXObject("Microsoft.XMLHTTP"); 
+				} 
+			}
+
+			function comprobar() {
+				
+				peticion_http = inicializa_xhr();
+				if(peticion_http) {
+					peticion_http.onreadystatechange = procesaRespuesta;
+					peticion_http.open("GET", "servidor.php", true);
+					peticion_http.send();
+				}
+			}
+
+			function procesaRespuesta() {
+				if(peticion_http.readyState == READY_STATE_COMPLETE) {
+					if (peticion_http.status == 200) {
+						
+						respuesta = JSON.parse(peticion_http.responseText);
+						var muestra ='';
+						for(i=0;i<respuesta.employees.length;i++){
+							muestra += 'Nombre: ' + respuesta.employees[i].firstName + ' , Apellidos: ' + respuesta.employees[i].lastName + '<br>' ;
+						}
+						document.getElementById('disponibilidad').innerHTML= muestra;
+					}
+				}
+			}
+
+			
+			window.onload = function() {
+				document.getElementById("comprobar").onclick = comprobar;
+				
+			}
+
+		</script>
+	</head>
+
+	<body>
+		<h1>Mostrar  empleados</h1>
+		
+			<form>
+				
+				<input type='button' id="comprobar" value='Consultar'></input>
+			</form>
+			<br><br>
+			<div id="disponibilidad"></div>
+	</body>
+</html>

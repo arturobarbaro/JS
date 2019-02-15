@@ -4,10 +4,8 @@
 		<meta charset="utf-8" />
 		<title>Ejercicio 1 - Comprobar disponibilidad del login</title>
 		<script type="text/javascript">
-		document.getElementById('comprobar').addEventListener('click', loadDoc);
 		function loadDoc() {
-		var xmlhttp;
-			var contenidosRecibidos = '';
+			var xmlhttp;
 			var nodoMostrarResultados = document.getElementById('disponibilidad');
 			var contenidosAMostrar = '';
 			xmlhttp=new XMLHttpRequest();
@@ -22,6 +20,9 @@
 			}
 			xmlhttp.open("GET","../servidor/compruebaDisponibilidad.php",true);
 			xmlhttp.send();
+		}
+		window.onload=function(){
+			document.getElementById('comprobar').addEventListener('click', loadDoc);
 		}
 		</script>
 	</head>

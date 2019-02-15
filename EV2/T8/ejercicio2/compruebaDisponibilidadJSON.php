@@ -1,4 +1,4 @@
-a<?php
+<?php
 //si estuvieran en el fichero productos.json
 //$json= file_get_contents("products.json");
 
