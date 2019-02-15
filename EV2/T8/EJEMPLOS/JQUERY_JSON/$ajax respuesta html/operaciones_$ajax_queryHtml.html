@@ -9,25 +9,25 @@
             <button id="botonCalcular">Calcular</button>
     	</div>
     	<div id="respuesta">
-            Aquí se imprimirá la respuesta
+            Aquï¿½ se imprimirï¿½ la respuesta
     	</div>
 		<script>
 			function siRespuesta(r){
-		 
+
 				var rHtml='El resultado es: ' + r ;
-				$('#respuesta').html(rHtml);   
+				$('#respuesta').html(rHtml);
 			}
-		 
+
 			function siError(e){
-				alert('Ocurrió un error al realizar la petición: '+ e.statusText);
+				alert('Ocurriï¿½ un error al realizar la peticiï¿½n: '+ e.statusText);
 			}
-		 
+
 			function peticion(){
-				// Realizar la petición
-				
+				// Realizar la peticion
+
 				$.ajax({
 					type: "GET",
-					// 'parametro1=valor1&parametro2=valor2', 
+					// 'parametro1=valor1&parametro2=valor2',
 					//data: 'variable1=' + $("#text1").val()+'&variable2=' +$("#text2").val()+'',
 					data : { 'variable1': $("#text1").val(), 'variable2': $("#text2").val()},
 					dataType: "html",
@@ -36,9 +36,9 @@
 					url: "servidor_$ajax_queryHtml.php"
 				})
 				.done(siRespuesta)
-				.fail(siError)         // Si ocurrió un error al ejecutar la petición se ejecuta "siError"
+				.fail(siError)         // Si ocurriï¿½ un error al ejecutar la peticiï¿½n se ejecuta "siError"
 			}
-		 
+
 			$('#botonCalcular').click(peticion); // Registrar evento al boton "Calcular" con la funcion "peticion"
 		</script>
     </body>
