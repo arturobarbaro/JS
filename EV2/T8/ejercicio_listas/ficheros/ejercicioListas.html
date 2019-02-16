@@ -27,12 +27,18 @@
 		}
 
 		function peticionMunicipio(){
-			
+
 		}
 
 		window.onload=function(){
-			peticionProvincias();
-			$("provincia").on('change', peticionMunicipio);
+			// for (var i = 0; i < array.length; i++) {
+			// 	array[i]
+			// }
+			$('#provincia option').load("cargaProvinciasJSON.php").val();
+			$('#provincia option').load("cargaProvinciasJSON.php");
+			console.log(Array.from($('#provincia option')));
+			// peticionProvincias();
+			// $("provincia").on('change', peticionMunicipio);
 		}
 		</script>
 	</head>
