@@ -4,42 +4,59 @@
 		<meta charset="utf-8">
 		<title> Listas desplegables encadenadas - json </title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="../../jquery.js" charset="utf-8"></script>
 		<script type="text/javascript">
-		function ordenar(){
-			$("select").each(function(index,elem) {
-			    //guardamos la opción seleccionada
-			    var listaActual = elem;
-			    var sel = listaActual.selectedIndex;
+		//funcion encargada de pintar errores
+		function error(request, errorMessage){
+    		alert('Error: ' + errorMessage);
+		}
 
-			    // Aplicacion del orden alfabetico
-			    $(listaActual).html($("option", $(this)).sort(function(a, b) {
-			      //  return a.text == b.text ? 0 : a.text < b.text ? -1 : 1 //ordena por texto
-			          return a.value == b.value ? 0 : a.value < b.value ? -1 : 1 //ordena por atributo value
-			    }));
-
-			    // Reestablecemos la opción seleccionada previamente
-				$(listaActual).prop('selectedIndex', sel); //listaActual.selectedIndex = sel;
+		//Inserta las provincias
+		function pintarProvincias(datos){
+			var json = JSON.parse(datos);
+			$.each(json, function(codigo, nombre){
+				$("#provincia").append(`<option value="${codigo}">${nombre}</option>`);
 			});
 		}
 
-		function peticionProvincias(){
-
+		//carga las provincias y llama a la funcion encargada de pintarlas
+		function cargarProvincias() {
+			$.get("./cargaProvinciasJSON.php")
+			.done(pintarProvincias)
+			.fail(error);
 		}
 
-		function peticionMunicipio(){
-
+		//Obtiene los municipio asociados a una provincia
+		function cargarMunicipios(prov){
+			$.post("./cargaMunicipiosJSON.php", {
+				provincia: prov
+			})
+			.done(pintarMunicipios)
+			.fail(error);
 		}
 
-		window.onload=function(){
-			// for (var i = 0; i < array.length; i++) {
-			// 	array[i]
-			// }
-			//$('#provincia option').load("cargaProvinciasJSON.php").val();
-			$('#provincia').load("cargaProvinciasJSON.php");
-			//console.log(Array.from($('#provincia option')));
-			// peticionProvincias();
-			// $("provincia").on('change', peticionMunicipio);
+		//comprueba si se pueden cargar mnunicipios, si es asi los carga, sino los borra
+		function comprobarMunicipios() {
+			if ((prov = $('#provincia').val()) !='-selecciona-') {
+				cargarMunicipios(prov);
+			} else {
+				$("#municipio").children().remove();
+			}
 		}
+
+		//inserta los municipios
+		function pintarMunicipios(datos){
+			var json = JSON.parse(datos);
+			$("#municipio").children().remove();
+			$.each(json, function(codigo, nombre){
+				$("#municipio").append(`<option value="${codigo}">${nombre}</option>`);
+			});
+		}
+
+		$(function(){
+			cargarProvincias();
+			$('#provincia').on('change', function(){comprobarMunicipios()});
+		});
 		</script>
 	</head>
 
@@ -49,7 +66,6 @@
 		<form>
 		  <label for="provincia">Provincia</label>
 		  <select id="provincia">
-			<option>-selecciona-</option>
 			<option>-selecciona-</option>
 		  </select>
 		  <br/><br/>
