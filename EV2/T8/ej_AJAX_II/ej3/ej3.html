@@ -3,23 +3,58 @@
     <head>
         <meta charset="utf-8">
         <title>ej3</title>
+        <link rel="stylesheet" href="./css.css">
         <script src="../../jquery.js" charset="utf-8"></script>
         <script type="text/javascript">
+        /**
+         * Funcion encargada de comprobar a que datos quiere acceder el usuario.
+         * Si el valor introducido es distnto a "1DAW" o "2DAW" no se cargara la informacion
+         * @param  datos Los datos cargados en la peticion AJAX
+         */
+        function compruebaDatos(datos){
+            if ($('#curso').val() == "1DAW"){
+                pintarDatos(0);
+            }else if($('#curso').val() == '2DAW'){
+                pintarDatos(1);
+            } else {
+                $('#info *').remove();
+                $('#info').append(`<p>No se ha podido obtener la información, introduzca un curso válido</p>`);
+            }
 
+            //Funcion encargada de insertar los elementos DOM con la informacion de cada alumno que forma el ciclo
+            function pintarDatos(posicion) {
+                $('#info *').remove();
+                $('#info').append(`<p>Listado de alumnos matriculados en ${posicion+1}DAW son:</p>`);
+                $('#info p').after('<table id="tabla"><tr><th>Nombre</th><th>DNI</th><th>Acceso</th></tr></table>')
+                $.each(datos[posicion], function(clave, valor){
+                    $('tr:last').after(`<tr><td>${valor.nombre}</td><td>${valor.dni}</td><td>${valor.acceso} </td></tr>`);
+                });
+            }
+        }
+        /**
+         * Funcion encargada de obtener los datos del servidor mediante la peticion ajax
+         */
+        function cargarDatos() {
+            $.get("../servidor.php")
+            .done(compruebaDatos)
+        }
+
+        $(function(){
+            $(':submit').click(function(e){
+                e.preventDefault();
+                cargarDatos();
+            });
+        });
         </script>
     </head>
     <body>
-        <button type="button" id="boton">Ver datos</button>
-        <ul>
-            <li> <h2>1DAW</h2>
-            <ul id="DAW1">
-            </ul>
-            </li>
-            <li> <h2>2DAW</h2>
-            <ul id="DAW2">
+        <form action="#" method="post">
+            <label for="curso">Introduzca el curso</label>
+            <input type="text" id="curso" value="">
+            <input type="submit" value="Ver cursos">
+        </form>
+        <div id="info">
 
-            </ul>
-            </li>
-        </ul>
+        </div>
     </body>
 </html>
