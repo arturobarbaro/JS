@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>ej1</title>
+    <script src="../../jquery.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        //Funcion encargada de realizar la peticion ajax
+        function cargarDatos() {
+            $('#boton').off();
+            $.get("../servidor.php")
+            .done(pintarDatos);
+        }
+
+        //Funcion encargada de insetar los datos en el DOM, para ello recorremos
+        //cada array que alamacena a los alumnos
+        function pintarDatos(datos){
+            $.each(datos, function(clave, valor){
+                $.each(valor, function(clave, valor){
+                    $(`#DAW${++clave}`).append(`<li>
+                        Nombre: ${valor.nombre}.
+                        DNI: ${valor.dni}.
+                        Acceso: ${valor.acceso}.</li>`);
+                });
+            });
+        }
+
+        $(()=>{
+            $('#boton').on('click', cargarDatos);
+        });
+    </script>
+</head>
+<body>
+    <button type="button" id="boton">Ver datos</button>
+    <ul>
+        <li> <h2>1DAW</h2>
+            <ul id="DAW1">
+            </ul>
+        </li>
+        <li> <h2>2DAW</h2>
+            <ul id="DAW2"></ul>
+        </li>
+    </ul>
+</body>
+</html>
