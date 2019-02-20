@@ -5,12 +5,20 @@
 	<title>Document</title>
 	<script src="../../jquery.js" charset="utf-8"></script>
 	<script type="text/javascript">
-		$(function(){
-			$('button').on('click', function(){
-				$('button').off('click');
-				//alert('matao')
-			})
-		})
+	function pintarDatos(datos){
+		var json = JSON.parse(datos);
+		$.each(json, function(datos){
+			$("#div1").append(`${datos.name}${datos.price}`);
+		});
+    }
+
+    function valida_datos() {
+    	$.post('servidor.php').done(pintarDatos);
+    }
+
+	$(function(){
+		$('button').on('click', valida_datos)
+	})
 	</script>
 </head>
 <body>
@@ -29,6 +37,9 @@
 	<div class="tour-2">
 	  <h3 class="name"></h3>
 	  <p class="price"></p>
+	</div>
+	<div id="div1" class="">
+
 	</div>
 
 </body>

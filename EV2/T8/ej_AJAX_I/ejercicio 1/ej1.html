@@ -4,10 +4,12 @@
 <title>Ejercicio 1</title>
 <script src="../../jquery.js" charset="utf-8"></script>
 <script type="text/javascript">
+    //pintamos los datos
     function pintarDatos(data){
         $('#respuesta').html("Data:" + data);
     }
 
+    //Realizamos la peticion ajax
     function valida_datos() {
     	$.post('servidor.php',
         {
@@ -17,6 +19,7 @@
         }).done(pintarDatos);
     }
 
+    //Asignamos al evento click del boton la funcion encargada de realizar la peticions ajax
     $(function(){
         $('input[type="button"]').click(valida_datos)
     });
