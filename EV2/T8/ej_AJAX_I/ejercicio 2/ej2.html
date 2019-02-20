@@ -5,13 +5,15 @@
 	<title>Document</title>
 	<script src="../../jquery.js" charset="utf-8"></script>
 	<script type="text/javascript">
+	//Insertamos los datos asociados en cada elemento DOM
 	function pintarDatos(datos){
-		var json = JSON.parse(datos);
-		$.each(json, function(datos){
-			$("#div1").append(`${datos.name}${datos.price}`);
+		$('div').each(function(i){
+			$("div > h3")[i].append(`${datos[i].name}`);
+			$("div > p")[i].append(`${datos[i].price}`);
 		});
     }
 
+	//Realizamos la peticion ajax y pintamos los datos si se realiza
     function valida_datos() {
     	$.post('servidor.php').done(pintarDatos);
     }
@@ -38,9 +40,5 @@
 	  <h3 class="name"></h3>
 	  <p class="price"></p>
 	</div>
-	<div id="div1" class="">
-
-	</div>
-
 </body>
 </html>
