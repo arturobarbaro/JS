@@ -1,9 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	
+	<script src="../../jquery.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('button').on('click', function(){
+				$('button').off('click');
+				//alert('matao')
+			})
+		})
+	</script>
 </head>
 <body>
 	<button>Mostrar tours</button>
@@ -22,6 +30,6 @@
 	  <h3 class="name"></h3>
 	  <p class="price"></p>
 	</div>
-	
+
 </body>
 </html>
