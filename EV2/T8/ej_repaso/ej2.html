@@ -4,8 +4,37 @@
         <meta charset="utf-8">
         <title></title>
         <script src="../jquery.js" charset="utf-8"></script>
+        <script type="text/javascript">
+        /**
+         * Realiza la peticion AJAX
+         */
+            function cargarDatos(){
+                $.get('personas.php')
+                .done(pintarDatos);
+
+                /**
+                 * Muestra por alert los datos del objeto  al haber seleccionado
+                 * un radio button
+                 * @param  datos Los datos cargados con ajax
+                 */
+                function pintarDatos(datos){
+                    var obj = JSON.parse(datos)[$(':checked').val()];
+                    alert(`Nombre: ${obj.nombre} DNI: ${obj.dni}`);
+                }
+            }
+
+            $(()=>{
+                $('input').on('click', cargarDatos)
+            })
+        </script>
     </head>
     <body>
-        
+        <form action="#" method="post">
+            Grupo de clientes:<br>
+            <input type="radio" name="persona" value="0"> 1 <br>
+            <input type="radio" name="persona" value="1"> 2 <br>
+            <input type="radio" name="persona" value="2"> 3 <br>
+            <input type="radio" name="persona" value="3"> 4 <br>
+        </form>
     </body>
 </html>
