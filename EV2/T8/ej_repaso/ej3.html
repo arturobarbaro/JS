@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../jquery.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(()=>{
+            insertarImagen()
+            $('#ver').on('click',()=>{
+                $('div').show()
+            })
+            $('#ocultar').on('click', ()=>{
+                $('div').hide();
+            });
+        });
+
+        function insertarImagen() {
+            $('div').append('<img src="jquery.png" alt="">')
+            setTimeout(()=>{ insertarImagen(); }, 1000);
+        }
+    </script>
+</head>
+<body>
+    <a id="ver">Ver</a>
+    <a id="ocultar">Ocultar</a>
+    <div class="">
+
+    </div>
+</body>
+</html>
