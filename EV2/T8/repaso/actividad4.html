@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="../jquery.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            function cargar(){
+                $.get('personas.php')
+                .done(comprobar)
+
+                function comprobar(data){
+                    console.log(JSON.parse(data)[$('input').val()].nombre);
+                }
+            }
+
+            $(()=>{
+                $('button').click(cargar)
+            })
+        </script>
+    </head>
+    <body>
+        <input type="text" name="" value="">
+        <button type="button" name="button">Buscar</button>
+    </body>
+</html>

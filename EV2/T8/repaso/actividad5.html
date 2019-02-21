@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="../jquery.js" charset="utf-8"></script>
+        <script type="text/javascript">
+        //pintamos los datos
+        function pintarDatos(data){
+            $('#respuesta').html(data);
+        }
+
+        //Realizamos la peticion ajax
+        function valida_datos() {
+            $.post('servidor1.php',
+            {
+                fecha_nacimiento:  1,
+                codigo_postal:  $('#codigo_postal').val(),
+                telefono:  $('#telefono').val()
+            }).done(pintarDatos);
+        }
+
+        //Asignamos al evento click del boton la funcion encargada de realizar la peticions ajax
+        $(function(){
+            $('input[type="button"]').click(valida_datos)
+        });
+    </script>
+
+    </head>
+    <body>
+    <form>
+        <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+        <input type="text" id="fecha_nacimiento" name="fecha_nacimiento" />
+        <br/>
+        <label for="codigo_postal">Codigo postal:</label>
+        <input type="text" id="codigo_postal" name="codigo_postal" /><br/>
+        <label for="telefono">Telefono:</label>
+        <input type="text" id="telefono" name="telefono" /><br/>
+        <input type="button" value="Validar datos"/>
+    </form>
+    <div id="respuesta"></div>
+    </body>
+    </html>

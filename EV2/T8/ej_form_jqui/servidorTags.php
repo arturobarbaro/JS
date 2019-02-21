@@ -25,8 +25,8 @@
       "Scheme"
     );
 
-	
+
 	echo json_encode($availableTags) ;
-	
+
 
 ?>

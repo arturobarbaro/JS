@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="../jquery.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            function cargar(){
+                $.get('servidor0.php')
+                .done(pintar)
+
+                function pintar(data){
+                    $.each(data,function(i){
+                        $(`#${i+1}`).append(`<p>${data[i].flightNumber}</p>`);
+                        $(`#${i+1}`).append(`<p>${data[i].time}</p>`);
+                    })
+                }
+            }
+
+            $(()=>{
+                $('button').click(cargar);
+            })
+        </script>
+    </head>
+    <body>
+        <button type="button" name="button">ver</button><br>
+        MADRID
+        <div id="1" class="">
+
+        </div>
+        LISBOA
+        <div id="2" class="">
+
+        </div>
+        ROMA
+        <div id="3" class="">
+
+        </div>
+    </body>
+</html>

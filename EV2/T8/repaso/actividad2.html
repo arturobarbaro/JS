@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="../jquery.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            function cargarDatos() {
+                $.get('./servidor.php')
+                .done(insertarDatos)
+
+                function insertarDatos(data){
+                    var txt=$('input').val();
+                    if (txt=="1DAW") {
+                        $.each(data[0], function(clave,valor){
+                            console.log(valor.nombre);
+                        })
+                    }else{
+                        $.each(data[1], function(clave,valor){
+                            console.log(valor.nombre);
+                        })
+                    }
+                    // $.each(data, function(clave,valor){
+                    //     console.log(`alumnos daw${clave}`);
+                    //     $.each(valor, function(clave,valor){
+                    //         console.log(valor.nombre);
+                    //     })
+                    // })
+
+                }
+            }
+            $(()=>{
+                $('button').on('click', cargarDatos)
+            })
+        </script>
+    </head>
+    <body>
+        <input type="text" name="" value="">
+        <button type="button" name="button">ver cursos</button>
+        <div class="">
+
+        </div>
+    </body>
+</html>

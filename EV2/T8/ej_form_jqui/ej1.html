@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link href="jquery-ui.css" rel="stylesheet">
+	<!-- <link href="jquery-ui.css" rel="stylesheet"> -->
 	<style type="text/css">
 		label{display: block;
 			  margin:20px 0px;}
@@ -16,7 +16,23 @@
 	    form {margin:20px;}
 
 	</style>
+	<script src="../jquery.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		function cargarDatos(){
+			$.get('./servidorTags.php')
+			.done(comprobarDatos)
 
+			function comprobarDatos(data){
+				$.each(data, function(){
+					 $("span").load("./servidorTags.php", {q: $("#tags").val()});
+				})
+
+			}
+		}
+		$(()=>{
+			$('#tags').keypress(cargarDatos)
+		})
+	</script>
 </head>
 <body>
 	<h1>Formulario de registro CFGS DAW - IES DOÑANA</h1>
@@ -25,7 +41,7 @@
 			<input type='text' id='name' name='name'>
 		</label>
 		<label> Fecha de nacimiento:
-			<input type='text' id='date' name='date'>	
+			<input type='text' id='date' name='date'>
 		</label>
 		<label> Sexo:
 			<select id="gender" name='gender'>
@@ -33,7 +49,7 @@
 		      <option value="m" data-class="avatar" data-style="background-image: url(images/male.png);" >Hombre</option>
 		      <select>
 		</label>
-		<fieldset> 
+		<fieldset>
 			<legend>Últimos estudios realizados:</legend>
 			<label for="radio-1">ESO</label>
 		    <input type="radio" name="studies" id="radio-1">
@@ -44,7 +60,7 @@
 		    <label for="radio-4">Otros</label>
 		    <input type="radio" name="studies" id="radio-4">
 		</fieldset>
-		
+
 		<fieldset>
 	    <legend>Módulos: </legend>
 	    <label>Programación
@@ -70,15 +86,16 @@
 		<label>Lenguajes de programación que conoces
 			<input type='text' name='tags' id="tags" size="50">
 		</label>
+		<span></span>
 		<br>
 		<br>
-		
+
 		<div>
 			<button>Reset</button>
 			<button>Enviar</button>
-			<button>Imprimir</button>		
+			<button>Imprimir</button>
 		</div>
-		
+
 
 	</form>
 </body>
