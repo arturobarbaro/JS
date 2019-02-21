@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="../jquery.js" charset="utf-8"></script>
+        <script type="text/javascript">
+        $(function(){
+            $(":input").keyup(function(){
+               $("span").load("./autocompletar.php", {q: $(":input").val()});
+           });
+        })
+        </script>
+    </head>
+    <body>
+        <p>Start typing a name in the input field below:</p>
+        First name:
+        <input type="text">
+        <p>Suggestions: <span></span></p>
+    </body>
+</html>
