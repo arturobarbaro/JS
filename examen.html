@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Resumen de la compra</title>
+    <link rel="stylesheet" href="compra.css" type="text/css">
+  </head>
+  <body>
+    <h1>Resumen de la compra</h1>
+
+    <table id="compra">
+      <thead>
+        <tr>
+          <td>Producto</td>
+          <td>Unidades</td>
+          <td>Precio</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bicicleta de montaña 28 v. talla L</td>
+          <td>1</td>
+          <td>400.00</td>
+        </tr>
+        <tr id="total">
+          <td>Total:</td>
+          <td></td>
+          <td id="totalval">400.00</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Accesorios opcionales</h2>
+    <form>
+      <select id="accesorios">
+      </select>
+      <input id="cantidad" type="number" value="1" min="1" max="99">
+      <input id="boton" type="button" value="Añadir">
+      <input id="Valida" type="button" value="Validar">
+    </form>
+  </body>
+</html>
