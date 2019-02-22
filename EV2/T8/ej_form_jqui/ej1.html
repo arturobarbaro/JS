@@ -23,14 +23,32 @@
 			.done(comprobarDatos)
 
 			function comprobarDatos(data){
-				$.each(data, function(){
-					 $("span").load("./servidorTags.php", {q: $("#tags").val()});
+				data=JSON.parse(data);
+				// var exp= new RegExp(`a/i`);
+				// console.log(exp);
+				$.each(data, function(i){
+					console.log(data[i]);
+					// if(exp.test(data[i])){
+					// 	console.log(data[i] + i);
+					// };
 				})
+			}
+		}
 
+		function enviar(e){
+			e.preventDefault()
+			$.post('servidor.php',{
+				nombre: `${$('#name').val()}`
+			})
+			.done(pintar)
+
+			function pintar(data){
+				console.log(data);
 			}
 		}
 		$(()=>{
 			$('#tags').keypress(cargarDatos)
+			$('#env').click(enviar)
 		})
 	</script>
 </head>
@@ -92,7 +110,7 @@
 
 		<div>
 			<button>Reset</button>
-			<button>Enviar</button>
+			<button id="env">Enviar</button>
 			<button>Imprimir</button>
 		</div>
 
